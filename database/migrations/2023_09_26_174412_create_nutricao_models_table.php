@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('nutricao_models', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement()->unsigned();
             $table->unsignedBigInteger('socio_id');
             $table->float('peso_kg', 5, 3)->nullable();
             $table->float('altura_cm', 5, 3)->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->float('Abdomen', 5, 2)->nullable();
             $table->float('Anca', 5, 2)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

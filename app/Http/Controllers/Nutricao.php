@@ -78,7 +78,7 @@ class Nutricao extends Controller
 
     public function getClienteDetails($id)
     {
-        $cliente = Cache::remember('cliente_' . $id, now()->addMinutes(60), function () use ($id) {
+        $cliente = Cache::remember('cliente_' . $id, now()->addMinutes(120), function () use ($id) {
             return DB::table('Socios')
                 ->select('id', 'nome', 'apelido')
                 ->where('id', '=', $id)

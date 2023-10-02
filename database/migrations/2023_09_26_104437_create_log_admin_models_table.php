@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('log_admin_models', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement()->unsigned();
             $table->string('log',200);
             $table->unsignedBigInteger('colaborador_id')->nullable();
             $table->unsignedBigInteger('socio_id')->nullable();;
             $table->timestamps();
-        });
+            });
     }
 
     /**

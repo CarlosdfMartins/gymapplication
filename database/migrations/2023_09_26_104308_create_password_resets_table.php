@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('password_resets', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement()->unsigned();
             $table->unsignedBigInteger('socio_id')->nullable();
             $table->unsignedBigInteger('colaborador_id')->nullable();
             $table->string('email')->index();
             $table->string('token', 100);
             $table->timestamp('expires_at');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -21,13 +21,13 @@
                     <div class="text-center my-3 form-group">
                         <label>
                             <input type="email" name="user" value="{{ old('user') }}" placeholder="username"
-                                class="form-control">
+                                class="form-control" required>
                         </label>
                     </div>
 
                     <div class="text-center my-3 form-group">
                         <label>
-                            <input type="password" name="pass" placeholder="password" class="form-control">
+                            <input type="password" name="pass" placeholder="password" class="form-control" required>
                         </label>
                     </div>
 

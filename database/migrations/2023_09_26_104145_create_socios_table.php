@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('socios', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement()->unsigned();
             $table->unsignedBigInteger('NUT_id')->nullable();
             $table->unsignedBigInteger('PT_id')->nullable();
             $table->string('profile', 50);
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('sexo', 3);
             $table->date('data_nascimento');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

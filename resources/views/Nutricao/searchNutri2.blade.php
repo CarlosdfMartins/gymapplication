@@ -13,7 +13,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Nº Sócio</th>
                                 <th>Nome</th>
                                 <th>Telefone</th>
                                 <th>Email</th>

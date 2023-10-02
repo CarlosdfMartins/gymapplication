@@ -56,9 +56,10 @@ class Main extends Controller
         $email = $request->input('user');
         $password = $request->input('pass');
 
-        $socio = Socios::where('email', $email)->first();
+        $socio = Socios::where('email', $email)->whereNull('deleted_at')->first();
         $colaborador = Colaboradores::whereIn('profile', ['Nutricionista', 'Personal Trainer', 'Administrador'])
             ->where('email', $email)
+            ->whereNull('deleted_at')
             ->first();
 
         if ($socio && $password === $socio->password) {
@@ -91,7 +92,7 @@ class Main extends Controller
     }
 
     //==============================================================================
-    
+
     public function evol()
     {
         return view('evol');

@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('personal_trainer_models', function (Blueprint $table) {
-            $table->id();
-
+            $table->id()->autoIncrement()->unsigned();
             $table->unsignedBigInteger('socio_id');
             $table->float('series', 5)->nullable();
             $table->float('reps', 5)->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

@@ -20,7 +20,7 @@ class Admin extends Controller
 
     public function logOut()
     {
-        Session::flush();
+        session()->forget('email');
         return redirect()->route('login');
     }
 }

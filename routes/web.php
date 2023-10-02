@@ -2,7 +2,11 @@
 
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Main;
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\ResetPass;
+use App\Http\Controllers\Forms;
+use App\Http\Controllers\Nutricao;
 
 
 
@@ -17,38 +21,40 @@ use Illuminate\Support\Facades\Route;
 |
 // */
 
-Route::get('/', [App\Http\Controllers\Main::class, 'index'])->name('index');
 
-Route::get('/login/{erro?}', [App\Http\Controllers\Main::class, 'login'])->name('login');
-Route::post('/login', [App\Http\Controllers\Main::class, 'confirmation'])->name('login');
+
+Route::get('/', [Main::class, 'index'])->name('index');
+Route::get('/login/{erro?}', [Main::class, 'login'])->name('login');
+Route::post('/login', [Main::class, 'confirmation'])->name('login');
+
+
 
 Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function () {
-    Route::get('/home', [App\Http\Controllers\Admin::class, 'home'])->name('app.home');
-    Route::get('/exit', [App\Http\Controllers\Admin::class, 'logOut'])->name('app.exit');
-    Route::get('/admin', [App\Http\Controllers\Admin::class, 'principalAdmin'])->name('app.admin');
+    Route::get('/home', [Admin::class, 'home'])->name('app.home');
+    Route::get('/exit', [Admin::class, 'logOut'])->name('app.exit');
+    Route::get('/admin', [Admin::class, 'principalAdmin'])->name('app.admin');
 
-    Route::get('/train', [App\Http\Controllers\Main::class, 'train'])->name('app.training');
-    Route::get('/evol', [App\Http\Controllers\Main::class, 'evol'])->name('app.evolution');
+    Route::get('/train', [Main::class, 'train'])->name('app.training');
+    Route::get('/evol', [Main::class, 'evol'])->name('app.evolution');
 
-    Route::get('/resetpassword/{token}', [App\Http\Controllers\ResetPass::class, 'reset'])->name('app.resetpass');
-    Route::post('/resetpassword/{token}', [App\Http\Controllers\ResetPass::class, 'definePass'])->name('app.definePass');
+    Route::get('/resetpassword/{token}', [ResetPass::class, 'reset'])->name('app.resetpass');
+    Route::post('/resetpassword/{token}', [ResetPass::class, 'definePass'])->name('app.definePass');
 
-    Route::get('/form', [App\Http\Controllers\Forms::class, 'frm'])->name('app.form');
-    Route::post('/form', [App\Http\Controllers\Forms::class, 'sendForm'])->name('app.sendform');
-    Route::get('/formSearch', [App\Http\Controllers\Forms::class, 'search'])->name('app.formSearch');
-    Route::get('/formConsult', [App\Http\Controllers\Forms::class, 'consult'])->name('app.formConsult');
-
-
-
-    Route::get('/nutri', [App\Http\Controllers\Main::class, 'nutri'])->name('app.nutrition');
-    Route::get('/nutriConsult', [App\Http\Controllers\Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
-    Route::get('/nutriSearch/{id}', [App\Http\Controllers\Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
-    Route::get('/dadosBIOConsult/{id}', [App\Http\Controllers\Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
-    Route::get('/socio', [App\Http\Controllers\Nutricao::class, 'socio'])->name('app.socio');
+    Route::get('/form', [Forms::class, 'frm'])->name('app.form');
+    Route::post('/form', [Forms::class, 'sendForm'])->name('app.sendform');
+    Route::get('/formSearch', [Forms::class, 'search'])->name('app.formSearch');
+    Route::get('/formConsult', [Forms::class, 'consult'])->name('app.formConsult');
 
 
 
-    Route::post('storeFormNutri/{id}', [App\Http\Controllers\Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
-    Route::get('/formNutrie/{id}', [App\Http\Controllers\Nutricao::class, 'formNutrie'])->name('app.formNutrie');
+    Route::get('/nutri', [Main::class, 'nutri'])->name('app.nutrition');
+    Route::get('/nutriConsult', [Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
+    Route::get('/nutriSearch/{id}', [Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
+    Route::get('/dadosBIOConsult/{id}', [\Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
+    Route::get('/socio', [Nutricao::class, 'socio'])->name('app.socio');
+
+
+
+    Route::post('storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
+    Route::get('/formNutrie/{id}', [Nutricao::class, 'formNutrie'])->name('app.formNutrie');
 });
-
