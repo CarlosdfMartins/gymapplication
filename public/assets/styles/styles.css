@@ -1,0 +1,52 @@
+.titulo {
+    color: rgb(168, 33, 33);
+    font-weight: bold;
+    font-size: 100px;
+    text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.400),
+    1px -1px 0 rgba(0, 0, 0, 0.400),
+    -1px 1px 0 rgba(0, 0, 0, 0.400),
+    1px 1px 0 rgba(0, 0, 0, 0.400);
+}
+
+
+.destaque {
+    color: rgb(168, 33, 33);
+}
+
+.footername {
+    color: rgb(233, 232, 232);
+    background-color: rgba(168, 33, 33, 0.5);
+    font-weight: lighter;
+    border-radius: 5px;
+    width: 20%;
+    height: 10%
+}
+
+.center-page {
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    position: relative;
+    bottom: 0;
+    width: 100%
+}
+
+.messageOne {
+
+    color: rgb(168, 33, 33);
+    font-weight: bold;
+    text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.400),
+    1px -1px 0 rgba(0, 0, 0, 0.400),
+    -1px 1px 0 rgba(0, 0, 0, 0.400),
+    1px 1px 0 rgba(0, 0, 0, 0.400);
+}
+
+.messageTwo {
+    text-decoration-line: none;
+    color: rgb(254, 254, 254);
+    font-weight: lighter;
+}
+
+
