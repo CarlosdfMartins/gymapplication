@@ -9,35 +9,25 @@
                     @if ($socios->count() === 0)
                         <p>Sem resultados para apresentar.</p>
                     @else
-                        <table>
+                        <table Class="table">
                             <thead>
                                 <tr>
                                     <th class=text-center>Nº Sócio</th>
                                     <th class=text-center>Nome</th>
                                     <th class=text-center>Telefone</th>
                                     <th class=text-center>Email</th>
-                                    <th class=text-center>Sexo</th>
-                                    <th class=text-center>Data Nascimento</th>
-                                    <th class=text-center>Nutricionista</th>
-                                    <th class=text-center>Personal Trainer</th>
+
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach ($socios as $socio)
-                                    <tr>
+                                    <tr onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $socio->id]) }}';"
+                                        style="cursor: pointer;">
                                         <td class=text-center>{{ $socio->id }}</td>
                                         <td class=text-center>{{ $socio->nome }} {{ $socio->apelido }}</td>
                                         <td class=text-center>{{ $socio->telefone }}</td>
                                         <td class=text-center>{{ $socio->email }}</td>
-                                        <td class=text-center>{{ $socio->sexo }}</td>
-                                        <td class=text-center>{{ $socio->data_nascimento }}</td>
-                                        <td class=text-center>{{ optional($socio->nutri)->nome }}
-                                            {{ optional($socio->nutri)->apelido }}</td>
-                                        <td class=text-center>{{ optional($socio->pTrain)->nome }}
-                                            {{ optional($socio->pTrain)->apelido }}</td>
-
-
                                         <td>Editar</td>
                                         <td>Eliminar</td>
                                     </tr>
@@ -46,18 +36,15 @@
                             </tbody>
                         </table>
                     @endif
+                </div>
 
+                <div class="row">
+                    <div class="col">
 
+                        <p class="mb-5"> Total: <strong>{{ count($socios) }}</strong></p>
 
+                    </div>
                 </div>
             </div>
-            <div class="row"></div>
-            <div class="col">
-
-                <p class="mb-5"> Total: <strong>{{ count($socios) }}</strong></p>
-
-            </div>
         </div>
-    </div>
-    </div>
-@endsection
+    @endsection

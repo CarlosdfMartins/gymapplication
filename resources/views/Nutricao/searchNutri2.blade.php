@@ -10,7 +10,7 @@
 
                     <hr>
 
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -21,30 +21,23 @@
                         </thead>
                         <tbody>
                             @foreach ($nomeSocios as $nsocios)
-                                <tr>
-                                    <td>
-                                        <a
-                                            href="{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}">{{ $nsocios->id }}</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}">{{ $nsocios->nome }}
-                                            {{ $nsocios->apelido }}</a>
-                                    </td>
-                                    <td>
-                                        <a
-                                            href="{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}">{{ $nsocios->telefone }}</a>
-                                    </td>
-                                    <td>
-                                        <a
-                                            href="{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}">{{ $nsocios->email }}</a>
-                                    </td>
+                                <tr onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}';"
+                                    style="cursor: pointer;">
+                                    <td>{{ $nsocios->id }}</td>
+                                    <td>{{ $nsocios->nome }} {{ $nsocios->apelido }}</td>
+                                    <td>{{ $nsocios->telefone }}</td>
+                                    <td>{{ $nsocios->email }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col">
 
+                        <p class="mb-5"> Total: <strong>{{ count($nomeSocios) }}</strong></p>
 
-
+                    </div>
                 </div>
             </div>
         </div>
