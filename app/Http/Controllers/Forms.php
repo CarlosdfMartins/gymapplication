@@ -140,4 +140,78 @@ class Forms extends Controller
 
         return view('consultClient', ['socios' => $socios]);
     }
+
+    public function pesquiCola()
+    {
+        return view('pesquiCola');
+    }
+
+    public function searchCola($id)
+    {
+        $colaboradores = Colaboradores::findOrFail($id);
+
+        return view('dadosCola', [
+            'colaboradores' => $colaboradores,
+
+        ]);
+    }
+
+    public function consultColabor(Request $request)
+    {
+        $search = $request->input('searchColabor');
+
+        $colaboradores = Colaboradores::where('nome', 'like', "%$search%")
+            ->orWhere('id', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%")
+            ->orWhere('apelido', 'like', "%$search%")
+            ->orWhere('telefone', 'like', "%$search%")
+            ->orWhere('data_nascimento', 'like', "%$search%")
+            ->orWhere('profile', 'like', "%$search%")
+            ->get();
+
+        return view('consultCola', ['colaboradores' => $colaboradores]);
+    }
+
+    public function edit($profile, $id)
+    {
+
+        if ($profile === 'Socio') {
+            $dados = Socios::find($id);
+            return view('editSocio', compact('profile', 'dados'));
+        } elseif (in_array($profile, ['Nutricionista', 'Personal Trainer', 'Administrador'])) {
+            $dados = Colaboradores::find($id);
+            return view('editColabor', compact('profile', 'dados'));
+        } else {
+            abort(404);
+        }
+    }
+
+    public function update(Request $request, $profile, $id)
+    {
+        $request->validate([
+            'nome' => 'string|max:200',
+            'email' => 'email',
+            'telefone' => 'string|max:20',
+            'sexo' => 'in:H,M',
+            'data_nascimento' => 'date',
+            'apelido' => 'string|max:50',
+
+        ]);
+
+        $dadosAtualizados = $request->only(['nome', 'email', 'telefone', 'sexo', 'data_nascimento', 'apelido', 'profile']);
+
+        if ($profile === 'Socio') {
+            $socio = Socios::find($id);
+            $socio->update($dadosAtualizados);
+            return view('Nutricao.dadosNutri', ['profile' => $profile, 'nomeSocios' => $socio]);
+        } elseif (in_array($profile, ['Nutricionista', 'Personal Trainer', 'Administrador'])) {
+            $colaborador = Colaboradores::find($id);
+            $colaborador->update($dadosAtualizados);
+            return view('dadosCola', ['profile' => $profile, 'colaboradores' => $colaborador]);
+        }
+    }
+
+    public function delete($id)
+    {
+    }
 }

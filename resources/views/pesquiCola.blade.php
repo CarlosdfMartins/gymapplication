@@ -11,11 +11,12 @@
 
 
                     <div class="text-left my-3 form-group">
-                        <form method="get" action="{{ route('app.formNutriConsult') }}" class="d-flex" role="nutSearch">
+                        <form action="{{ route('app.consultColabor') }}" method="get">
                             @csrf
-                            <input class="form-control me-2" name="nutSearch" type="text" placeholder="Pesquisar sócio"
-                                aria-label="nutSearch">
-                            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                            <div class="d-flex">
+                                <input type="text" name="searchColabor" id="searchColabor" class="form-control"
+                                    placeholder="Pesquisar colaborador">
+                                <button class="btn btn-outline-primary ms-3"><i class="bi bi-search"></i></button>
                         </form>
                     </div>
 

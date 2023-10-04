@@ -65,7 +65,7 @@
 
                                         <div class="col-md-6 col-sm-12">
                                             <label for="text-birthdate" class="form-label">Data Nascimento</label>
-                                            <input type="text" name="text-birthdate" class="form-control" required>
+                                            <input type="date" name="text-birthdate" class="form-control" required>
                                         </div>
                                     </div>
 
@@ -73,7 +73,7 @@
                                     <select class="form-select" id="text-profile" name="text-profile"
                                         aria-label="Default select example" required>
                                         <option selected></option>
-                                        <option value="Administrador">Admin</option>
+                                        <option value="Administrador">Administrador</option>
                                         <option value="Socio">Sócio</option>
                                         <option value="Nutricionista">Nutricionista</option>
                                         <option value="Personal Trainer">Personal Trainer</option>

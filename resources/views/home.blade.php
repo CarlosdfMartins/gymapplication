@@ -17,6 +17,7 @@
                         <a href="{{ route('app.evolution') }}" class="btn btn-light">EVOLUÇÃO</a>
                     </div>
                     <div class="text-center my-3 form-group">
+                        <a href="{{ route('app.pesquiCola') }}" class="btn btn-light">PESQUISAR COLABORADOR</a>
                         <a href="{{ route('app.formSearch') }}" class="btn btn-light">PESQUISAR CLIENTES</a>
                         <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS CLIENTES</a>
                     </div>

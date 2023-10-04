@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Socios extends Model
 {
     protected $table = 'socios';
-    protected $fillable = ['nome', 'apelido' , 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile'];
+    protected $fillable = ['nome', 'apelido' , 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile', 'NUT_id', 'PT_id'];
 
 
     public function colaborador()

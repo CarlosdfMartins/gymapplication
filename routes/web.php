@@ -44,8 +44,9 @@ Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function 
     Route::post('/form', [Forms::class, 'sendForm'])->name('app.sendform');
     Route::get('/formSearch', [Forms::class, 'search'])->name('app.formSearch');
     Route::get('/formConsult', [Forms::class, 'consult'])->name('app.formConsult');
-
-
+    Route::get('/consultColabor', [Forms::class, 'consultColabor'])->name('app.consultColabor');
+    Route::get('/pesquiCola', [Forms::class, 'pesquiCola'])->name('app.pesquiCola');
+    Route::get('/searchCola/{id}', [Forms::class, 'searchCola'])->name('app.searchCola');
 
     Route::get('/nutri', [Main::class, 'nutri'])->name('app.nutrition');
     Route::get('/nutriConsult', [Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
@@ -53,8 +54,11 @@ Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function 
     Route::get('/dadosBIOConsult/{id}', [\Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
     Route::get('/socio', [Nutricao::class, 'socio'])->name('app.socio');
 
-
-
     Route::post('storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
     Route::get('/formNutrie/{id}', [Nutricao::class, 'formNutrie'])->name('app.formNutrie');
+
+    Route::get('/edit/{profile}/{id}', [Forms::class, 'edit'])->name('app.edit');
+    Route::put('/update/{profile}/{id}', [Forms::class, 'update'])->name('app.update');
+
+    Route::get('/delete/{id}', [Forms::class, 'delete'])->name('app.delete');
 });

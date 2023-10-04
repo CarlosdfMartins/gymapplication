@@ -23,7 +23,7 @@ class Nutricao extends Controller
         return view('formNutri', ['socioID' => $socioID, 'cliente' =>  $cliente]);
     }
 
-//========================================================================================================================
+    //========================================================================================================================
 
     public function storeFormNutri(Request $request, $id)
     {
@@ -48,19 +48,23 @@ class Nutricao extends Controller
         return redirect()->route('app.home', ['id' => $id]);
     }
 
-//========================================================================================================================
+    //========================================================================================================================
 
     public function formNutriSearch($id)
     {
         $nomeSocios = Socios::findOrFail($id);
 
-        return view('nutricao.dadosNutri', ['nomeSocios' => $nomeSocios]);
+        return view('nutricao.dadosNutri', [
+            'nomeSocios' => $nomeSocios,
+
+        ]);
     }
 
-//========================================================================================================================
+    //========================================================================================================================
 
     public function formNutriConsult(Request $request)
     {
+
         $nutSearch = $request->input('nutSearch');
 
         $nomeSocios = Socios::where('nome', 'like', "%$nutSearch%")
@@ -74,7 +78,7 @@ class Nutricao extends Controller
         return view('nutricao.searchNutri2', ['nomeSocios' => $nomeSocios]);
     }
 
-//========================================================================================================================
+    //========================================================================================================================
 
     public function getClienteDetails($id)
     {
@@ -88,7 +92,7 @@ class Nutricao extends Controller
         return $cliente;
     }
 
-//========================================================================================================================
+    //========================================================================================================================
 
     public function dadosBIO($id)
     {
