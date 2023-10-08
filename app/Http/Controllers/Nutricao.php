@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\formPlanNutricion;
 use Illuminate\Support\Facades\Cache;
 use App\Models\NutricaoModel;
 use App\Models\Socios;
@@ -11,6 +12,62 @@ use Illuminate\Support\Facades\DB;
 
 class Nutricao extends Controller
 {
+
+    public function planNutrie($id)
+    {
+        $cliente = DB::table('Socios')
+            ->select('id', 'nome', 'apelido')
+            ->where('id', '=', $id)
+            ->get();
+
+        $socioID = $id;
+
+        return view('Nutricao.formPlanNutri', ['socioID' => $socioID, 'cliente' =>  $cliente]);
+    }
+
+    //========================================================================================================================
+
+    public function storePlanNutrie(Request $request, $id)
+    {
+        $planNutri = new formPlanNutricion();
+        $planNutri->hora_PA = $request->input('planTime1');
+        $planNutri->pequeno_almoco = $request->input('pequeno_almoco');
+        $planNutri->hora_1LM = $request->input('planTime2');
+        $planNutri->laMati1 = $request->input('lancheMatinal');
+        $planNutri->hora_2LM = $request->input('planTime3');
+        $planNutri->laMati2 = $request->input('lancheMatinal2');
+        $planNutri->hora_A = $request->input('planTime4');
+        $planNutri->almoco = $request->input('almoco');
+        $planNutri->hora_L1 = $request->input('planTime5');
+        $planNutri->lanche1 = $request->input('lanche1');
+        $planNutri->hora_L2 = $request->input('planTime6');
+        $planNutri->lanche2 = $request->input('lanche2');
+        $planNutri->hora_L3 = $request->input('planTime7');
+        $planNutri->lanche3 = $request->input('lanche3');
+        $planNutri->hora_JA = $request->input('planTime8');
+        $planNutri->jantar = $request->input('jantar');
+        $planNutri->hora_C = $request->input('planTime9');
+        $planNutri->ceia = $request->input('ceia');
+        $planNutri->socio_id = $id;
+        $planNutri->save();
+
+        return redirect()->route('app.home', ['id' => $id]);
+    }
+
+
+
+    public function dadosPlanNutrie($id)
+    {
+        $cliente = $this->getClienteDetails($id);
+
+        $nutriPlanos = formPlanNutricion::where('socio_id', $id)->get();
+
+        $socioID = $id;
+
+        return view('nutricao.dataPlanNutri', [ 'socioID' => $socioID,'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
+    }
+    //========================================================================================================================
+
     public function formNutrie($id)
     {
         $cliente = DB::table('Socios')
@@ -56,7 +113,6 @@ class Nutricao extends Controller
 
         return view('nutricao.dadosNutri', [
             'nomeSocios' => $nomeSocios,
-
         ]);
     }
 
@@ -100,6 +156,8 @@ class Nutricao extends Controller
 
         $biodados = NutricaoModel::where('socio_id', $id)->get();
 
-        return view('nutricao.bioDATANutri', ['biodados' => $biodados, 'cliente' =>  $cliente]);
+        $socioID = $id;
+
+        return view('nutricao.bioDATANutri', ['socioID' => $socioID,'biodados' => $biodados, 'cliente' =>  $cliente]);
     }
 }

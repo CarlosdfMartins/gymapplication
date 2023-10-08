@@ -33,6 +33,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

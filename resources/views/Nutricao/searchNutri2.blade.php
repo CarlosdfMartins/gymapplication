@@ -13,24 +13,29 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nº Sócio</th>
-                                <th>Nome</th>
-                                <th>Telefone</th>
-                                <th>Email</th>
+                                <th class="text-center">Nº Sócio</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Telefone</th>
+                                <th class="text-center">Email</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($nomeSocios as $nsocios)
                                 <tr onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}';"
                                     style="cursor: pointer;">
-                                    <td>{{ $nsocios->id }}</td>
-                                    <td>{{ $nsocios->nome }} {{ $nsocios->apelido }}</td>
-                                    <td>{{ $nsocios->telefone }}</td>
-                                    <td>{{ $nsocios->email }}</td>
+                                    <td class="text-center">{{ $nsocios->id }}</td>
+                                    <td class="text-center">{{ $nsocios->nome }} {{ $nsocios->apelido }}</td>
+                                    <td class="text-center">{{ $nsocios->telefone }}</td>
+                                    <td class="text-center">{{ $nsocios->email }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                        </table>
+                        <div style="text-align: right; margin-top: 10px;">
+                            <a href="{{ route('app.nutrition') }}" class="link-body-emphasis"
+                                style="text-decoration: none;">
+                                <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col">

@@ -13,37 +13,23 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-
-                                @csrf
-
-
-                                <div class="mb-3">
-
-
-
-                                </div>
-
-
                                 <div class="text-left my-3 form-group">
                                     <form method="get" action="{{ route('app.formConsult') }}" class="d-flex"
                                         role="search">
                                         @csrf
                                         <input class="form-control me-2" name="search" type="text"
                                             placeholder="Pesquisar" aria-label="Search">
-                                        <button class="btn btn-outline-primary ms-3"><i class="bi bi-search"></i></button>
+                                        <button class="btn btn-outline-dark ms-3"><i class="bi bi-search"></i></button>
                                     </form>
-
                                 </div>
-
-                              
-
-                                </form>
-
                             </div>
+                        </div>
+                        <div style="text-align">
+                            <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;">
+                                <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

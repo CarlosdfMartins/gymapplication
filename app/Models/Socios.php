@@ -35,6 +35,11 @@ class Socios extends Model
     {
         return $this->belongsTo(NutricaoModel::class, 'id');
     }
+
+    public function formPlanNutricion ()
+    {
+        return $this->belongsTo(formPlanNutricion::class, 'socio_id');
+    }
 }
 
 

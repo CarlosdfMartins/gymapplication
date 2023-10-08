@@ -53,5 +53,10 @@
                 </div>
             </div>
         </div>
+        <div style="text-align: right; margin-top: 15px;">
+            <a href="{{ route('app.nutriSearch', ['id' => $socioID]) }}" class="link-body-emphasis"
+                style="text-decoration: none;">
+                <i class="bi bi-reply-all-fill"></i>Voltar</a>
+        </div>
     </div>
 @endsection

@@ -28,7 +28,6 @@ Route::get('/login/{erro?}', [Main::class, 'login'])->name('login');
 Route::post('/login', [Main::class, 'confirmation'])->name('login');
 
 
-
 Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function () {
     Route::get('/home', [Admin::class, 'home'])->name('app.home');
     Route::get('/exit', [Admin::class, 'logOut'])->name('app.exit');
@@ -48,17 +47,20 @@ Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function 
     Route::get('/pesquiCola', [Forms::class, 'pesquiCola'])->name('app.pesquiCola');
     Route::get('/searchCola/{id}', [Forms::class, 'searchCola'])->name('app.searchCola');
 
+    Route::get('/edit/{profile}/{id}', [Forms::class, 'edit'])->name('app.edit');
+    Route::put('/update/{profile}/{id}', [Forms::class, 'update'])->name('app.update');
+    Route::get('/delete/{id}', [Forms::class, 'delete'])->name('app.delete');
+
     Route::get('/nutri', [Main::class, 'nutri'])->name('app.nutrition');
     Route::get('/nutriConsult', [Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
     Route::get('/nutriSearch/{id}', [Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
-    Route::get('/dadosBIOConsult/{id}', [\Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
+    Route::get('/dadosBIOConsult/{id}', [Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
     Route::get('/socio', [Nutricao::class, 'socio'])->name('app.socio');
-
-    Route::post('storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
     Route::get('/formNutrie/{id}', [Nutricao::class, 'formNutrie'])->name('app.formNutrie');
+    Route::post('/storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
 
-    Route::get('/edit/{profile}/{id}', [Forms::class, 'edit'])->name('app.edit');
-    Route::put('/update/{profile}/{id}', [Forms::class, 'update'])->name('app.update');
+    Route::get('/planNutrie/{id}', [Nutricao::class, 'planNutrie'])->name('app.planNutrie');
+    Route::post('/storePlanNutrie/{id}', [Nutricao::class, 'storePlanNutrie'])->name('app.storePlanNutrie');
+    Route::get('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
 
-    Route::get('/delete/{id}', [Forms::class, 'delete'])->name('app.delete');
 });

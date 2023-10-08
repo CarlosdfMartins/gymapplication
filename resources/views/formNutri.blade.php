@@ -102,7 +102,7 @@
                                         </div>
 
                                         <div class="mb-2 my-4">
-                                            <a href="{{ route('app.nutrition') }}" class="btn btn-light ">Cancelar</a>
+                                            <a href="{{ route('app.nutriSearch', ['id' => $socioID]) }}" class="btn btn-light ">Cancelar</a>
                                             <button type="submit" class="btn btn-light ">Gravar</button>
                                         </div>
                                     </div>
@@ -111,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+              
             </div>
         </div>
     </div>

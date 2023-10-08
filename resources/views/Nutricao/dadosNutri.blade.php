@@ -8,7 +8,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>Dados do Cliente </h4>
+                            <h4>Dados do sócio </h4>
                             <hr>
                             <p><strong>Nrº sócio: </strong>{{ $nomeSocios->id }}</p>
                             <p><strong>Nome: </strong>{{ $nomeSocios->nome }} {{ $nomeSocios->apelido }}
@@ -37,8 +37,21 @@
                         <div><a href="{{ route('app.dadosBIOConsult', ['id' => $nomeSocios->id]) }}" role="button">Ver
                                 dados biométricos</a></div>
 
-                    </div>
+                        <div><a href="{{ route('app.planNutrie', ['id' => $nomeSocios->id]) }}" role="button">Inserir
+                                Plano Nutricional
+                            </a></div>
 
+                        <div><a href="{{ route('app.dadosPlanNutrie', ['id' => $nomeSocios->id]) }}" role="button">Ver
+                                Plano
+                                Nutricional
+                            </a></div>
+
+                    </div>
+                    <div style="text-align: right; margin-top: 10px;">
+                        <a href="{{ route('app.formNutriConsult') }}" class="link-body-emphasis"
+                            style="text-decoration: none;">
+                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Mail\email_define_password;
 use App\Models\Socios;
@@ -15,6 +16,8 @@ use App\Models\PasswordReset;
 
 class Forms extends Controller
 {
+    use SoftDeletes;
+
     public function __construct()
     {
         $this->middleware('log.App');
@@ -138,6 +141,10 @@ class Forms extends Controller
             ->orWhere('data_nascimento', 'like', "%$search%")
             ->get();
 
+            if ($socios->isEmpty()) {
+                return view('consultClient')->with('message', 'Nenhum perfil encontrado.');
+            }
+
         return view('consultClient', ['socios' => $socios]);
     }
 
@@ -168,6 +175,10 @@ class Forms extends Controller
             ->orWhere('data_nascimento', 'like', "%$search%")
             ->orWhere('profile', 'like', "%$search%")
             ->get();
+
+            if ($colaboradores->isEmpty()) {
+                return view('consultCola')->with('message', 'Nenhum perfil encontrado.');
+            }
 
         return view('consultCola', ['colaboradores' => $colaboradores]);
     }
@@ -213,5 +224,19 @@ class Forms extends Controller
 
     public function delete($id)
     {
+        $colaborador = Colaboradores::find($id);
+        $socio = Socios::find($id);
+
+        if ($socio) {
+            $socio->delete();
+            return redirect()->route('app.formSearch')->with('success', 'Socio removido com sucesso.');
+        } elseif ($colaborador) {
+            $colaborador->delete();
+            return redirect()->route('app.pesquiCola')->with('success', 'Colaborador removido com sucesso.');
+        } elseif (!$socio) {
+            return redirect()->route('app.formSearch')->with('error', 'Registro não encontrado.');
+        } else {
+            return redirect()->route('app.pesquiCola')->with('error', 'Registro não encontrado.');
+        }
     }
 }

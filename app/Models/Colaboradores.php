@@ -10,7 +10,7 @@ class Colaboradores extends Model
 
 
     protected $table = 'colaboradores';
-    protected $fillable = ['nome', 'apelido' , 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile',];
+    protected $fillable = ['nome', 'apelido' , 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile'];
 
     public function passwordReset()
     {
