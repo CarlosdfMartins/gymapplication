@@ -8,8 +8,6 @@ use App\Http\Controllers\ResetPass;
 use App\Http\Controllers\Forms;
 use App\Http\Controllers\Nutricao;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +18,6 @@ use App\Http\Controllers\Nutricao;
 | be assigned to the "web" middleware group. Make something great!
 |
 // */
-
-
 
 Route::get('/', [Main::class, 'index'])->name('index');
 Route::get('/login/{erro?}', [Main::class, 'login'])->name('login');
@@ -61,7 +57,9 @@ Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function 
 
     Route::get('/planNutrie/{id}', [Nutricao::class, 'planNutrie'])->name('app.planNutrie');
     Route::post('/storePlanNutrie/{id}', [Nutricao::class, 'storePlanNutrie'])->name('app.storePlanNutrie');
-    Route::get('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
+    Route::post('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
+    Route::get('/selectPlanNutrie/{id}', [Nutricao::class, 'selectPlanNutrie'])->name('app.selectPlanNutrie');
+
 
     Route::get('/evolnutri/{id}', [Nutricao::class, 'evolnutri'])->name('app.evolnutri');
 

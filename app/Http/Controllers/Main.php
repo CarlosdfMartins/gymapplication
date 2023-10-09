@@ -12,7 +12,6 @@ class Main extends Controller
     {
         return view('index');
     }
-
     //==============================================================================
 
     public function login(Request $request)
@@ -32,7 +31,6 @@ class Main extends Controller
 
         return view('login', ['erro' => $erro]);
     }
-
     //==============================================================================
 
     public function confirmation(Request $request)
@@ -76,28 +74,24 @@ class Main extends Controller
             return redirect()->route('login', ['erro' => 1]);
         }
     }
-
     //==============================================================================
 
     public function nutri()
     {
         return view('nutri');
     }
-
     //==============================================================================
 
     public function train()
     {
         return view('train');
     }
-
     //==============================================================================
 
     public function evol()
     {
         return view('evol');
     }
-
     //==============================================================================
 
 }

@@ -22,7 +22,6 @@ class Forms extends Controller
     {
         $this->middleware('log.App');
     }
-
     //========================================================================================================================
 
     public function frm()
@@ -42,7 +41,6 @@ class Forms extends Controller
             'personalTrainers' => $personalTrainer
         ]);
     }
-
     //========================================================================================================================
 
     public function sendForm(Request $request)
@@ -120,14 +118,12 @@ class Forms extends Controller
 
         return view('home');
     }
-
     //========================================================================================================================
 
     public function search()
     {
         return view('searchFile');
     }
-
     //========================================================================================================================
 
     public function consult(Request $request)
@@ -142,17 +138,19 @@ class Forms extends Controller
             ->orWhere('data_nascimento', 'like', "%$search%")
             ->get();
 
-            if ($socios->isEmpty()) {
-                return view('consultClient')->with('message', 'Nenhum perfil encontrado.');
-            }
+        if ($socios->isEmpty()) {
+            return view('consultClient')->with('message', 'Nenhum perfil encontrado.');
+        }
 
         return view('consultClient', ['socios' => $socios]);
     }
+    //========================================================================================================================
 
     public function pesquiCola()
     {
         return view('pesquiCola');
     }
+    //========================================================================================================================
 
     public function searchCola($id)
     {
@@ -163,6 +161,7 @@ class Forms extends Controller
 
         ]);
     }
+    //========================================================================================================================
 
     public function consultColabor(Request $request)
     {
@@ -177,12 +176,13 @@ class Forms extends Controller
             ->orWhere('profile', 'like', "%$search%")
             ->get();
 
-            if ($colaboradores->isEmpty()) {
-                return view('consultCola')->with('message', 'Nenhum perfil encontrado.');
-            }
+        if ($colaboradores->isEmpty()) {
+            return view('consultCola')->with('message', 'Nenhum perfil encontrado.');
+        }
 
         return view('consultCola', ['colaboradores' => $colaboradores]);
     }
+    //========================================================================================================================
 
     public function edit($profile, $id)
     {
@@ -197,6 +197,7 @@ class Forms extends Controller
             abort(404);
         }
     }
+    //========================================================================================================================
 
     public function update(Request $request, $profile, $id)
     {
@@ -222,6 +223,7 @@ class Forms extends Controller
             return view('dadosCola', ['profile' => $profile, 'colaboradores' => $colaborador]);
         }
     }
+    //========================================================================================================================
 
     public function delete($id)
     {
@@ -240,4 +242,5 @@ class Forms extends Controller
             return redirect()->route('app.pesquiCola')->with('error', 'Registro não encontrado.');
         }
     }
+    //========================================================================================================================
 }

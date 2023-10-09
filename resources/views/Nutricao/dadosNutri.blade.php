@@ -41,9 +41,8 @@
                                 Plano Nutricional
                             </a></div>
 
-                        <div><a href="{{ route('app.dadosPlanNutrie', ['id' => $nomeSocios->id]) }}" role="button">Ver
-                                Plano
-                                Nutricional
+                        <div><a href="{{ route('app.selectPlanNutrie', ['id' => $nomeSocios->id]) }}" role="button">Ver
+                                Plano Nutricional
                             </a></div>
 
                     </div>

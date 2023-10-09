@@ -27,7 +27,7 @@ class Nutricao extends Controller
 
         return view('Nutricao.evolNutrie', ['socioID' => $socioID, 'dados' => $dados, 'cliente' =>  $cliente]);
     }
-
+    //========================================================================================================================
 
     public function planNutrie($id)
     {
@@ -40,7 +40,6 @@ class Nutricao extends Controller
 
         return view('Nutricao.formPlanNutri', ['socioID' => $socioID, 'cliente' =>  $cliente]);
     }
-
     //========================================================================================================================
 
     public function storePlanNutrie(Request $request, $id)
@@ -71,18 +70,33 @@ class Nutricao extends Controller
         $socio = Socios::find($id);
 
         if ($sendPlan && $socio) {
-         
+
             Mail::to($socio->email)->send(new PlanNutricionMail($sendPlan));
 
 
             return redirect()->route('app.nutriSearch', ['id' => $id]);
         }
     }
-    public function dadosPlanNutrie($id)
+    //========================================================================================================================
+
+    public function selectPlanNutrie($id)
     {
         $cliente = $this->getClienteDetails($id);
 
         $nutriPlanos = formPlanNutricion::where('socio_id', $id)->get();
+
+        $socioID = $id;
+
+        return view('nutricao.selectPlanNutrie', ['socioID' => $socioID, 'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
+    }
+    //========================================================================================================================
+
+    public function dadosPlanNutrie(Request $request, $id)
+    {
+        $planoId = $request->input('plano');
+        $cliente = $this->getClienteDetails($id);
+
+        $nutriPlanos = formPlanNutricion::where(['socio_id' => $id, 'id' => $planoId])->get();
 
         $socioID = $id;
 
@@ -101,7 +115,6 @@ class Nutricao extends Controller
 
         return view('formNutri', ['socioID' => $socioID, 'cliente' =>  $cliente]);
     }
-
     //========================================================================================================================
 
     public function storeFormNutri(Request $request, $id)
@@ -126,7 +139,6 @@ class Nutricao extends Controller
 
         return redirect()->route('app.nutriSearch', ['id' => $id, 'bioNutri' => $bioNutri]);
     }
-
     //========================================================================================================================
 
     public function formNutriSearch($id)
@@ -137,7 +149,6 @@ class Nutricao extends Controller
             'nomeSocios' => $nomeSocios,
         ]);
     }
-
     //========================================================================================================================
 
     public function formNutriConsult(Request $request)
@@ -155,7 +166,6 @@ class Nutricao extends Controller
 
         return view('nutricao.searchNutri2', ['nomeSocios' => $nomeSocios]);
     }
-
     //========================================================================================================================
 
     public function getClienteDetails($id)
@@ -169,7 +179,6 @@ class Nutricao extends Controller
 
         return $cliente;
     }
-
     //========================================================================================================================
 
     public function dadosBIO($id)
@@ -182,4 +191,5 @@ class Nutricao extends Controller
 
         return view('nutricao.bioDATANutri', ['socioID' => $socioID, 'biodados' => $biodados, 'cliente' =>  $cliente]);
     }
+    //========================================================================================================================
 }
