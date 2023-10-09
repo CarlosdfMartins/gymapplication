@@ -13,7 +13,7 @@
 
                     <h1>Editar o Colaborador</h1>
 
-                
+
                     <form action="{{ route('app.update', ['profile' => $profile, 'id' => $dados->id]) }}" method="post">
                         @csrf
                         @method('PUT')
@@ -45,6 +45,11 @@
                                <button type="submit">Atualizar Perfil</button>
                         </div>
                     </form>
+                    <div style="text-align: right; margin-top: 10px;">
+                        <a onclick="retrocederPagina()" class="link-body-emphasis"
+                        style="cursor: pointer; text-decoration: none;">
+                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    </div>
 
                 </div>
             </div>

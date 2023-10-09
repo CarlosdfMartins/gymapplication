@@ -34,22 +34,24 @@
 
                     <form method="post" action="{{ route('app.dadosPlanNutrie', ['id' => $socioID]) }}">
                         @csrf
-                        <label for="plano">Seleciona o Plano:</label>
-                        <select name="plano" id="plano">
-                            @for ($i = 0; $i < count($nutriPlanos); $i++)
-                                <option value="{{ $nutriPlanos[$i]->id }}">{{ $nutriPlanos[$i]->created_at }}</option>
-                            @endfor
-                        </select>
-                        <button type="submit">Selecionar</button>
+                        <div class="text-center">
+                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example" name="plano"
+                                id="plano" size="3">
+                                @foreach ($nutriPlanos as $plano)
+                                    <option class="text-center" value="{{ $plano->id }}">{{ $plano->created_at }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="btn btn-outline-dark d-block w-50 mx-auto mt-4" type="submit">Selecionar</button>
                     </form>
+
                 </div>
             </div>
         </div>
-        <div style="text-align: right; margin-top: 15px;">
-            <a href="{{ route('app.nutriSearch', ['id' => $socioID]) }}" class="link-body-emphasis"
-                style="text-decoration: none;">
-                <i class="bi bi-reply-all-fill"></i>Voltar</a>
+        <div style="text-align: right; margin-top: 10px;">
+            <a onclick="retrocederPagina()" class="link-body-emphasis" style="cursor: pointer; text-decoration: none;">
+                <i class="bi bi-reply-all-fill"></i> Voltar</a>
         </div>
     </div>
-
 @endsection

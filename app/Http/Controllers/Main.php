@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Colaboradores;
 use App\Models\Socios;
@@ -61,14 +62,12 @@ class Main extends Controller
             ->first();
 
         if ($socio && $password === $socio->password) {
-            session_start();
-            $_SESSION['nome'] = $socio->nome;
-            $_SESSION['email'] = $socio->email;
+            Session::put('nome', $socio->nome);
+            Session::put('email', $socio->email);
             return redirect()->route('app.admin');
         } elseif ($colaborador && $password === $colaborador->password) {
-            session_start();
-            $_SESSION['nome'] = $colaborador->nome;
-            $_SESSION['email'] = $colaborador->email;
+            Session::put('nome', $colaborador->nome);
+            Session::put('email', $colaborador->email);
             return redirect()->route('app.admin');
         } else {
             return redirect()->route('login', ['erro' => 1]);

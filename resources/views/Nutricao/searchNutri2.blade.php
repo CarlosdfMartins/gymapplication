@@ -6,7 +6,7 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    <h2>NUTRIÇÃO</h2>
+                    <h2>Sócios</h2>
 
                     <hr>
 
@@ -32,8 +32,8 @@
                         </tbody>
                         </table>
                         <div style="text-align: right; margin-top: 10px;">
-                            <a href="{{ route('app.nutrition') }}" class="link-body-emphasis"
-                                style="text-decoration: none;">
+                            <a onclick="retrocederPagina()" class="link-body-emphasis"
+                            style="cursor: pointer; text-decoration: none;">
                                 <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                 </div>

@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.page3Mail')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano de Nutrição</title>
-</head>
 
-<body>
+@section('content')
     <h4>Plano de Nutrição</h4>
 
     <p>Olá <strong>{{ $socioName }}</strong>,</p>
@@ -19,6 +12,4 @@
 
     <p>Obrigado,</p>
     {{ $nutricionista }}
-</body>
-
-</html>
+@endsection

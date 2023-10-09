@@ -18,8 +18,15 @@
                         <a href="{{ route('app.formSearch') }}" class="btn btn-light">PESQUISAR CLIENTES</a>
                         <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS CLIENTES</a>
                     </div>
+
+                    <div style="text-align: right; margin-top: 10px;">
+                        <a onclick="retrocederPagina()" class="link-body-emphasis"
+                            style="cursor: pointer; text-decoration: none;">
+                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection

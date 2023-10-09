@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.page3Mail')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
 
+@section('content')
     <p>Olá, <strong>{{ $name }} {{ $apelido }}</strong></p>
 
     <p>clique no link abaixo para defenir a sua password.</p>
@@ -14,7 +10,4 @@
 
     <p>Obrigado, <br>
         {{ config('app.name') }}</p>
-
-    </body>
-
-</html>
+@endsection

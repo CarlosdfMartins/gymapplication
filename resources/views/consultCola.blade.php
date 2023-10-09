@@ -85,10 +85,9 @@
                             </tbody>
                         </table>
                         <div style="text-align: right; margin-top: 10px;">
-                            <a href="{{ route('app.pesquiCola') }}" class="link-body-emphasis"
-                                style="text-decoration: none;">
-                                <i class="bi bi-reply-all-fill"></i> Voltar
-                            </a>
+                            <a onclick="retrocederPagina()" class="link-body-emphasis"
+                            style="cursor: pointer; text-decoration: none;">
+                                <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                 </div>
 

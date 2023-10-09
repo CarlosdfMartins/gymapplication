@@ -1,4 +1,4 @@
-@extends('layouts.page3')
+@extends('layouts.page3Mail')
 
 
 @section('content')

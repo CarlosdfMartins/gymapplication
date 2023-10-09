@@ -16,9 +16,10 @@
 <body>
 
     <div class="col p-3 text-end">
-        <a href="{{ route('app.home') }}"><i class="bi bi-house"></i></a>
+        <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i
+                class="bi bi-house-fill"></i></a>
         <span class="opacity-50"><i class="bi bi-three-dots-vertical"></i></span>
-        <span class="mx-2"><i class="bi bi-person"></i> {{ session('nome') }} </span>
+        <span class="mx-2 link-dark"><i class="bi bi-person link-success "></i> {{ session('nome') }} </span>
         <a href="{{ route('app.exit') }}" class="link-danger"><i class="bi bi-box-arrow-right me-2"></i></a>
     </div>
 
@@ -32,7 +33,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+        function retrocederPagina() {
+            window.history.back();
+        }
+    </script>
     <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
 
