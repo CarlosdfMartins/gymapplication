@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/styles.css') }}">
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>

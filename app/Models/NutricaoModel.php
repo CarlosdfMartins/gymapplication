@@ -14,6 +14,7 @@ class NutricaoModel extends Model
         'ffm','TBW', 'Vis_Fat_R', 'Peito', 'Abdomen', 'Anca'
     ];
 
+
     public function socios()
     {
         return $this->hasMany(Socios::class, 'id');

@@ -16,11 +16,13 @@ class email_define_password extends Mailable
 
     public $token;
     public $name;
+    public $apelido;
 
-    public function __construct($token, $name)
+    public function __construct($token, $name, $apelido)
     {
         $this->token = $token;
         $this->name = $name;
+        $this->apelido = $apelido;
     }
 
     /**

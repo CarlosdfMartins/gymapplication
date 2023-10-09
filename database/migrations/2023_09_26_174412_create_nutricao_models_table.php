@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('socio_id');
             $table->float('peso_kg', 5, 3)->nullable();
             $table->float('altura_cm', 5, 3)->nullable();
-            $table->float('IMC', 5, 3)->nullable();
+            $table->decimal('IMC', 5, 2)->nullable();
             $table->float('m_Gorda_kg', 5, 3)->nullable();
             $table->float('m_Gorda_Percen', 5, 2)->nullable();
             $table->float('m_Magra_kg', 5, 2)->nullable();

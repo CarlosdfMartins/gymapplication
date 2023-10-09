@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PlanNutricionMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\formPlanNutricion;
 use Illuminate\Support\Facades\Cache;
 use App\Models\NutricaoModel;
@@ -12,6 +14,20 @@ use Illuminate\Support\Facades\DB;
 
 class Nutricao extends Controller
 {
+
+    public function evolnutri($id)
+    {
+
+        $cliente = $this->getClienteDetails($id);
+
+        $dados = NutricaoModel::where('socio_id', $id)->get()->toArray();
+
+        $socioID = $id;
+
+
+        return view('Nutricao.evolNutrie', ['socioID' => $socioID, 'dados' => $dados, 'cliente' =>  $cliente]);
+    }
+
 
     public function planNutrie($id)
     {
@@ -51,11 +67,17 @@ class Nutricao extends Controller
         $planNutri->socio_id = $id;
         $planNutri->save();
 
-        return redirect()->route('app.home', ['id' => $id]);
+        $sendPlan = formPlanNutricion::where('socio_id', $id)->first();
+        $socio = Socios::find($id);
+
+        if ($sendPlan && $socio) {
+         
+            Mail::to($socio->email)->send(new PlanNutricionMail($sendPlan));
+
+
+            return redirect()->route('app.nutriSearch', ['id' => $id]);
+        }
     }
-
-
-
     public function dadosPlanNutrie($id)
     {
         $cliente = $this->getClienteDetails($id);
@@ -64,7 +86,7 @@ class Nutricao extends Controller
 
         $socioID = $id;
 
-        return view('nutricao.dataPlanNutri', [ 'socioID' => $socioID,'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
+        return view('nutricao.dataPlanNutri', ['socioID' => $socioID, 'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
     }
     //========================================================================================================================
 
@@ -102,7 +124,7 @@ class Nutricao extends Controller
 
         $bioNutri->save();
 
-        return redirect()->route('app.home', ['id' => $id]);
+        return redirect()->route('app.nutriSearch', ['id' => $id, 'bioNutri' => $bioNutri]);
     }
 
     //========================================================================================================================
@@ -158,6 +180,6 @@ class Nutricao extends Controller
 
         $socioID = $id;
 
-        return view('nutricao.bioDATANutri', ['socioID' => $socioID,'biodados' => $biodados, 'cliente' =>  $cliente]);
+        return view('nutricao.bioDATANutri', ['socioID' => $socioID, 'biodados' => $biodados, 'cliente' =>  $cliente]);
     }
 }

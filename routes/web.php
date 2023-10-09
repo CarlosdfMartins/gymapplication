@@ -63,4 +63,6 @@ Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function 
     Route::post('/storePlanNutrie/{id}', [Nutricao::class, 'storePlanNutrie'])->name('app.storePlanNutrie');
     Route::get('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
 
+    Route::get('/evolnutri/{id}', [Nutricao::class, 'evolnutri'])->name('app.evolnutri');
+
 });

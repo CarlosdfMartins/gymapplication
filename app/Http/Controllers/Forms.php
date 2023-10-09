@@ -113,8 +113,9 @@ class Forms extends Controller
         $definePass->save();
 
         $name = $request->input('text-name');
+        $apelido = $request->input('text-apelido');
 
-        Mail::to($person->email)->send(new email_define_password($token, $name));
+        Mail::to($person->email)->send(new email_define_password($token, $name, $apelido));
 
 
         return view('home');

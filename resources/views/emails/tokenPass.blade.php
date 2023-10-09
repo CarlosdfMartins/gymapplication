@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
 
-    <p>Olá,<strong>{{ $name }}</strong></p>
+    <p>Olá, <strong>{{ $name }} {{ $apelido }}</strong></p>
 
     <p>clique no link abaixo para defenir a sua password.</p>
     <p><a href="{{ route('app.resetpass', ['token' => $token]) }}">Defina aqui a sua password</a></p>

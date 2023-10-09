@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/styles.css') }}">
-
+  
 </head>
 
 <body>
@@ -26,9 +26,9 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <h3>{{ $cliente[0]->nome }} {{ $cliente[0]->apelido }}</h3>
-                        <hr>
+                        <hr> --}}
 
                         @yield('styles')
                         @yield('content')
@@ -39,7 +39,9 @@
                     </div>
                 </div>
             </div>
+
             <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

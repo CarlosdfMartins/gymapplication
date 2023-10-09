@@ -57,37 +57,41 @@
                                                 data-bs-target="#confirmDeleteMO{{ $colaborador->id }}"><i
                                                     class="bi bi-trash3-fill"></i></td>
                                     </tr>
+
+
+                                    <div class="modal fade" id="confirmDeleteMO{{ $colaborador->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmação de
+                                                        Exclusão</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Tem certeza que deseja apagar este colaborador?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                    <a class="btn btn-danger"
+                                                        href="{{ route('app.delete', ['id' => $colaborador->id, 'profile' => $colaborador->profile]) }}">Apagar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                         </table>
                         <div style="text-align: right; margin-top: 10px;">
-                            <a href="{{ route('app.pesquiCola') }}" class="link-body-emphasis" style="text-decoration: none;">
+                            <a href="{{ route('app.pesquiCola') }}" class="link-body-emphasis"
+                                style="text-decoration: none;">
                                 <i class="bi bi-reply-all-fill"></i> Voltar
                             </a>
                         </div>
+                </div>
 
-                </div>
-                {{-- Modal --}}
-                <div class="modal fade" id="confirmDeleteMO{{ $colaborador->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmação de Exclusão</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Tem certeza que deseja apagar este colaborador?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <a class="btn btn-danger"
-                                    href="{{ route('app.delete', ['id' => $colaborador->id, 'profile' => $colaborador->profile]) }}">Apagar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="row">

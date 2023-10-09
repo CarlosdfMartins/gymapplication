@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid mt-10 mb-8">
-        <div class="row justify-content-center pb-4">
+        <div class="row justify-content-center pb-1">
             <div class="col-lg-16 col-md-50">
 
                 <div class="row">
@@ -25,7 +25,6 @@
                                     <th class="text-center align-baseline">Abdomen (cm)</th>
                                     <th class="text-center align-baseline">Anca (cm)</th>
 
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,19 +43,22 @@
                                         <td class=text-center>{{ $bio->Peito }}</td>
                                         <td class=text-center>{{ $bio->Abdomen }}</td>
                                         <td class=text-center>{{ $bio->Anca }}</td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                     </div>
                 </div>
+
+                    <a href="{{ route('app.evolnutri', ['id' => $socioID]) }}" class="btn btn-outline-dark ms-3"
+                        style="text-decoration: none;"><i class="bi bi-graph-up-arrow"></i> Evolução</a>                        </div>
+
             </div>
-        </div>
-        <div style="text-align: right; margin-top: 15px;">
-            <a href="{{ route('app.nutriSearch', ['id' => $socioID]) }}" class="link-body-emphasis"
-                style="text-decoration: none;">
-                <i class="bi bi-reply-all-fill"></i>Voltar</a>
-        </div>
+            <div style="text-align: right; margin-top: 15px;">
+                <a href="{{ route('app.nutriSearch', ['id' => $socioID]) }}" class="link-body-emphasis"
+                    style="text-decoration: none;">
+                    <i class="bi bi-reply-all-fill"></i>Voltar</a>
+                </div>
     </div>
 @endsection
