@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('train_plan_id')->constrained('train_plans');
             $table->foreignId('socio_id')->constrained('socios');
+            $table->unsignedBigInteger('id_treino')->nullable();
             $table->string('nome')->nullable();
             $table->string('tipo_treino')->nullable();
             $table->text('exercicio')->nullable();

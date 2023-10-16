@@ -7,6 +7,7 @@ use App\Models\TrainPlan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class PersonalTrainerContr extends Controller
 {
@@ -43,6 +44,9 @@ class PersonalTrainerContr extends Controller
         $socioID = $id;
         $plan_ID = $plan_ID;
 
+        $ultimoIDTreino = Exercise::max('id_treino');
+        $proximoIDTreino = $ultimoIDTreino + 1;
+
         $exercicios = $request->input('exercicio', []);
         $series = $request->input('serie', []);
         $reps = $request->input('reps', []);
@@ -55,6 +59,7 @@ class PersonalTrainerContr extends Controller
             $exercicioAtual = new Exercise();
             $exercicioAtual->nome = $request->input('nome');
             $exercicioAtual->tipo_treino = $request->input('tipoTreino');
+            $exercicioAtual->id_treino = $proximoIDTreino;
             $exercicioAtual->exercicio = $exercicio;
             $exercicioAtual->series = $series[$key];
             $exercicioAtual->reps = $reps[$key];
@@ -71,37 +76,35 @@ class PersonalTrainerContr extends Controller
     }
 
 
-   public function dadosPlanTrain($id)
-{
-    $socioID = $id;
+    public function dadosPlanTrain($id)
+    {
+        $socioID = $id;
 
-    $planoID = request()->input('exercicio');
-    $exercicios = Exercise::where('train_plan_id', $planoID)->get();
+        $planoID = request()->input('exercicio');
+        $exercicios = Exercise::where('train_plan_id', $planoID)->get();
 
-    return view('PersonalTrain.dataPlanTrain', ['exercicios' => $exercicios, 'socioID' => $socioID]);
-}
-
-
+        return view('PersonalTrain.dataPlanTrain', ['exercicios' => $exercicios, 'socioID' => $socioID]);
+    }
 
 
     public function selectPlantrainer($id)
-{
-    $cliente = $this->getClienteDetails($id);
+    {
+        $cliente = $this->getClienteDetails($id);
 
-    // Obtenha IDs únicos de planos associados ao sócio
-    $uniquePlanIds = Exercise::select('train_plan_id')->distinct()->where('socio_id', $id)->pluck('train_plan_id');
+        // Obtenha IDs únicos de planos associados ao sócio
+        $uniquePlanIds = Exercise::select('train_plan_id')->distinct()->where('socio_id', $id)->pluck('train_plan_id');
 
-    // Obtenha os detalhes dos exercícios para os planos únicos
-    $exercicios = Exercise::whereIn('train_plan_id', $uniquePlanIds)->get();
+        // Obtenha os detalhes dos exercícios para os planos únicos
+        $exercicios = Exercise::whereIn('train_plan_id', $uniquePlanIds)->get();
 
-    $socioID = $id;
+        $socioID = $id;
 
-    return view('PersonalTrain.selectPlanPT', [
-        'socioID' => $socioID,
-        'cliente' => $cliente,
-        'exercicios' => $exercicios,
-    ]);
-}
+        return view('PersonalTrain.selectPlanPT', [
+            'socioID' => $socioID,
+            'cliente' => $cliente,
+            'exercicios' => $exercicios,
+        ]);
+    }
 
 
     public function getClienteDetails($id)

@@ -23,19 +23,16 @@
 
                 <div class="row">
 
-                    <div>
-                        <h4><strong>Plano Treino </strong></h4>
 
-                    </div>
-                    <hr>
 
-                    <p><strong>Nome:</strong> {{ $exercicios->first()->nome }}</p>
-                    <p><strong>Tipo de Treino:</strong> {{ $exercicios->first()->tipo_treino }}</p>
+                    <h4 class="mb-5"><strong>Treino: {{ $exercicios->first()->nome }} </strong></h4>
+
 
                     <hr>
                     <table>
                         <thead>
                             <tr>
+                                <th>Dia</th>
                                 <th>Exercício</th>
                                 <th>Séries</th>
                                 <th>Reps</th>
@@ -46,8 +43,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($exercicios as $exercicio)
+                            @foreach ($exercicios as $key => $exercicio)
                                 <tr>
+                                    @if ($key === 0 || $exercicio->tipo_treino !== $exercicios[$key - 1]->tipo_treino)
+                                        <td
+                                            rowspan="{{ $exercicios->where('tipo_treino', $exercicio->tipo_treino)->count() }}">
+                                            {{ $exercicio->tipo_treino }}
+                                        </td>
+                                    @endif
                                     <td>{{ $exercicio->exercicio }}</td>
                                     <td>{{ $exercicio->series }}</td>
                                     <td>{{ $exercicio->reps }}</td>
@@ -56,7 +59,15 @@
                                     <td>{{ $exercicio->pausa }}</td>
                                     <td>{{ $exercicio->OBS }}</td>
                                 </tr>
+                                @if ($key === count($exercicios) - 1 || $exercicio->tipo_treino !== $exercicios[$key + 1]->tipo_treino)
+                                    <tr class="separator-row">
+                                        <td colspan="8">
+                                            <hr>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
+
                         </tbody>
                     </table>
 
