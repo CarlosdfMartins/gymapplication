@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal_trainer_models', function (Blueprint $table) {
-            $table->id()->autoIncrement()->unsigned();
-            $table->unsignedBigInteger('socio_id');
-            $table->float('series', 5)->nullable();
-            $table->float('reps', 5)->nullable();
+        Schema::create('train_plans', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('socio_id')->constrained('socios');
             $table->timestamps();
-            $table->softDeletes();
-
         });
+
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_trainer_models');
+        Schema::dropIfExists('train_plans');
     }
 };

@@ -8,7 +8,7 @@
                 <div class="row">
 
                     <div>
-                        <table>
+                        <table Class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center align-baseline">Peso (kg)</th>

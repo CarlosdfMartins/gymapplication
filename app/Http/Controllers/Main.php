@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Colaboradores;
 use App\Models\Socios;
 
+
 class Main extends Controller
 {
     public function index()

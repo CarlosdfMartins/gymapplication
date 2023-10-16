@@ -17,7 +17,7 @@
                             </a>
                         </div>
                     @else
-                        <table Class="table">
+                        <table Class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center">Nº Sócio</th>

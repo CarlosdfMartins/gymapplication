@@ -49,6 +49,17 @@
                                 Plano Nutricional
                             </a></div>
 
+                            <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
+                                href="{{ route('app.planTrain', ['id' => $nomeSocios->id]) }}" role="button">Inserir
+                                Plano Treino
+                            </a></div>
+
+                            <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
+                                href="{{ route('app.selectPlantrainer', ['id' => $nomeSocios->id]) }}" role="button">Ver
+                                Plano Treino
+                            </a></div>
+
+
                     </div>
                     <div style="text-align: right; margin-top: 10px;">
                         <a onclick="retrocederPagina()" class="link-body-emphasis"

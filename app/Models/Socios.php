@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Socios extends Model
 {
     protected $table = 'socios';
-    protected $fillable = ['nome', 'apelido' , 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile', 'NUT_id', 'PT_id'];
+    protected $fillable = ['nome', 'apelido', 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile', 'NUT_id', 'PT_id'];
 
 
     public function colaborador()
@@ -31,16 +31,13 @@ class Socios extends Model
         return $this->hasOne(PasswordReset::class, 'socio_id');
     }
 
-    public function NutricaoModel ()
+    public function NutricaoModel()
     {
         return $this->belongsTo(NutricaoModel::class, 'id');
     }
 
-    public function formPlanNutricion ()
+    public function formPlanNutricion()
     {
         return $this->belongsTo(formPlanNutricion::class, 'socio_id');
     }
 }
-
-
-
