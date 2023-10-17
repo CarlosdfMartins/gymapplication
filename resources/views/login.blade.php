@@ -21,13 +21,16 @@
                     <div class="text-center my-3 form-group">
                         <label>
                             <input type="email" name="user" value="{{ old('user') }}" placeholder="username"
-                                class="form-control d-inline-flex focus-ring focus-ring-light py-1 px-2 text-decoration-none border rounded-2" required>
+                                class="form-control d-inline-flex focus-ring focus-ring-light py-1 px-2 text-decoration-none border rounded-2"
+                                required>
                         </label>
                     </div>
 
                     <div class="text-center my-3 form-group">
                         <label>
-                            <input type="password" name="pass" placeholder="password" class="form-control d-inline-flex focus-ring focus-ring-light py-1 px-2 text-decoration-none border rounded-2" required>
+                            <input type="password" name="pass" placeholder="password"
+                                class="form-control d-inline-flex focus-ring focus-ring-light py-1 px-2 text-decoration-none border rounded-2"
+                                required>
                         </label>
                     </div>
 
@@ -37,12 +40,24 @@
                         </label>
                     </div>
                 </form>
+                <div class="center-page">
+                    <div class="footername text-center my-3 form-group"> <a href="{{ route('showForgotPasswordForm')}}"
+                            class="link-light  link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover"><small>Esqueci-me
+                                da password</small> </a></div>
+                </div>
 
                 @if ($erro)
                     <div class="alert alert-danger p-2 text-center">
                         {{ isset($erro) && $erro != '' ? $erro : '' }}
                     </div>
                 @endif
+
+
+                @if (session('error'))
+                <div class="alert alert-danger p-2 text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
 
 
 

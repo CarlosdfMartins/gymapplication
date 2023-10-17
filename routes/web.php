@@ -24,6 +24,9 @@ Route::get('/', [Main::class, 'index'])->name('index');
 Route::get('/login/{erro?}', [Main::class, 'login'])->name('login');
 Route::post('/login', [Main::class, 'confirmation'])->name('login');
 
+Route::get('/showForgotPasswordForm', [ResetPass::class, 'showForgotPasswordForm'])->name('showForgotPasswordForm');
+Route::post('/generateNewToken', [ResetPass::class, 'generateNewToken'])->name('generateNewToken');
+
 
 // Route::middleware('validacao:padrao,visitante')->prefix('/app')->group(function () {
     Route::get('/home', [Admin::class, 'home'])->name('app.home');
@@ -35,6 +38,7 @@ Route::post('/login', [Main::class, 'confirmation'])->name('login');
 
     Route::get('/resetpassword/{token}', [ResetPass::class, 'reset'])->name('app.resetpass');
     Route::post('/resetpassword/{token}', [ResetPass::class, 'definePass'])->name('app.definePass');
+
 
     Route::get('/form', [Forms::class, 'frm'])->name('app.form');
     Route::post('/form', [Forms::class, 'sendForm'])->name('app.sendform');
