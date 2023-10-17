@@ -190,10 +190,9 @@
                     <hr>
 
                     <div class="mb-2 my-4">
-                        <a href="{{ route('app.nutrition') }}" class="btn btn-light ">Sair</a>
-                        <button type="submit" class="btn btn-light ">Gravar</button>
-                        <button type="submit" class="btn btn-light ">Adicionar mais
-                            treinos</button>
+                        <a href="{{ route('app.formConsult') }}" class="btn btn-light ">Sair</a>
+                        <button type="submit" class="btn btn-light ">Grava mais um treino</button>
+
                     </div>
 
                 </form>

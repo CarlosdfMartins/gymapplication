@@ -34,7 +34,8 @@
                     <form method="post" action="{{ route('app.dadosPlanTrain', ['id' => $socioID]) }}">
                         @csrf
                         <div class="text-center">
-                            <select name="exercicio" id="exercicio" class="form-control">
+                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example" name="exercicio"
+                                id="plano" size="3">
                                 @php
                                     $uniquePlans = [];
                                 @endphp
@@ -49,6 +50,7 @@
                                     @endif
                                 @endforeach
                             </select>
+
 
                         </div>
                         <button class="btn btn-outline-dark d-block w-50 mx-auto mt-4" type="submit">Selecionar</button>

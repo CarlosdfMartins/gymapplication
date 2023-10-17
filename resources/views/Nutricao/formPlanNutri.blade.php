@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">Almoço</label>
-                        <textarea class="form-control" iname="almoco" rows="4"></textarea>
+                        <textarea class="form-control" name="almoco" rows="4"></textarea>
                     </div>
                 </div>
                 <div class="row mt-3">
