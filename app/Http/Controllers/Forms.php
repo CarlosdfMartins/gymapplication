@@ -196,12 +196,23 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
-    public function editTreino($profile, $id)
+    public function editTreino(Request $request, $profile, $id)
     {
         $profile = $profile;
         $id = $id;
 
-        return view('editTreino', ['profile' => $profile, 'id' => $id]);
+        $plansTrain = Exercise::where('socio_id', $id)->get();
+
+        $planoPT_id = $request->input('planoPT_id');
+
+        if ($planoPT_id) {
+            $dados = Exercise::find($planoPT_id);
+        } else {
+            $dados = $plansTrain->first();
+        }
+
+
+        return view('editTreino', compact('profile', 'id', 'dados', 'plansTrain'));
     }
     //========================================================================================================================
 
@@ -220,9 +231,9 @@ class Forms extends Controller
         } else {
             $dados = $planosNutricionais->first();
         }
+
         return view('editNutricao', compact('profile', 'id', 'dados', 'planosNutricionais'));
     }
-
     //========================================================================================================================
 
     public function edit($profile, $id)
@@ -240,24 +251,43 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
-    public function updatePNutricao(Request $request, $profile, $id){
+    public function updatePTreino(Request $request, $profile, $id)
+    {
+        $dadosPTrainer = $request->only([
+            'exercicio', 'series', 'reps', 'CAD', 'intense', 'pausa', 'OBS'
+        ]);
 
+        $planoPTrainer = Exercise::find($id);
 
-        $dadosPNutricional = $request->only(['hora_PA', 'pequeno_almoco', 'hora_1LM', 'laMati1', 'hora_2LM', 'laMati2',
-        'hora_A', 'almoco', 'hora_L1', 'lanche1', 'hora_L2', 'lanche2', 'hora_L3', 'lanche3',
-        'hora_JA', 'jantar', 'hora_C', 'ceia']);
+        if ($planoPTrainer) {
+            $planoPTrainer->update($dadosPTrainer);
+            return redirect()->route('app.formConsult', ['profile' => $profile, 'id' => $id]);
+        } else {
+
+            return
+            'pagina_de_erro';
+        }
+
+    }
+    //========================================================================================================================
+
+    public function updatePNutricao(Request $request, $profile, $id)
+    {
+
+        $dadosPNutricional = $request->only([
+            'hora_PA', 'pequeno_almoco', 'hora_1LM', 'laMati1', 'hora_2LM', 'laMati2',
+            'hora_A', 'almoco', 'hora_L1', 'lanche1', 'hora_L2', 'lanche2', 'hora_L3', 'lanche3',
+            'hora_JA', 'jantar', 'hora_C', 'ceia'
+        ]);
 
         $planoNutricional = formPlanNutricion::find($id);
         $planoNutricional->update($dadosPNutricional);
 
 
 
-        return view('Nutri', ['profile' => $profile, 'id' => $id]);
-
-
+        return redirect()->route('app.formConsult', ['profile' => $profile, 'id' => $id]);
     }
-
-
+    //========================================================================================================================
 
     public function update(Request $request, $profile, $id)
     {
