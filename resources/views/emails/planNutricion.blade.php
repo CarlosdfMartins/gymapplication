@@ -6,7 +6,7 @@
 
     <p>Olá <strong>{{ $socioName }}</strong>,</p>
 
-    <p>O seu plano nutricional já está disponivel na sua aplicação.</p>
+    <p>O seu plano alimentar já está disponivel na sua aplicação.</p>
     <p>Para ter acesso ao seu plano, basta fazer login na GymApp e procurar na área de nutrição.</p>
     <p>Qualquer dúvida não hesite em contactar o seu nutricionista.</p>
 

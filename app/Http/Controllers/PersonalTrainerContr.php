@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Mail\PlanPersonalTrain;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Socios;
 use App\Models\Exercise;
 use App\Models\TrainPlan;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +18,16 @@ class PersonalTrainerContr extends Controller
     public function planTrain($id)
     {
         $socioID = $id;
-
         $planoTreino = new TrainPlan();
-
         $planoTreino->socio_id = $socioID;
         $planoTreino->save();
+
+        $sendPlan = Exercise::where('socio_id', $id)->get();
+        $socio = Socios::find($id);
+
+        if ($sendPlan && $socio) {
+            Mail::to($socio->email)->send(new PlanPersonalTrain($planoTreino));
+        }
 
         return redirect()->route('app.morePlanTrain', ['id' => $socioID, 'plan_ID' => $planoTreino->id]);
     }
