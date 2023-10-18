@@ -194,26 +194,7 @@ class Forms extends Controller
 
         return view('menuEdit', ['profile' => $profile, 'id' => $id]);
     }
-    //========================================================================================================================
 
-    public function editTreino(Request $request, $profile, $id)
-    {
-        $profile = $profile;
-        $id = $id;
-
-        $plansTrain = Exercise::where('socio_id', $id)->get();
-
-        $planoPT_id = $request->input('planoPT_id');
-
-        if ($planoPT_id) {
-            $dados = Exercise::find($planoPT_id);
-        } else {
-            $dados = $plansTrain->first();
-        }
-
-
-        return view('editTreino', compact('profile', 'id', 'dados', 'plansTrain'));
-    }
     //========================================================================================================================
 
     public function editNutricao(Request $request, $profile, $id)
@@ -248,26 +229,6 @@ class Forms extends Controller
         } else {
             abort(404);
         }
-    }
-    //========================================================================================================================
-
-    public function updatePTreino(Request $request, $profile, $id)
-    {
-        $dadosPTrainer = $request->only([
-            'exercicio', 'series', 'reps', 'CAD', 'intense', 'pausa', 'OBS'
-        ]);
-
-        $planoPTrainer = Exercise::find($id);
-
-        if ($planoPTrainer) {
-            $planoPTrainer->update($dadosPTrainer);
-            return redirect()->route('app.formConsult', ['profile' => $profile, 'id' => $id]);
-        } else {
-
-            return
-            'pagina_de_erro';
-        }
-
     }
     //========================================================================================================================
 

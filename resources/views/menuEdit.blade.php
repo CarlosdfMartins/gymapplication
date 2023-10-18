@@ -10,7 +10,7 @@
 
                     <hr>
                     <div class="text-center my-3 form-group">
-                        <a href="{{ route('app.editTreino',['profile' => $profile, 'id' => $id ]) }}" class="btn btn-light">Editar Treino de Treino</a>
+                      
                         <a href="{{ route('app.editNutricao',['profile' => $profile, 'id' => $id ]) }}" class="btn btn-light">Editar Plano de Nutrição</a>
                         <a href="{{ route('app.edit',['profile' => $profile, 'id' => $id ]) }}" class="btn btn-light">Editar Ficha de Socio</a>
                     </div>
