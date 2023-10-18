@@ -47,7 +47,11 @@ Route::get('/consultColabor', [Forms::class, 'consultColabor'])->name('app.consu
 Route::get('/pesquiCola', [Forms::class, 'pesquiCola'])->name('app.pesquiCola');
 Route::get('/searchCola/{id}', [Forms::class, 'searchCola'])->name('app.searchCola');
 
+Route::get('/editNutricao/{profile}/{id}', [Forms::class, 'editNutricao'])->name('app.editNutricao');
+Route::get('/editTreino/{profile}/{id}', [Forms::class, 'editTreino'])->name('app.editTreino');
+Route::get('/menuEdit/{profile}/{id}', [Forms::class, 'menuEdit'])->name('app.menuEdit');
 Route::get('/edit/{profile}/{id}', [Forms::class, 'edit'])->name('app.edit');
+Route::put('/updatePNutricao/{profile}/{id}', [Forms::class, 'updatePNutricao'])->name('app.updatePNutricao');
 Route::put('/update/{profile}/{id}', [Forms::class, 'update'])->name('app.update');
 Route::get('/delete/{id}', [Forms::class, 'delete'])->name('app.delete');
 

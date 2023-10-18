@@ -12,6 +12,8 @@ use App\Mail\email_define_password;
 use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\Models\PasswordReset;
+use App\Models\Exercise;
+use App\Models\formPlanNutricion;
 
 
 
@@ -185,6 +187,44 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
+    public function menuEdit($profile, $id)
+    {
+        $profile = $profile;
+        $id = $id;
+
+        return view('menuEdit', ['profile' => $profile, 'id' => $id]);
+    }
+    //========================================================================================================================
+
+    public function editTreino($profile, $id)
+    {
+        $profile = $profile;
+        $id = $id;
+
+        return view('editTreino', ['profile' => $profile, 'id' => $id]);
+    }
+    //========================================================================================================================
+
+    public function editNutricao(Request $request, $profile, $id)
+    {
+        $profile = $profile;
+        $id = $id;
+
+        $planosNutricionais = formPlanNutricion::where('socio_id', $id)->get();
+
+        $plano_id = $request->input('plano_id');
+
+
+        if ($plano_id) {
+            $dados = formPlanNutricion::find($plano_id);
+        } else {
+            $dados = $planosNutricionais->first();
+        }
+        return view('editNutricao', compact('profile', 'id', 'dados', 'planosNutricionais'));
+    }
+
+    //========================================================================================================================
+
     public function edit($profile, $id)
     {
 
@@ -200,6 +240,25 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
+    public function updatePNutricao(Request $request, $profile, $id){
+
+
+        $dadosPNutricional = $request->only(['hora_PA', 'pequeno_almoco', 'hora_1LM', 'laMati1', 'hora_2LM', 'laMati2',
+        'hora_A', 'almoco', 'hora_L1', 'lanche1', 'hora_L2', 'lanche2', 'hora_L3', 'lanche3',
+        'hora_JA', 'jantar', 'hora_C', 'ceia']);
+
+        $planoNutricional = formPlanNutricion::find($id);
+        $planoNutricional->update($dadosPNutricional);
+
+
+
+        return view('Nutri', ['profile' => $profile, 'id' => $id]);
+
+
+    }
+
+
+
     public function update(Request $request, $profile, $id)
     {
         $request->validate([
@@ -213,6 +272,7 @@ class Forms extends Controller
         ]);
 
         $dadosAtualizados = $request->only(['nome', 'email', 'telefone', 'sexo', 'data_nascimento', 'apelido', 'profile']);
+
 
         if ($profile === 'Socio') {
             $socio = Socios::find($id);

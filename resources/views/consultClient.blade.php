@@ -42,7 +42,7 @@
                                             style="cursor: pointer;">{{ $socio->email }}</td>
                                         <td>
                                             <a class="link-body-emphasis"
-                                                href="{{ route('app.edit', ['id' => $socio->id, 'profile' => $socio->profile]) }}">
+                                                href="{{ route('app.menuEdit', ['id' => $socio->id, 'profile' => $socio->profile]) }}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>

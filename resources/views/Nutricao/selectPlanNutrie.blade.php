@@ -25,8 +25,7 @@
 
                     <div>
                         <h4 class="text-center align-baseline"><strong>Seleciona o teu plano nutricional
-                                {{ $cliente[0]->nome }}
-                                {{ $cliente[0]->apelido }}
+                              
                             </strong></h4>
                     </div>
                     <hr>
