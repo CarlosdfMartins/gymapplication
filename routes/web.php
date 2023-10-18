@@ -33,6 +33,11 @@ Route::get('/home', [Admin::class, 'home'])->name('app.home');
 Route::get('/exit', [Admin::class, 'logOut'])->name('app.exit');
 Route::get('/admin', [Admin::class, 'principalAdmin'])->name('app.admin');
 
+
+Route::get('/homeSocio/{id}', [Admin::class, 'homeSocio'])->name('app.homeSocio');
+Route::get('/nutriSocio/{id}', [Nutricao::class, 'nutriSocio'])->name('app.nutriSocio');
+Route::get('/trainSocio/{id}', [Nutricao::class, 'trainSocio'])->name('app.trainSocio');
+
 Route::get('/train', [Main::class, 'train'])->name('app.training');
 Route::get('/evol', [Main::class, 'evol'])->name('app.evolution');
 
@@ -45,7 +50,7 @@ Route::get('/formSearch', [Forms::class, 'search'])->name('app.formSearch');
 Route::get('/formConsult', [Forms::class, 'consult'])->name('app.formConsult');
 Route::get('/consultColabor', [Forms::class, 'consultColabor'])->name('app.consultColabor');
 Route::get('/pesquiCola', [Forms::class, 'pesquiCola'])->name('app.pesquiCola');
-Route::get('/searchCola/{id}', [Forms::class, 'searchCola'])->name('app.searchCola');
+Route::get('/searchCola$id', [Forms::class, 'searchCola'])->name('app.searchCola');
 
 Route::get('/editNutricao/{profile}/{id}', [Forms::class, 'editNutricao'])->name('app.editNutricao');
 Route::put('/updatePNutricao/{profile}/{id}', [Forms::class, 'updatePNutricao'])->name('app.updatePNutricao');
@@ -58,7 +63,6 @@ Route::get('/nutri', [Main::class, 'nutri'])->name('app.nutrition');
 Route::get('/nutriConsult', [Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
 Route::get('/nutriSearch/{id}', [Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
 Route::get('/dadosBIOConsult/{id}', [Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
-Route::get('/socio', [Nutricao::class, 'socio'])->name('app.socio');
 Route::get('/formNutrie/{id}', [Nutricao::class, 'formNutrie'])->name('app.formNutrie');
 Route::post('/storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');
 

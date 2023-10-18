@@ -192,4 +192,15 @@ class Nutricao extends Controller
         return view('nutricao.bioDATANutri', ['socioID' => $socioID, 'biodados' => $biodados, 'cliente' =>  $cliente]);
     }
     //========================================================================================================================
+    public function nutriSocio($id)
+    {
+        $nomeSocios = $id;
+        return view('nutriSocio', ['nomeSocios' => $nomeSocios]);
+    }
+
+    public function trainSocio($id)
+    {
+        $nomeSocios = $id;
+        return view('trainSocio', ['nomeSocios' => $nomeSocios]);
+    }
 }

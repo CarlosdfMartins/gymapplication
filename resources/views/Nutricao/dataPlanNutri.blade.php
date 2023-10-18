@@ -24,8 +24,7 @@
                 <div class="row">
 
                     <div>
-                        <h4 class="text-center align-baseline"><strong>Plano Nutricional de {{ $cliente[0]->nome }}
-                                {{ $cliente[0]->apelido }}
+                        <h4 class="text-center align-baseline"><strong>Plano Nutricional
                             </strong></h4>
                     </div>
                     <hr>
