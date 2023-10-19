@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PlanNutricionMail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
-use App\Models\formPlanNutricion;
 use Illuminate\Support\Facades\Cache;
-use App\Models\NutricaoModel;
-use App\Models\Socios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Mail\PlanNutricionMail;
+use App\Models\formPlanNutricion;
+use App\Models\NutricaoModel;
+use App\Models\Socios;
 
 
 class Nutricao extends Controller
@@ -143,11 +145,13 @@ class Nutricao extends Controller
 
     public function formNutriSearch($id)
     {
+        $profile = Session::get('profile');
         $nomeSocios = Socios::findOrFail($id);
 
         return view('nutricao.dadosNutri', [
             'nomeSocios' => $nomeSocios,
-        ]);
+            'profile' => $profile,
+            ]);
     }
     //========================================================================================================================
 

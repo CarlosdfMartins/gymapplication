@@ -61,7 +61,7 @@ Route::get('/delete/{id}', [Forms::class, 'delete'])->name('app.delete');
 
 Route::get('/nutri', [Main::class, 'nutri'])->name('app.nutrition');
 Route::get('/nutriConsult', [Nutricao::class, 'formNutriConsult'])->name('app.formNutriConsult');
-Route::get('/nutriSearch/{id}', [Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
+Route::get('/nutriSearch/{id?}', [Nutricao::class, 'formNutriSearch'])->name('app.nutriSearch');
 Route::get('/dadosBIOConsult/{id}', [Nutricao::class, 'dadosBIO'])->name('app.dadosBIOConsult');
 Route::get('/formNutrie/{id}', [Nutricao::class, 'formNutrie'])->name('app.formNutrie');
 Route::post('/storeFormNutri/{id}', [Nutricao::class, 'storeFormNutri'])->name('app.storeFormNutri');

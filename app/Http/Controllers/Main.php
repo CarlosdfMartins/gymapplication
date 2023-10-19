@@ -69,7 +69,8 @@ class Main extends Controller
         } elseif ($colaborador && $password === $colaborador->password) {
             Session::put('nome', $colaborador->nome);
             Session::put('email', $colaborador->email);
-            return redirect()->route('app.admin');
+            Session::put('profile', $colaborador->profile);
+            return redirect()->route('app.home');
         } else {
             return redirect()->route('login', ['erro' => 1]);
         }
