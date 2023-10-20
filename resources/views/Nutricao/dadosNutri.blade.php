@@ -1,6 +1,17 @@
 @extends('layouts.page2')
 
 @section('content')
+    <style>
+        .mar_top {
+            margin-top: 80px;
+        }
+
+        .mar-left {
+            margin-left: 50px;
+        }
+    </style>
+
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
@@ -22,69 +33,100 @@
                                 {{ optional($nomeSocios->nutri)->apelido }}</p>
                         </div>
 
-                        <div class="col-md-6 mt-4">
-                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                <div class=" my-3 form-group">
-                                    <a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.training') }}" role="button"><i
-                                            class="bi bi-person-arms-up"></i><i class="bi bi-activity"></i>
-                                        Treino</a>
 
-                                    <a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.evolnutri', ['id' => $nomeSocios->id]) }}" role="button"><i
-                                            class="bi bi-graph-up-arrow"></i> Evolução</a>
+                        <div class="mar_top col-md-6">
 
-                                    <a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.evolnutri', ['id' => $nomeSocios->id]) }}" role="button"><i
-                                            class="bi bi-basket"></i><i class="bi bi-stars"></i> Nutrição</a>
+                            <div class="mb-5">
+                                <div class="dropdown mar-left">
+                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-arms-up"></i><i class="bi bi-activity"></i> TREINO
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="text-center">
+                                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
+                                                <div><a href="{{ route('app.selectPlantrainer', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Ver
+                                                        Plano Treino
+                                                    </a></div>
+                                            @endif
+                                        </li>
+                                        <li class="text-center">
+                                            @if ($profile === 'Personal Trainer')
+                                                <div><a href="{{ route('app.planTrain', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Inserir
+                                                        Plano Treino
+                                                    </a></div>
+                                            @endif
+                                        </li>
+                                    </ul>
                                 </div>
-                            @endif
+                            </div>
 
-                            @if ($profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.formNutrie', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Inserir
-                                        dados biométricos</a></div>
-                            @endif
+                            <div class="mb-5">
+                                <div class="dropdown mar-left">
+                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-graph-up-arrow"></i> EVOLUÇÃO
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="text-center">
+                                            @if ($profile === 'Nutricionista')
+                                                <div><a href="{{ route('app.formNutrie', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Inserir
+                                                        dados biométricos</a></div>
+                                            @endif
+                                        </li>
+                                        <li class="text-center">
+                                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
+                                                <div><a href="{{ route('app.dadosBIOConsult', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Ver
+                                                        dados biométricos</a></div>
+                                            @endif
+                                        </li>
+                                        <li class="text-center">
+                                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
+                                                <div> <a href="{{ route('app.evolnutri', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">
+                                                        Evolução</a></div>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="dropdown mar-left">
+                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-basket"></i><i class="bi bi-stars"></i> NUTRIÇÃO
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="text-center">
+                                            @if ($profile === 'Nutricionista')
+                                                <div><a href="{{ route('app.planNutrie', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Inserir
+                                                        Plano Nutricional
+                                                    </a></div>
+                                            @endif
+                                        </li>
+                                        <li class="text-center">
+                                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
+                                                <div><a href="{{ route('app.selectPlanNutrie', ['id' => $nomeSocios->id]) }}"
+                                                        class="btn btn-light">Ver
+                                                        Plano Nutricional
+                                                    </a></div>
+                                            @endif
+                                        </li>
+                                        <li class="text-center">
+                                            @if ($profile === 'Nutricionista')
+                                                <div><a href="{{ route('app.editNutricao', ['id' => $nomeSocios->id, 'profile' => $nomeSocios->profile]) }}"
+                                                        class="btn btn-light">Editar Plano de Nutrição</a></div>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </div>
 
-                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.dadosBIOConsult', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Ver
-                                        dados biométricos</a></div>
-                            @endif
-
-                            @if ($profile === 'Nutricionista')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.planNutrie', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Inserir
-                                        Plano Nutricional
-                                    </a></div>
-                            @endif
-
-                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.selectPlanNutrie', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Ver
-                                        Plano Nutricional
-                                    </a></div>
-                            @endif
-
-                            @if ($profile === 'Personal Trainer')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.planTrain', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Inserir
-                                        Plano Treino
-                                    </a></div>
-                            @endif
-
-                            @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                <div><a class="btn btn-outline-dark ms-3" style="text-decoration: none;"
-                                        href="{{ route('app.selectPlantrainer', ['id' => $nomeSocios->id]) }}"
-                                        role="button">Ver
-                                        Plano Treino
-                                    </a></div>
-                            @endif
+                            </div>
                         </div>
                     </div>
                     <div style="text-align: right; margin-top: 10px;">
@@ -95,6 +137,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
