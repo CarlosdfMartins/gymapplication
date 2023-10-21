@@ -19,7 +19,9 @@ class Admin extends Controller
 
     public function home()
     {
-        return view('home');
+        $profile = Session::get('profile');
+
+        return view('home',  ['profile' => $profile] );
     }
     //========================================================================================================================
 
