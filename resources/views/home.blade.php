@@ -6,26 +6,6 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    {{-- @if ($profile === 'Nutricionista')
-                        <div class="text-center my-3 form-group">
-                            <a href="{{ route('app.nutrition') }}" class="btn btn-light">NUTRIÇÃO</a>
-                        </div>
-                    @endif
-
-                    @if ($profile === 'Personal Trainer')
-                        <div class="text-center my-3 form-group">
-                            <a href="{{ route('app.training') }}" class="btn btn-light">TREINO</a>
-                        </div>
-                    @endif
-
-                    @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                        <div class="text-center my-3 form-group">
-                            <a href="{{ route('app.pesquiCola') }}" class="btn btn-light">COLABORADORES</a>
-                            <a href="{{ route('app.formSearch') }}" class="btn btn-light">SÓCIOS</a>
-                            <a href="{{ route('app.form') }}" class="btn btn-light">NOVOS UTILIZADORES</a>
-                        </div>
-                    @endif --}}
-
 
                     <div class="row justify-content-center mt-4">
                     <div class="card" style="width: 20rem;">
@@ -61,22 +41,6 @@
                         </ul>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     <div style="text-align: right; margin-top: 10px;">
                         <a onclick="retrocederPagina()" class="link-body-emphasis"
