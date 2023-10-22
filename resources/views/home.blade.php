@@ -9,16 +9,19 @@
                     @if ($profile === 'Administrador')
                         <div class="row">
                             <h3>Administrador {{ session('nome') }} </h3>
+                        </div>
                     @endif
 
                     @if ($profile === 'Nutricionista')
                         <div class="row">
                             <h3>Nutricionista {{ session('nome') }} </h3>
+                        </div>
                     @endif
 
                     @if ($profile === 'Personal Trainer')
                         <div class="row">
                             <h3>Personal Trainer {{ session('nome') }} </h3>
+                        </div>
                     @endif
 
                     <hr>
