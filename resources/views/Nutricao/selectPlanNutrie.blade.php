@@ -23,12 +23,12 @@
 
                 <div class="row">
 
-                    <div>
+                    <div Class="mt-3 mb-2">
                         <h4 class="text-center align-baseline"><strong>Seleciona o teu plano nutricional
-                              
+
                             </strong></h4>
                     </div>
-                    <hr>
+
 
 
                     <form method="post" action="{{ route('app.dadosPlanNutrie', ['id' => $socioID]) }}">

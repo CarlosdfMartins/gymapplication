@@ -151,7 +151,7 @@ class Nutricao extends Controller
         return view('nutricao.dadosNutri', [
             'nomeSocios' => $nomeSocios,
             'profile' => $profile,
-            ]);
+        ]);
     }
     //========================================================================================================================
 
@@ -199,19 +199,27 @@ class Nutricao extends Controller
     public function nutriSocio($id)
     {
         $nomeSocios = $id;
-        return view('nutriSocio', ['nomeSocios' => $nomeSocios]);
+        return redirect()->Route('app.selectPlanNutrie', ['id' => $nomeSocios]);
     }
 
     public function trainSocio($id)
     {
         $nomeSocios = $id;
-        return view('trainSocio', ['nomeSocios' => $nomeSocios]);
+
+        return redirect()->route('app.selectPlantrainer', ['id' => $nomeSocios]);
+    }
+
+    public function evolBioSocio($id)
+    {
+        $nomeSocios = $id;
+
+        return view('evolBioSocio', ['nomeSocios' => $nomeSocios]);
     }
 
     public function evolBio($id)
     {
         $nomeSocios = $id;
-        
+
         return view('evolBio', ['nomeSocios' => $nomeSocios]);
     }
 }

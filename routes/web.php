@@ -72,6 +72,7 @@ Route::post('/storePlanNutrie/{id}', [Nutricao::class, 'storePlanNutrie'])->name
 Route::post('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
 Route::get('/selectPlanNutrie/{id}', [Nutricao::class, 'selectPlanNutrie'])->name('app.selectPlanNutrie');
 Route::get('/evolnutri/{id}', [Nutricao::class, 'evolnutri'])->name('app.evolnutri');
+Route::get('/evolBioSocio/{id}', [Nutricao::class, 'evolBioSocio'])->name('app.evolBioSocio');
 
 Route::get('/planTrain/{id}', [PersonalTrainerContr::class, 'planTrain'])->name('app.planTrain');
 Route::get('/morePlanTrain/{id}/{plan_ID}', [PersonalTrainerContr::class, 'morePlanTrain'])->name('app.morePlanTrain');
