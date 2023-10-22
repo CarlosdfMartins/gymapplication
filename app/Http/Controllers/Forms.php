@@ -197,8 +197,11 @@ class Forms extends Controller
 
     //========================================================================================================================
 
-    public function editNutricao(Request $request, $profile, $id)
+public function editNutricao(Request $request, $profile, $id)
     {
+        $profile = decrypt($profile);
+        $id = decrypt($id);
+
         $profile = $profile;
         $id = $id;
 
@@ -212,10 +215,11 @@ class Forms extends Controller
         } else {
             $dados = $planosNutricionais->first();
         }
-
         return view('editNutricao', compact('profile', 'id', 'dados', 'planosNutricionais'));
     }
+
     //========================================================================================================================
+
 
     public function edit($profile, $id)
     {
@@ -246,7 +250,7 @@ class Forms extends Controller
 
 
 
-        return redirect()->route('app.formConsult', ['profile' => $profile, 'id' => $id]);
+        return redirect()->route('app.nutriSearch', ['profile' => encrypt($profile), 'id' => encrypt($id)]);
     }
     //========================================================================================================================
 

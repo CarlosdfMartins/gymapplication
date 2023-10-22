@@ -17,6 +17,8 @@ class PersonalTrainerContr extends Controller
 {
     public function planTrain($id)
     {
+        $id = decrypt($id);
+
         $socioID = $id;
         $planoTreino = new TrainPlan();
         $planoTreino->socio_id = $socioID;
@@ -29,28 +31,33 @@ class PersonalTrainerContr extends Controller
             Mail::to($socio->email)->send(new PlanPersonalTrain($planoTreino));
         }
 
-        return redirect()->route('app.morePlanTrain', ['id' => $socioID, 'plan_ID' => $planoTreino->id]);
+        return redirect()->route('app.morePlanTrain', ['id' => encrypt($socioID), 'plan_ID' =>$planoTreino->id]);
     }
 
 
     public function morePlanTrain($id, $plan_ID)
     {
+
+        $id = decrypt($id);
+
         $socioID = $id;
 
         $planoTreino = TrainPlan::find($plan_ID);
-
+        $nomeSocios = Socios::findOrFail($id);
         $cliente = DB::table('socios')
             ->select('id', 'nome', 'apelido')
             ->where('id', '=', $id)
             ->get();
 
-        return view('PersonalTrain.formPlanPT', ['id' => $socioID, 'cliente' => $cliente, 'plan_ID' => $planoTreino]);
+        return view('PersonalTrain.formPlanPT', ['id' => encrypt($socioID), 'nomeSocios' => $nomeSocios, 'cliente' => $cliente, 'plan_ID' => $planoTreino]);
     }
 
 
     public function storePlanTrain(Request $request, $id, $plan_ID)
     {
-        $socioID = $id;
+        $id = decrypt($id);
+        $id = decrypt($id);
+
         $plan_ID = $plan_ID;
 
         $ultimoIDTreino = Exercise::max('id_treino');
@@ -77,16 +84,17 @@ class PersonalTrainerContr extends Controller
             $exercicioAtual->pausa = $pausas[$key];
             $exercicioAtual->OBS = $OBSs[$key];
             $exercicioAtual->train_plan_id = $plan_ID;
-            $exercicioAtual->socio_id = $socioID;
+            $exercicioAtual->socio_id = $id;
             $exercicioAtual->save();
         }
 
-        return redirect()->route('app.morePlanTrain', ['id' => $socioID, 'plan_ID' => $plan_ID]);
+        return redirect()->route('app.morePlanTrain', ['id' => encrypt($id), 'plan_ID' => $plan_ID]);
     }
 
 
     public function dadosPlanTrain($id)
     {
+        $id = decrypt($id);
         $socioID = $id;
 
         $planoID = request()->input('exercicio');
@@ -98,6 +106,8 @@ class PersonalTrainerContr extends Controller
 
     public function selectPlantrainer($id)
     {
+        $id = decrypt($id);
+
         $cliente = $this->getClienteDetails($id);
 
         // Obtenha IDs únicos de planos associados ao sócio

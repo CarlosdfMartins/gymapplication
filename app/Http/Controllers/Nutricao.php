@@ -20,6 +20,8 @@ class Nutricao extends Controller
     public function evolnutri($id)
     {
 
+        $id = decrypt($id);
+
         $cliente = $this->getClienteDetails($id);
 
         $dados = NutricaoModel::where('socio_id', $id)->get()->toArray();
@@ -33,10 +35,11 @@ class Nutricao extends Controller
 
     public function planNutrie($id)
     {
+
         $cliente = DB::table('Socios')
-            ->select('id', 'nome', 'apelido')
-            ->where('id', '=', $id)
-            ->get();
+        ->select('id', 'nome', 'apelido')
+        ->where('id', '=', $id)
+        ->get();
 
         $socioID = $id;
 
@@ -46,6 +49,8 @@ class Nutricao extends Controller
 
     public function storePlanNutrie(Request $request, $id)
     {
+
+
         $planNutri = new formPlanNutricion();
         $planNutri->hora_PA = $request->input('planTime1');
         $planNutri->pequeno_almoco = $request->input('pequeno_almoco');
@@ -76,13 +81,14 @@ class Nutricao extends Controller
             Mail::to($socio->email)->send(new PlanNutricionMail($sendPlan));
 
 
-            return redirect()->route('app.nutriSearch', ['id' => $id]);
+            return redirect()->route('app.nutriSearch', ['id' => encrypt($id)]);
         }
     }
     //========================================================================================================================
 
     public function selectPlanNutrie($id)
     {
+        $id = decrypt($id);
         $cliente = $this->getClienteDetails($id);
 
         $nutriPlanos = formPlanNutricion::where('socio_id', $id)->get();
@@ -95,6 +101,7 @@ class Nutricao extends Controller
 
     public function dadosPlanNutrie(Request $request, $id)
     {
+        $id = decrypt($id);
         $planoId = $request->input('plano');
         $cliente = $this->getClienteDetails($id);
 
@@ -121,6 +128,8 @@ class Nutricao extends Controller
 
     public function storeFormNutri(Request $request, $id)
     {
+        $id = decrypt($id);
+
         $bioNutri = new NutricaoModel();
         $bioNutri->peso_kg = $request->input('text_peso');
         $bioNutri->altura_cm = $request->input('text_altura');
@@ -139,12 +148,14 @@ class Nutricao extends Controller
 
         $bioNutri->save();
 
-        return redirect()->route('app.nutriSearch', ['id' => $id, 'bioNutri' => $bioNutri]);
+        return redirect()->route('app.nutriSearch', ['id' => encrypt($id), 'bioNutri' => encrypt($bioNutri)]);
     }
     //========================================================================================================================
 
     public function formNutriSearch($id)
     {
+        $id = decrypt($id);
+
         $profile = Session::get('profile');
         $nomeSocios = Socios::findOrFail($id);
 
@@ -187,6 +198,8 @@ class Nutricao extends Controller
 
     public function dadosBIO($id)
     {
+        $id = decrypt($id);
+
         $cliente = $this->getClienteDetails($id);
 
         $biodados = NutricaoModel::where('socio_id', $id)->get();

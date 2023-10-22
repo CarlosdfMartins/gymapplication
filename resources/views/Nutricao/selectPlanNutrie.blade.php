@@ -31,7 +31,7 @@
 
 
 
-                    <form method="post" action="{{ route('app.dadosPlanNutrie', ['id' => $socioID]) }}">
+                    <form method="post" action="{{ route('app.dadosPlanNutrie', ['id' => encrypt($socioID)]) }}">
                         @csrf
                         <div class="text-center">
                             <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example" name="plano"

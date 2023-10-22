@@ -45,7 +45,7 @@
                                     <ul class="dropdown-menu">
                                         <li class="text-center">
                                             @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                                <div><a href="{{ route('app.selectPlantrainer', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.selectPlantrainer', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Ver
                                                         Plano Treino
                                                     </a></div>
@@ -53,7 +53,7 @@
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Personal Trainer')
-                                                <div><a href="{{ route('app.planTrain', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.planTrain', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Inserir
                                                         Plano Treino
                                                     </a></div>
@@ -72,21 +72,21 @@
                                     <ul class="dropdown-menu">
                                         <li class="text-center">
                                             @if ($profile === 'Nutricionista')
-                                                <div><a href="{{ route('app.formNutrie', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.formNutrie', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Inserir
                                                         dados biométricos</a></div>
                                             @endif
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                                <div><a href="{{ route('app.dadosBIOConsult', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.dadosBIOConsult', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Ver
                                                         dados biométricos</a></div>
                                             @endif
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                                <div> <a href="{{ route('app.evolnutri', ['id' => $nomeSocios->id]) }}"
+                                                <div> <a href="{{ route('app.evolnutri', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">
                                                         Evolução</a></div>
                                             @endif
@@ -103,7 +103,7 @@
                                     <ul class="dropdown-menu">
                                         <li class="text-center">
                                             @if ($profile === 'Nutricionista')
-                                                <div><a href="{{ route('app.planNutrie', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.planNutrie', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Inserir
                                                         Plano Nutricional
                                                     </a></div>
@@ -111,7 +111,7 @@
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
-                                                <div><a href="{{ route('app.selectPlanNutrie', ['id' => $nomeSocios->id]) }}"
+                                                <div><a href="{{ route('app.selectPlanNutrie', ['id' => encrypt($nomeSocios->id)]) }}"
                                                         class="btn btn-light">Ver
                                                         Plano Nutricional
                                                     </a></div>
@@ -119,10 +119,11 @@
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Nutricionista')
-                                                <div><a href="{{ route('app.editNutricao', ['id' => $nomeSocios->id, 'profile' => $nomeSocios->profile]) }}"
-                                                        class="btn btn-light">Editar Plano de Nutrição</a></div>
+                                                <a href="{{ route('app.editNutricao', ['profile' => encrypt($profile), 'id' =>encrypt($nomeSocios->id)]) }}"
+                                                    class="btn btn-light">Editar Plano de Nutrição</a>
                                             @endif
                                         </li>
+
                                     </ul>
                                 </div>
 

@@ -21,7 +21,7 @@ class Admin extends Controller
     {
         $profile = Session::get('profile');
 
-        return view('home', ['profile' => $profile]);
+        return view('home', ['profile' => encrypt($profile)]);
     }
     //========================================================================================================================
 

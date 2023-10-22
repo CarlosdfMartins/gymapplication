@@ -7,7 +7,8 @@
     <div class="container">
         <div class="row-3">
             <div class="col">
-                <form action="{{ route('app.storePlanTrain', ['id' => $id, 'plan_ID' => $plan_ID]) }}" method="post">
+                <form action="{{ route('app.storePlanTrain', ['id' => encrypt($id), 'plan_ID' => $plan_ID]) }}"
+                    method="post">
 
                     @csrf
 
@@ -190,7 +191,8 @@
                     <hr>
 
                     <div class="mb-2 my-4">
-                        <a href="{{ route('app.formConsult') }}" class="btn btn-light ">Sair</a>
+                        <a href="{{ route('app.nutriSearch', ['id' => encrypt($nomeSocios->id)]) }}"
+                            class="btn btn-light">Sair</a>
                         <button type="submit" class="btn btn-light ">Grava mais um treino</button>
 
                     </div>

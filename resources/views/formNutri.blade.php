@@ -9,7 +9,7 @@
                 <div class="card p-3">
 
                     <div>
-                        <h4><strong>Inserir dados Biométricos de {{ $cliente[0]->nome }} {{ $cliente[0]->apelido }}
+                        <h4><strong>Inserir dados Biométricos
                             </strong></h4>
                     </div>
 

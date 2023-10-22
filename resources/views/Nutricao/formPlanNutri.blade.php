@@ -2,6 +2,10 @@
 
 
 @section('content')
+
+@php
+    $socioID = decrypt($socioID);
+@endphp
     <h5><u>Plano de Nutrição:</u></h5>
 
 
@@ -25,7 +29,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime2" id="planTime">
+                        <input type="time" class="form-control" name = "planTime2" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">Lanche Matinal</label>
@@ -35,7 +39,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime3" id="planTime">
+                        <input type="time" class="form-control" name = "planTime3" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">2º Lanche
@@ -46,7 +50,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime4" id="planTime">
+                        <input type="time" class="form-control" name = "planTime4" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">Almoço</label>
@@ -56,7 +60,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime5" id="planTime">
+                        <input type="time" class="form-control" name = "planTime5" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">1º
@@ -67,7 +71,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime6" id="planTime">
+                        <input type="time" class="form-control" name = "planTime6" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">2º
@@ -78,7 +82,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime7" id="planTime">
+                        <input type="time" class="form-control" name = "planTime7" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">3º
@@ -89,7 +93,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime8" id="planTime">
+                        <input type="time" class="form-control" name = "planTime8" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">Jantar</label>
@@ -99,7 +103,7 @@
                 <div class="row mt-3">
                     <div class="col-lg-2 col-md-4">
                         <label for="time" class="form-label">Hora</label>
-                        <input type="time" class="form-control"  name = "planTime9" id="planTime">
+                        <input type="time" class="form-control" name = "planTime9" id="planTime">
                     </div>
                     <div class="col-lg-10 col-md-8">
                         <label for="exampleFormControlTextarea1" class="form-label">Ceia</label>
@@ -116,8 +120,7 @@
     </div>
 
     <div style="text-align: right; margin-top: 10px;">
-        <a onclick="retrocederPagina()" class="link-body-emphasis"
-        style="cursor: pointer; text-decoration: none;">
+        <a onclick="retrocederPagina()" class="link-body-emphasis" style="cursor: pointer; text-decoration: none;">
             <i class="bi bi-reply-all-fill"></i> Voltar</a>
     </div>
 @endsection

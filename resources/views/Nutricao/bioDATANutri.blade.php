@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                    <a href="{{ route('app.evolnutri', ['id' => $socioID]) }}" class="btn btn-outline-dark ms-3"
+                    <a href="{{ route('app.evolnutri', ['id' => encrypt($socioID)]) }}" class="btn btn-outline-dark ms-3"
                         style="text-decoration: none;"><i class="bi bi-graph-up-arrow"></i> Evolução</a>                        </div>
 
             </div>

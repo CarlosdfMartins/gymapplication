@@ -53,7 +53,9 @@ Route::get('/consultColabor', [Forms::class, 'consultColabor'])->name('app.consu
 Route::get('/pesquiCola', [Forms::class, 'pesquiCola'])->name('app.pesquiCola');
 Route::get('/searchCola$id', [Forms::class, 'searchCola'])->name('app.searchCola');
 
+
 Route::get('/editNutricao/{profile}/{id}', [Forms::class, 'editNutricao'])->name('app.editNutricao');
+
 Route::put('/updatePNutricao/{profile}/{id}', [Forms::class, 'updatePNutricao'])->name('app.updatePNutricao');
 Route::get('/menuEdit/{profile}/{id}', [Forms::class, 'menuEdit'])->name('app.menuEdit');
 Route::get('/edit/{profile}/{id}', [Forms::class, 'edit'])->name('app.edit');
@@ -72,7 +74,7 @@ Route::post('/storePlanNutrie/{id}', [Nutricao::class, 'storePlanNutrie'])->name
 Route::post('/dadosPlanNutrie/{id}', [Nutricao::class, 'dadosPlanNutrie'])->name('app.dadosPlanNutrie');
 Route::get('/selectPlanNutrie/{id}', [Nutricao::class, 'selectPlanNutrie'])->name('app.selectPlanNutrie');
 Route::get('/evolnutri/{id}', [Nutricao::class, 'evolnutri'])->name('app.evolnutri');
-Route::get('/evolBioSocio/{id}', [Nutricao::class, 'evolBioSocio'])->name('app.evolBioSocio');
+
 
 Route::get('/planTrain/{id}', [PersonalTrainerContr::class, 'planTrain'])->name('app.planTrain');
 Route::get('/morePlanTrain/{id}/{plan_ID}', [PersonalTrainerContr::class, 'morePlanTrain'])->name('app.morePlanTrain');

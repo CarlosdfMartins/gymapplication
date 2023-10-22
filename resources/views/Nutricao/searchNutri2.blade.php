@@ -1,6 +1,7 @@
 @extends('layouts.page2')
 
 @section('content')
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
@@ -21,7 +22,7 @@
                         </thead>
                         <tbody>
                             @foreach ($nomeSocios as $nsocios)
-                                <tr onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $nsocios->id]) }}';"
+                                <tr onclick="window.location.href='{{ route('app.nutriSearch', ['id' =>  encrypt($nsocios->id)]) }}';"
                                     style="cursor: pointer;">
                                     <td class="text-center">{{ $nsocios->id }}</td>
                                     <td class="text-center">{{ $nsocios->nome }} {{ $nsocios->apelido }}</td>

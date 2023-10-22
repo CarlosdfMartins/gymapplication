@@ -27,9 +27,9 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <h3>{{ $cliente[0]->nome }} {{ $cliente[0]->apelido }}</h3>
-                        <hr>
+                        <hr> --}}
 
                     @yield('styles')
                     @yield('content')
