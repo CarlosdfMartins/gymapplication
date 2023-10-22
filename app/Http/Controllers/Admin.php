@@ -19,15 +19,17 @@ class Admin extends Controller
 
     public function home()
     {
-        return view('home');
+        $profile = Session::get('profile');
+
+        return view('home', ['profile' => $profile]);
     }
     //========================================================================================================================
 
     public function homeSocio($id)
     {
-         $nomeSocios = $id;
+        $nomeSocios = $id;
 
-        return view('homeSocio',[ 'nomeSocios' => $nomeSocios]);
+        return view('homeSocio', ['nomeSocios' => $nomeSocios]);
     }
     //========================================================================================================================
 

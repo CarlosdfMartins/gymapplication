@@ -5,28 +5,60 @@
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
-                    <div class="text-center my-3 form-group">
-                        <a href="{{ route('app.nutrition') }}" class="btn btn-light">NUTRIÇÃO</a>
-                    </div>
 
-                    <div class="text-center my-3 form-group">
-                        <a href="{{ route('app.training') }}" class="btn btn-light">TREINO</a>
-                    </div>
+                    @if ($profile === 'Administrador')
+                        <div class="row">
+                            <h3>Administrador {{ session('nome') }} </h3>
+                    @endif
 
-                    <div class="text-center my-3 form-group">
-                        <a href="{{ route('app.pesquiCola') }}" class="btn btn-light">PESQUISAR COLABORADOR</a>
-                        <a href="{{ route('app.formSearch') }}" class="btn btn-light">PESQUISAR CLIENTES</a>
-                        <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS CLIENTES</a>
-                    </div>
+                    @if ($profile === 'Nutricionista')
+                        <div class="row">
+                            <h3>Nutricionista {{ session('nome') }} </h3>
+                    @endif
 
-                    <div style="text-align: right; margin-top: 10px;">
-                        <a onclick="retrocederPagina()" class="link-body-emphasis"
-                            style="cursor: pointer; text-decoration: none;">
-                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    @if ($profile === 'Personal Trainer')
+                        <div class="row">
+                            <h3>Personal Trainer {{ session('nome') }} </h3>
+                    @endif
+
+                    <hr>
+
+                    <div class="card p-4 mx-auto mt-4 mb-3" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+
+                        <ul class="list-group list-group-flush">
+                            @if ($profile === 'Nutricionista')
+                                <li class="list-group-item">
+                                    <div class="text-center my-3 form-group">
+                                        <a href="{{ route('app.nutrition') }}" class="btn btn-light">NUTRIÇÃO</a>
+                                    </div>
+                                </li>
+                            @endif
+                            @if ($profile === 'Personal Trainer')
+                                <li class="list-group-item">
+                                    <div class="text-center my-3 form-group">
+                                        <a href="{{ route('app.training') }}" class="btn btn-light">TREINO</a>
+                                    </div>
+                                </li>
+                            @endif
+                            @if ($profile === 'Administrador')
+                                <li class="list-group-item">
+                                    <div class="text-center form-group">
+                                        <a href="{{ route('app.pesquiCola') }}" class="btn btn-light">PESQUISAR
+                                            COLABORADOR</a>
+                                        <hr>
+                                        <a href="{{ route('app.formSearch') }}" class="btn btn-light">PESQUISAR
+                                            CLIENTES</a>
+                                        <hr>
+                                        <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS
+                                            CLIENTES</a>
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

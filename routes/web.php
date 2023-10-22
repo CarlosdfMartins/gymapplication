@@ -36,6 +36,7 @@ Route::get('/admin', [Admin::class, 'principalAdmin'])->name('app.admin');
 
 Route::get('/homeSocio/{id}', [Admin::class, 'homeSocio'])->name('app.homeSocio');
 Route::get('/nutriSocio/{id}', [Nutricao::class, 'nutriSocio'])->name('app.nutriSocio');
+Route::get('/evolBio/{id}', [Nutricao::class, 'evolBio'])->name('app.evolBio');
 Route::get('/trainSocio/{id}', [Nutricao::class, 'trainSocio'])->name('app.trainSocio');
 
 Route::get('/train', [Main::class, 'train'])->name('app.training');

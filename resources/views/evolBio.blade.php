@@ -6,23 +6,11 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    <h1>Nutri Socio</h1>
+                    <h1>Evolução Socio</h1>
 
                     <hr>
+
                     <div class="d-flex justify-content-between">
-                        <div class="card" style="width: 18rem;">
-                            <img src="assets/images/FIT.jpg" class="card-img-top" alt="Treino">
-                            <div class="card-body">
-                                <h3 class="card-title">Plano de Nutrição</h3>
-                                <p class="card-text">Clica aqui para acederes há tua área de treino e assim usufruíres do
-                                    teu plano de treino e da tua evolução.</p>
-                                <a href="{{ route('app.selectPlanNutrie', ['id' => $nomeSocios]) }}"
-                                    class="btn btn-light">ENTRAR</a>
-                            </div>
-                        </div>
-
-                        <div class="mx-2"></div>
-
                         <div class="card" style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
@@ -47,17 +35,17 @@
                         </div>
                     </div>
 
+                </div>
 
 
-
-                    <div style="text-align: right; margin-top: 10px;">
-                        <a onclick="retrocederPagina()" class="link-body-emphasis"
-                            style="cursor: pointer; text-decoration: none;">
-                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
-                    </div>
+                <div style="text-align: right; margin-top: 10px;">
+                    <a onclick="retrocederPagina()" class="link-body-emphasis"
+                        style="cursor: pointer; text-decoration: none;">
+                        <i class="bi bi-reply-all-fill"></i> Voltar</a>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 @endsection

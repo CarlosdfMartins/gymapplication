@@ -207,4 +207,11 @@ class Nutricao extends Controller
         $nomeSocios = $id;
         return view('trainSocio', ['nomeSocios' => $nomeSocios]);
     }
+
+    public function evolBio($id)
+    {
+        $nomeSocios = $id;
+        
+        return view('evolBio', ['nomeSocios' => $nomeSocios]);
+    }
 }
