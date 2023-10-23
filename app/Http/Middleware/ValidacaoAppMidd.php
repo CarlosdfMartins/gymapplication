@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Facades\Session;
 
 class ValidacaoAppMidd
 {
@@ -16,12 +16,16 @@ class ValidacaoAppMidd
      */
     public function handle(Request $request, Closure $next): Response
     {
-            session_start();
-
-            if(isset($_SESSION['email']) && $_SESSION['email'] != ''){
-                return $next($request);
-            }else {
-                return redirect()->route('login', ['erro' =>2]);
-            }
+            if (Session::has('email') && Session::get('email') != '') {
+            return $next($request);
+        } else {
+            return redirect()->route('login', ['erro' => 2]);
         }
+    }
 }
+
+
+
+
+
+

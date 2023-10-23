@@ -13,13 +13,13 @@ class email_define_password extends Mailable
 {
     use Queueable, SerializesModels;
 
-
     public $token;
     public $name;
     public $apelido;
 
     public function __construct($token, $name, $apelido)
     {
+        $token = decrypt($token);
         $this->token = $token;
         $this->name = $name;
         $this->apelido = $apelido;

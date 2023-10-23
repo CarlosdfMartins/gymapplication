@@ -37,7 +37,6 @@ class Main extends Controller
 
     public function confirmation(Request $request)
     {
-
         //validation rules
         $regras = [
             'user' => 'email',

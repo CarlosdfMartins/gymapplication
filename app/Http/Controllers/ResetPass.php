@@ -56,7 +56,7 @@ class ResetPass extends Controller
         $definePass->save();
 
 
-        Mail::to($email)->send(new email_define_password($token, $name, $apelido));
+        Mail::to($email)->send(new email_define_password(encrypt($token), $name, $apelido));
 
         return redirect()->route('login');
     }
@@ -64,6 +64,8 @@ class ResetPass extends Controller
 
     public function reset($token)
     {
+        $token = decrypt($token);
+
         return view('emails.definePass', ['token' => $token]);
     }
     //========================================================================================================================

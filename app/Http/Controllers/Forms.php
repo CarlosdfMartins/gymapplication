@@ -115,13 +115,11 @@ class Forms extends Controller
         $name = $request->input('text-name');
         $apelido = $request->input('text-apelido');
 
-        Mail::to($person->email)->send(new email_define_password($token, $name, $apelido));
+        Mail::to($person->email)->send(new email_define_password(encrypt($token), $name, $apelido));
 
         $profile = Session::get('profile');
 
-        return view('home',['profile' =>  encrypt($profile)
-    ]);
-
+        return view('home', ['profile' =>  encrypt($profile)]);
     }
     //========================================================================================================================
 
