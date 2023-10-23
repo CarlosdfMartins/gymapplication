@@ -65,7 +65,7 @@ class Main extends Controller
         if ($socio && $password === $socio->password) {
             Session::put('nome', $socio->nome);
             Session::put('email', $socio->email);
-            return redirect()->route('app.homeSocio', ['id' => $socio->id]);
+            return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id)]);
         } elseif ($colaborador && $password === $colaborador->password) {
             Session::put('nome', $colaborador->nome);
             Session::put('email', $colaborador->email);

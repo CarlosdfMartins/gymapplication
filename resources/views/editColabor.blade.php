@@ -15,10 +15,10 @@
 
                     <hr>
 
-                    <form action="{{ route('app.update', ['profile' => $profile, 'id' => $dados->id]) }}" method="post">
+                    <form action="{{ route('app.update', ['profile' => encrypt($profile), 'id' => encrypt($dados->id)]) }}" method="post">
                         @csrf
                         @method('PUT')
-                        
+
                         <div class="row mb-3">
                             <div class="col-md-6 col-sm-12">
                                 <label class="form-label" for="nome">Nome:</label>

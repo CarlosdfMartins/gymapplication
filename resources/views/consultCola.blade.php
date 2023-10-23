@@ -31,24 +31,24 @@
                                 @foreach ($colaboradores as $colaborador)
                                     <tr>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => $colaborador->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => encrypt($colaborador->id)]) }}';"
                                             style="cursor: pointer;">{{ $colaborador->id }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => $colaborador->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => encrypt($colaborador->id)]) }}';"
                                             style="cursor: pointer;">{{ $colaborador->nome }} {{ $colaborador->apelido }}
                                         </td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => $colaborador->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => encrypt($colaborador->id)]) }}';"
                                             style="cursor: pointer;">{{ $colaborador->telefone }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => $colaborador->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => encrypt($colaborador->id)]) }}';"
                                             style="cursor: pointer;">{{ $colaborador->email }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => $colaborador->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.searchCola', ['id' => encrypt($colaborador->id)]) }}';"
                                             style="cursor: pointer;">{{ $colaborador->profile }}</td>
                                         <td class="text-center">
                                             <a class="link-body-emphasis"
-                                                href="{{ route('app.edit', ['id' => $colaborador->id, 'profile' => $colaborador->profile]) }}">
+                                                href="{{ route('app.edit', ['id' => encrypt($colaborador->id), 'profile' => encrypt($colaborador->profile)]) }}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>

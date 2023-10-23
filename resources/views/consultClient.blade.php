@@ -29,20 +29,20 @@
                                 @foreach ($socios as $socio)
                                     <tr>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $socio->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->id }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $socio->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' =>  encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->nome }} {{ $socio->apelido }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $socio->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->telefone }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => $socio->id]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' =>  encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->email }}</td>
                                         <td>
                                             <a class="link-body-emphasis"
-                                                href="{{ route('app.edit', ['id' => $socio->id, 'profile' => $socio->profile]) }}">
+                                                href="{{ route('app.edit', ['id' => encrypt($socio->id), 'profile' => encrypt($socio->profile)]) }}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>

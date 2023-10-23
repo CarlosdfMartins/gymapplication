@@ -12,10 +12,8 @@ use App\Mail\email_define_password;
 use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\Models\PasswordReset;
-use App\Models\Exercise;
 use App\Models\formPlanNutricion;
-
-
+use Illuminate\Support\Facades\Session;
 
 class Forms extends Controller
 {
@@ -41,7 +39,8 @@ class Forms extends Controller
 
         return view('form', [
             'nutricionistas' => $nutricionistas,
-            'personalTrainers' => $personalTrainer
+            'personalTrainers' => $personalTrainer,
+
         ]);
     }
     //========================================================================================================================
@@ -118,8 +117,11 @@ class Forms extends Controller
 
         Mail::to($person->email)->send(new email_define_password($token, $name, $apelido));
 
+        $profile = Session::get('profile');
 
-        return view('home');
+        return view('home',['profile' =>  encrypt($profile)
+    ]);
+
     }
     //========================================================================================================================
 
@@ -157,10 +159,13 @@ class Forms extends Controller
 
     public function searchCola($id)
     {
+
+        $id = decrypt($id);
+
         $colaboradores = Colaboradores::findOrFail($id);
 
         return view('dadosCola', [
-            'colaboradores' => $colaboradores,
+            'colaboradores' => encrypt($colaboradores),
 
         ]);
     }
@@ -197,7 +202,7 @@ class Forms extends Controller
 
     //========================================================================================================================
 
-public function editNutricao(Request $request, $profile, $id)
+    public function editNutricao(Request $request, $profile, $id)
     {
         $profile = decrypt($profile);
         $id = decrypt($id);
@@ -223,6 +228,8 @@ public function editNutricao(Request $request, $profile, $id)
 
     public function edit($profile, $id)
     {
+        $profile = decrypt($profile);
+        $id = decrypt($id);
 
         if ($profile === 'Socio') {
             $dados = Socios::find($id);
@@ -256,6 +263,9 @@ public function editNutricao(Request $request, $profile, $id)
 
     public function update(Request $request, $profile, $id)
     {
+        $profile = decrypt($profile);
+        $id = decrypt($id);
+
         $request->validate([
             'nome' => 'string|max:200',
             'email' => 'email',
