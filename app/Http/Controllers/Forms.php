@@ -7,26 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Session;
 
 use App\Mail\email_define_password;
 use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\Models\PasswordReset;
 use App\Models\formPlanNutricion;
-use App\ServiceEnc\Enc;
-use Illuminate\Support\Facades\Session;
+
 
 class Forms extends Controller
 {
     use SoftDeletes;
 
 
-    private $Enc;
-
     public function __construct()
     {
         $this->middleware('log.App');
-        $this->Enc = new Enc();
+
     }
     //========================================================================================================================
 

@@ -6,16 +6,10 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Colaboradores;
 use App\Models\Socios;
-use App\ServiceEnc\Enc;
+
 
 class Main extends Controller
 {
-    private $Enc;
-
-    public function __construct()
-    {
-        $this->Enc = new Enc();
-    }
 
 
     public function index()
