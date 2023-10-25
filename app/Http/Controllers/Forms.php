@@ -13,15 +13,20 @@ use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\Models\PasswordReset;
 use App\Models\formPlanNutricion;
+use App\ServiceEnc\Enc;
 use Illuminate\Support\Facades\Session;
 
 class Forms extends Controller
 {
     use SoftDeletes;
 
+
+    private $Enc;
+
     public function __construct()
     {
         $this->middleware('log.App');
+        $this->Enc = new Enc();
     }
     //========================================================================================================================
 
@@ -85,7 +90,7 @@ class Forms extends Controller
             $person->nome = $request->input('text-name');
             $person->apelido = $request->input('text-apelido');
             $person->telefone = $request->input('text-phone');
-            $person->password = $passRandom;
+            $person->password =  bcrypt($passRandom);
             $person->profile = $request->input('text-profile');
             $person->email = $request->input('text-email');
             $person->sexo = $request->input('sexo');

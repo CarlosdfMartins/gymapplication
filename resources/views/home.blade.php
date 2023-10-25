@@ -59,7 +59,7 @@
                                             CLIENTES</a>
                                         <hr>
                                         <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS
-                                            CLIENTES</a>
+                                           UTILIZADORES</a>
                                     </div>
                                 </li>
                             @endif

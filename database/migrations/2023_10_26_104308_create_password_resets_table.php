@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('password_resets', function (Blueprint $table) {
             $table->id()->autoIncrement()->unsigned();
-            $table->unsignedBigInteger('socio_id')->nullable();
-            $table->unsignedBigInteger('colaborador_id')->nullable();
-            $table->string('email')->index();
-            $table->string('token', 100);
+            $table->foreignId('socio_id')->nullable()->constrained('socios');
+            $table->foreignId('colaborador_id')->nullable()->constrained('colaboradores');
+            $table->text('email');
+            $table->text('token', 255);
             $table->timestamp('expires_at');
             $table->timestamps();
             $table->softDeletes();

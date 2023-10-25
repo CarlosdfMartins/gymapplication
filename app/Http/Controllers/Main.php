@@ -6,10 +6,18 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Colaboradores;
 use App\Models\Socios;
-
+use App\ServiceEnc\Enc;
 
 class Main extends Controller
 {
+    private $Enc;
+
+    public function __construct()
+    {
+        $this->Enc = new Enc();
+    }
+
+
     public function index()
     {
         return view('index');
@@ -37,6 +45,7 @@ class Main extends Controller
 
     public function confirmation(Request $request)
     {
+
         //validation rules
         $regras = [
             'user' => 'email',
@@ -61,11 +70,11 @@ class Main extends Controller
             ->whereNull('deleted_at')
             ->first();
 
-        if ($socio && $password === $socio->password) {
+        if ($socio && password_verify($password, $socio->password)) {
             Session::put('nome', $socio->nome);
             Session::put('email', $socio->email);
             return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id)]);
-        } elseif ($colaborador && $password === $colaborador->password) {
+        } elseif ($colaborador && password_verify($password, $colaborador->password)) {
             Session::put('nome', $colaborador->nome);
             Session::put('email', $colaborador->email);
             Session::put('profile', $colaborador->profile);

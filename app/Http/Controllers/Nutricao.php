@@ -12,10 +12,17 @@ use App\Mail\PlanNutricionMail;
 use App\Models\formPlanNutricion;
 use App\Models\NutricaoModel;
 use App\Models\Socios;
-
+use App\ServiceEnc\Enc;
 
 class Nutricao extends Controller
 {
+    private $Enc;
+
+    public function __construct()
+    {
+        $this->Enc = new Enc();
+    }
+
 
     public function evolnutri($id)
     {
@@ -37,9 +44,9 @@ class Nutricao extends Controller
     {
 
         $cliente = DB::table('Socios')
-        ->select('id', 'nome', 'apelido')
-        ->where('id', '=', $id)
-        ->get();
+            ->select('id', 'nome', 'apelido')
+            ->where('id', '=', $id)
+            ->get();
 
         $socioID = $id;
 
@@ -181,6 +188,7 @@ class Nutricao extends Controller
 
         return view('nutricao.searchNutri2', ['nomeSocios' => $nomeSocios]);
     }
+    
     //========================================================================================================================
 
     public function getClienteDetails($id)

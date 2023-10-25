@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('form_plan_nutricions', function (Blueprint $table) {
             $table->id()->autoIncrement()->unsigned();
-            $table->unsignedBigInteger('socio_id');
+            $table->foreignId('socio_id')->constrained('socios');
             $table->time('hora_PA')->default('00:00')->nullable();
             $table->text('pequeno_almoco')->nullable();
             $table->time('hora_1LM')->default('00:00')->nullable();

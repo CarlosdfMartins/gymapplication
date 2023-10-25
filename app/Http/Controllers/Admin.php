@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Socios;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('nutricao_models', function (Blueprint $table) {
             $table->id()->autoIncrement()->unsigned();
-            $table->unsignedBigInteger('socio_id');
+            $table->foreignId('socio_id')->constrained('socios');
             $table->float('peso_kg', 5, 3)->nullable();
             $table->float('altura_cm', 5, 3)->nullable();
             $table->decimal('IMC', 5, 2)->nullable();

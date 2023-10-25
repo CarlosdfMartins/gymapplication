@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('log_admin_models', function (Blueprint $table) {
             $table->id()->autoIncrement()->unsigned();
-            $table->string('log',200);
-            $table->unsignedBigInteger('colaborador_id')->nullable();
-            $table->unsignedBigInteger('socio_id')->nullable();;
+            $table->text('log');
+            $table->foreignId('colaborador_id')->nullable()->constrained('colaboradores');
+            $table->foreignId('socio_id')->nullable()->constrained('socios');
             $table->timestamps();
-            });
+        });
     }
 
     /**

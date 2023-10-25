@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('colaboradores', function (Blueprint $table) {
             $table->id()->autoIncrement()->unsigned();
-            $table->string('profile', 50);
-            $table->string('nome', 50);
-            $table->string('apelido', 50);
-            $table->string('email', 50);
-            $table->string('telefone', 12);
-            $table->string('password');
-            $table->string('sexo', 3);
-            $table->date('data_nascimento');
+            $table->text('profile')->nullable();
+            $table->text('nome')->nullable();;
+            $table->text('apelido')->nullable();;
+            $table->text('email')->nullable();;
+            $table->text('telefone')->nullable();;
+            $table->text('password')->nullable();;
+            $table->text('sexo', 3)->nullable();;
+            $table->date('data_nascimento')->nullable();;
             $table->timestamps();
             $table->softDeletes();
         });

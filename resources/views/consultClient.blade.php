@@ -1,6 +1,8 @@
 @extends('layouts.page2')
 
 @section('content')
+
+   
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-12 col-md-10">
@@ -32,13 +34,13 @@
                                             onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->id }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' =>  encrypt($socio->id)]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->nome }} {{ $socio->apelido }}</td>
                                         <td class="text-center"
                                             onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->telefone }}</td>
                                         <td class="text-center"
-                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' =>  encrypt($socio->id)]) }}';"
+                                            onclick="window.location.href='{{ route('app.nutriSearch', ['id' => encrypt($socio->id)]) }}';"
                                             style="cursor: pointer;">{{ $socio->email }}</td>
                                         <td>
                                             <a class="link-body-emphasis"
@@ -82,7 +84,7 @@
                         </table>
                         <div style="text-align: right; margin-top: 10px;">
                             <a onclick="retrocederPagina()" class="link-body-emphasis"
-                            style="cursor: pointer; text-decoration: none;">
+                                style="cursor: pointer; text-decoration: none;">
                                 <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                 </div>

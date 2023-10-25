@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
+
 
 class Socios extends Model
 {
     protected $table = 'socios';
     protected $fillable = ['nome', 'apelido', 'telefone', 'password', 'email', 'sexo', 'data_nascimento', 'profile', 'NUT_id', 'PT_id'];
-
 
     public function colaborador()
     {

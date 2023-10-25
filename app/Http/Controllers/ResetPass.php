@@ -102,11 +102,12 @@ class ResetPass extends Controller
 
         DB::table('socios')
             ->where('id', $tokenVal->socio_id)
-            ->update(['password' => $request->input('password')]);
+            ->update(['password' => bcrypt($request->input('password'))]);
+
 
         DB::table('colaboradores')
             ->where('id', $tokenVal->colaborador_id)
-            ->update(['password' => $request->input('password')]);
+            ->update(['password' => bcrypt($request->input('password'))]);
 
         $tokenVal->update([
             'expires_at' => now(),
