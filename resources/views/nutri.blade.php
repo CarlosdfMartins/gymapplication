@@ -17,7 +17,7 @@
                                         @csrf
                                         <input class="form-control me-2" name="nutSearch" type="text"
                                             placeholder="Pesquisar sócio" aria-label="nutSearch">
-                                        <button class="btn btn-outline-dark ms-3" type="submit"><i
+                                        <button class="btn btn-outline-success ms-3" type="submit"><i
                                                 class="bi bi-search"></i></button>
                                     </form>
 

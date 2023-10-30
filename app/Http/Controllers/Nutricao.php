@@ -12,10 +12,17 @@ use App\Mail\PlanNutricionMail;
 use App\Models\formPlanNutricion;
 use App\Models\NutricaoModel;
 use App\Models\Socios;
+use App\ServiceEnc\Enc;
 
 
 class Nutricao extends Controller
 {
+    protected $Enc;
+
+    public function __construct()
+    {
+        $this->Enc = new Enc();
+    }
 
     public function evolnutri($id)
     {
@@ -157,31 +164,78 @@ class Nutricao extends Controller
         $id = decrypt($id);
 
         $profile = Session::get('profile');
-        $nomeSocios = Socios::findOrFail($id);
+        $nomeSocios = $this->desencriptarSocio(Socios::findOrFail($id));
+        $nutri = $nomeSocios->nutri;
+        $pTrain = $nomeSocios->pTrain;
 
+        if ($pTrain) {
+            $pTrain->nome = $this->Enc->desencriptar($pTrain->nome);
+            $pTrain->apelido = $this->Enc->desencriptar($pTrain->apelido);
+        }
+        if ($nutri) {
+            $nutri->nome = $this->Enc->desencriptar($nutri->nome);
+            $nutri->apelido = $this->Enc->desencriptar($nutri->apelido);
+        }
         return view('nutricao.dadosNutri', [
             'nomeSocios' => $nomeSocios,
             'profile' => $profile,
         ]);
+    }
+
+    private function desencriptarSocio($socio)
+    {
+        $socio->nome = $this->Enc->desencriptar($socio->nome);
+        $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+        $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+
+        return $socio;
     }
     //========================================================================================================================
 
     public function formNutriConsult(Request $request)
     {
 
-        $nutSearch = $request->input('nutSearch');
 
-        $nomeSocios = Socios::where('nome', 'like', "%$nutSearch%")
-            ->orWhere('id', 'like', "%$nutSearch%")
-            ->orWhere('apelido', 'like', "%$nutSearch%")
-            ->orWhere('telefone', 'like', "%$nutSearch%")
-            ->orWhere('email', 'like', "%$nutSearch%")
-            ->orWhere('data_nascimento', 'like', "%$nutSearch%")
-            ->get();
+        $nutSearch = $this->Enc->encriptar($request->input('nutSearch'));
+
+        $cSearch = $this->Enc->desencriptar($nutSearch);
+
+        if (empty($cSearch)) {
+            $nomeSocios = Socios::all();
+
+            $nomeSocios = $nomeSocios->map(function ($socio) {
+                $socio->nome = $this->Enc->desencriptar($socio->nome);
+                $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+                $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+                return $socio;
+            });
+            return view('nutricao.searchNutri2', ['nomeSocios' => $nomeSocios]);
+        } else {
+            $nomeSocios = Socios::where('nome', 'like', "%$nutSearch%")
+                ->orWhere('id', 'like', "%$nutSearch%")
+                ->orWhere('apelido', 'like', "%$nutSearch%")
+                ->orWhere('telefone', 'like', "%$nutSearch%")
+                ->orWhere('email', 'like', "%$nutSearch%")
+                ->orWhere('data_nascimento', 'like', "%$nutSearch%")
+                ->get();
+
+            if (!$nutSearch) {
+                return view('nutricao.searchNutri2')->with('message', 'Nenhum perfil encontrado.');
+            }
+            $nomeSocios = $nomeSocios->map(function ($socio) {
+                $socio->nome = $this->Enc->desencriptar($socio->nome);
+                $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+                $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+                return $socio;
+            });
+        }
+
 
         return view('nutricao.searchNutri2', ['nomeSocios' => $nomeSocios]);
     }
-
     //========================================================================================================================
 
     public function getClienteDetails($id)
@@ -215,6 +269,7 @@ class Nutricao extends Controller
         $nomeSocios = $id;
         return redirect()->Route('app.selectPlanNutrie', ['id' => $nomeSocios]);
     }
+    //========================================================================================================================
 
     public function trainSocio($id)
     {
@@ -222,6 +277,7 @@ class Nutricao extends Controller
 
         return redirect()->route('app.selectPlantrainer', ['id' => $nomeSocios]);
     }
+    //========================================================================================================================
 
     public function evolBioSocio($id)
     {
@@ -229,6 +285,7 @@ class Nutricao extends Controller
 
         return view('evolBioSocio', ['nomeSocios' => $nomeSocios]);
     }
+    //========================================================================================================================
 
     public function evolBio($id)
     {

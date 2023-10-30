@@ -6,11 +6,17 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Colaboradores;
 use App\Models\Socios;
-
+use App\ServiceEnc\Enc;
 
 class Main extends Controller
 {
+    protected $Enc;
 
+    public function __construct()
+    {
+        $this->Enc = new Enc();
+    }
+//==============================================================================
 
     public function index()
     {
@@ -65,11 +71,11 @@ class Main extends Controller
             ->first();
 
         if ($socio && password_verify($password, $socio->password)) {
-            Session::put('nome', $socio->nome);
+            Session::put('nome', $this->Enc->desencriptar($socio->nome));
             Session::put('email', $socio->email);
             return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id)]);
         } elseif ($colaborador && password_verify($password, $colaborador->password)) {
-            Session::put('nome', $colaborador->nome);
+            Session::put('nome', $this->Enc->desencriptar($colaborador->nome));
             Session::put('email', $colaborador->email);
             Session::put('profile', $colaborador->profile);
             return redirect()->route('app.home');

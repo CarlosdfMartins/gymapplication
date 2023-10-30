@@ -1,7 +1,6 @@
 @extends('layouts.page2')
 
 @section('content')
-
     @php
         $profile = decrypt($profile);
     @endphp
@@ -31,8 +30,23 @@
 
                     <hr>
 
-                    <div class="card p-4 mx-auto mt-4 mb-3" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                    <div class="card  mx-auto mt-4 mb-3" style="width: 20rem;">
+                        @php
+                            $imagePath = '';
+
+                            switch ($profile) {
+                                case 'Nutricionista':
+                                    $imagePath = asset('assets/images/nutri_img.jpg');
+                                    break;
+                                case 'Personal Trainer':
+                                    $imagePath = asset('assets/images/treino_3.jpg');
+                                    break;
+                                default:
+                                    $imagePath = asset('assets/images/administrador.jpg');
+                            }
+                        @endphp
+
+                        <img src="{{ $imagePath }}" class="card-img-top" alt="nutricao">
 
                         <ul class="list-group list-group-flush">
                             @if ($profile === 'Nutricionista')
@@ -59,7 +73,7 @@
                                             CLIENTES</a>
                                         <hr>
                                         <a href="{{ route('app.form') }}" class="btn btn-light">INSERIR NOVOS
-                                           UTILIZADORES</a>
+                                            UTILIZADORES</a>
                                     </div>
                                 </li>
                             @endif

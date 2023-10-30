@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -14,17 +15,18 @@ use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\Models\PasswordReset;
 use App\Models\formPlanNutricion;
-
+use App\ServiceEnc\Enc;
 
 class Forms extends Controller
 {
     use SoftDeletes;
 
+    protected $Enc;
 
     public function __construct()
     {
         $this->middleware('log.App');
-
+        $this->Enc = new Enc();
     }
     //========================================================================================================================
 
@@ -85,9 +87,9 @@ class Forms extends Controller
         }
 
         if ($person) {
-            $person->nome = $request->input('text-name');
-            $person->apelido = $request->input('text-apelido');
-            $person->telefone = $request->input('text-phone');
+            $person->nome = $this->Enc->encriptar($request->input('text-name'));
+            $person->apelido = $this->Enc->encriptar($request->input('text-apelido'));
+            $person->telefone = $this->Enc->encriptar($request->input('text-phone'));
             $person->password =  bcrypt($passRandom);
             $person->profile = $request->input('text-profile');
             $person->email = $request->input('text-email');
@@ -134,20 +136,41 @@ class Forms extends Controller
 
     public function consult(Request $request)
     {
-        $search = $request->input('search');
+        $search = $this->Enc->encriptar($request->input('search'));
+        $cSearch = $this->Enc->desencriptar($search);
 
-        $socios = Socios::where('nome', 'like', "%$search%")
-            ->orWhere('id', 'like', "%$search%")
-            ->orWhere('email', 'like', "%$search%")
-            ->orWhere('apelido', 'like', "%$search%")
-            ->orWhere('telefone', 'like', "%$search%")
-            ->orWhere('data_nascimento', 'like', "%$search%")
-            ->get();
+        if (empty($cSearch)) {
+            $socios = Socios::all();
 
-        if ($socios->isEmpty()) {
-            return view('consultClient')->with('message', 'Nenhum perfil encontrado.');
+            $socios = $socios->map(function ($socio) {
+                $socio->nome = $this->Enc->desencriptar($socio->nome);
+                $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+                $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+                return $socio;
+            });
+            return view('consultClient', ['socios' => $socios]);
+        } else {
+            $socios = Socios::where('nome', 'like', "%$search%")
+                ->orWhere('id', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->orWhere('apelido', 'like', "%$search%")
+                ->orWhere('telefone', 'like', "%$search%")
+                ->orWhere('data_nascimento', 'like', "%$search%")
+                ->get();
+
+            if ($socios->isEmpty()) {
+                return view('consultClient')->with('message', 'Nenhum perfil encontrado.');
+            }
+
+            $socios = $socios->map(function ($socio) {
+                $socio->nome = $this->Enc->desencriptar($socio->nome);
+                $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+                $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+                return $socio;
+            });
         }
-
         return view('consultClient', ['socios' => $socios]);
     }
     //========================================================================================================================
@@ -165,6 +188,10 @@ class Forms extends Controller
 
         $colaboradores = Colaboradores::findOrFail($id);
 
+        $colaboradores->nome = $this->Enc->desencriptar($colaboradores->nome);
+        $colaboradores->apelido = $this->Enc->desencriptar($colaboradores->apelido);
+        $colaboradores->telefone = $this->Enc->desencriptar($colaboradores->telefone);
+
         return view('dadosCola', [
             'colaboradores' => encrypt($colaboradores),
 
@@ -174,21 +201,41 @@ class Forms extends Controller
 
     public function consultColabor(Request $request)
     {
-        $search = $request->input('searchColabor');
+        $search = $this->Enc->encriptar($request->input('searchColabor'));
 
-        $colaboradores = Colaboradores::where('nome', 'like', "%$search%")
-            ->orWhere('id', 'like', "%$search%")
-            ->orWhere('email', 'like', "%$search%")
-            ->orWhere('apelido', 'like', "%$search%")
-            ->orWhere('telefone', 'like', "%$search%")
-            ->orWhere('data_nascimento', 'like', "%$search%")
-            ->orWhere('profile', 'like', "%$search%")
-            ->get();
+        $cSearch = $this->Enc->desencriptar($search);
 
-        if ($colaboradores->isEmpty()) {
-            return view('consultCola')->with('message', 'Nenhum perfil encontrado.');
+        if (empty($cSearch)) {
+            $colaboradores = Colaboradores::all();
+
+            $colaboradores = $colaboradores->map(function ($colaborador) {
+                $colaborador->nome = $this->Enc->desencriptar($colaborador->nome);
+                $colaborador->apelido = $this->Enc->desencriptar($colaborador->apelido);
+                $colaborador->telefone = $this->Enc->desencriptar($colaborador->telefone);
+                return $colaborador;
+            });
+            return view('consultCola', ['colaboradores' => $colaboradores]);
+        } else {
+            $colaboradores = Colaboradores::where('nome', 'like', "%$search%")
+                ->orWhere('id', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->orWhere('apelido', 'like', "%$search%")
+                ->orWhere('telefone', 'like', "%$search%")
+                ->orWhere('data_nascimento', 'like', "%$search%")
+                ->orWhere('profile', 'like', "%$search%")
+                ->get();
+
+            if ($colaboradores->isEmpty()) {
+                return view('consultCola')->with('message', 'Nenhum perfil encontrado.');
+            }
+
+            $colaboradores = $colaboradores->map(function ($colaboradores) {
+                $colaboradores->nome = $this->Enc->desencriptar($colaboradores->nome);
+                $colaboradores->apelido = $this->Enc->desencriptar($colaboradores->apelido);
+                $colaboradores->telefone = $this->Enc->desencriptar($colaboradores->telefone);
+                return $colaboradores;
+            });
         }
-
         return view('consultCola', ['colaboradores' => $colaboradores]);
     }
     //========================================================================================================================
@@ -200,7 +247,6 @@ class Forms extends Controller
 
         return view('menuEdit', ['profile' => $profile, 'id' => $id]);
     }
-
     //========================================================================================================================
 
     public function editNutricao(Request $request, $profile, $id)
@@ -223,9 +269,7 @@ class Forms extends Controller
         }
         return view('editNutricao', compact('profile', 'id', 'dados', 'planosNutricionais'));
     }
-
     //========================================================================================================================
-
 
     public function edit($profile, $id)
     {

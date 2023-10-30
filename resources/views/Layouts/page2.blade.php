@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body class="layout-2">
 
     <div class="col p-3 text-end">
         <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i

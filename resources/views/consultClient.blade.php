@@ -2,7 +2,7 @@
 
 @section('content')
 
-   
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-12 col-md-10">
@@ -45,13 +45,13 @@
                                         <td>
                                             <a class="link-body-emphasis"
                                                 href="{{ route('app.edit', ['id' => encrypt($socio->id), 'profile' => encrypt($socio->profile)]) }}">
-                                                <i class="bi bi-pencil-square"></i>
+                                                <i class="bipencil bi-pencil-square"></i>
                                             </a>
                                         </td>
                                         <td>
                                             <a class="link-body-emphasis" href="" data-bs-toggle="modal"
                                                 data-bs-target="#confirmDeleteModal{{ $socio->id }}">
-                                                <i class="bi bi-trash3-fill"></i>
+                                                <i class="bitrash3 bi-trash3-fill"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -71,7 +71,7 @@
                                                     Tem certeza que deseja apagar este sócio?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="btn btn-warning"
                                                         data-bs-dismiss="modal">Cancelar</button>
                                                     <a class="btn btn-danger"
                                                         href="{{ route('app.delete', ['id' => $socio->id, 'profile' => $socio->profile]) }}">Apagar</a>

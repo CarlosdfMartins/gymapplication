@@ -19,7 +19,7 @@
                                         @csrf
                                         <input class="form-control me-2" name="search" type="text"
                                             placeholder="Pesquisar" aria-label="Search">
-                                        <button class="btn btn-outline-dark ms-3"><i class="bi bi-search"></i></button>
+                                        <button class="btn btn-outline-success ms-3"><i class="bi bi-search"></i></button>
                                     </form>
                                 </div>
                             </div>

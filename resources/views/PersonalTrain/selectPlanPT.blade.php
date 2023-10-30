@@ -53,7 +53,7 @@
 
 
                         </div>
-                        <button class="btn btn-outline-dark d-block w-50 mx-auto mt-4" type="submit">Selecionar</button>
+                        <button class="btn btn-outline-success d-block w-50 mx-auto mt-4" type="submit">Selecionar</button>
                     </form>
 
                 </div>

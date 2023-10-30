@@ -49,13 +49,13 @@
                                         <td class="text-center">
                                             <a class="link-body-emphasis"
                                                 href="{{ route('app.edit', ['id' => encrypt($colaborador->id), 'profile' => encrypt($colaborador->profile)]) }}">
-                                                <i class="bi bi-pencil-square"></i>
+                                                <i class="bipencil bi-pencil-square"></i>
                                             </a>
                                         </td>
                                         <td><a class="link-body-emphasis" class="link-body-emphasis" href=""
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#confirmDeleteMO{{ $colaborador->id }}"><i
-                                                    class="bi bi-trash3-fill"></i></td>
+                                                    class="bitrash3 bi-trash3-fill"></i></td>
                                     </tr>
 
 
@@ -73,7 +73,7 @@
                                                     Tem certeza que deseja apagar este colaborador?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="btn btn-warning"
                                                         data-bs-dismiss="modal">Cancelar</button>
                                                     <a class="btn btn-danger"
                                                         href="{{ route('app.delete', ['id' => $colaborador->id, 'profile' => $colaborador->profile]) }}">Apagar</a>
@@ -86,7 +86,7 @@
                         </table>
                         <div style="text-align: right; margin-top: 10px;">
                             <a onclick="retrocederPagina()" class="link-body-emphasis"
-                            style="cursor: pointer; text-decoration: none;">
+                                style="cursor: pointer; text-decoration: none;">
                                 <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                 </div>

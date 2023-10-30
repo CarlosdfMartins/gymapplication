@@ -38,7 +38,7 @@
 
                             <div class="mb-5">
                                 <div class="dropdown mar-left">
-                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                    <button class="btn btn-outline-success ms-3 dropdown-toggle w-75" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-person-arms-up"></i><i class="bi bi-activity"></i> TREINO
                                     </button>
@@ -46,7 +46,7 @@
                                         <li class="text-center">
                                             @if ($profile === 'Administrador' || $profile === 'Nutricionista' || $profile === 'Personal Trainer')
                                                 <div><a href="{{ route('app.selectPlantrainer', ['id' => encrypt($nomeSocios->id)]) }}"
-                                                        class="btn btn-light">Ver
+                                                        class=" btn btn-light">Ver
                                                         Plano Treino
                                                     </a></div>
                                             @endif
@@ -65,7 +65,7 @@
 
                             <div class="mb-5">
                                 <div class="dropdown mar-left">
-                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                    <button class="btn btn-outline-success ms-3 dropdown-toggle w-75" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-graph-up-arrow"></i> EVOLUÇÃO
                                     </button>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="mb-3">
                                 <div class="dropdown mar-left">
-                                    <button class="btn btn-outline-dark ms-3 dropdown-toggle w-75" type="button"
+                                    <button class="btn btn-outline-success ms-3 dropdown-toggle w-75" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-basket"></i><i class="bi bi-stars"></i> NUTRIÇÃO
                                     </button>

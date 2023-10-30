@@ -3,10 +3,10 @@
     font-weight: bold;
     font-size: 100px;
     text-shadow:
-    -1px -1px 0 rgba(0, 0, 0, 0.400),
-    1px -1px 0 rgba(0, 0, 0, 0.400),
-    -1px 1px 0 rgba(0, 0, 0, 0.400),
-    1px 1px 0 rgba(0, 0, 0, 0.400);
+        -1px -1px 0 rgba(0, 0, 0, 0.400),
+        1px -1px 0 rgba(0, 0, 0, 0.400),
+        -1px 1px 0 rgba(0, 0, 0, 0.400),
+        1px 1px 0 rgba(0, 0, 0, 0.400);
 }
 
 
@@ -37,10 +37,10 @@
     color: rgb(168, 33, 33);
     font-weight: bold;
     text-shadow:
-    -1px -1px 0 rgba(0, 0, 0, 0.400),
-    1px -1px 0 rgba(0, 0, 0, 0.400),
-    -1px 1px 0 rgba(0, 0, 0, 0.400),
-    1px 1px 0 rgba(0, 0, 0, 0.400);
+        -1px -1px 0 rgba(0, 0, 0, 0.400),
+        1px -1px 0 rgba(0, 0, 0, 0.400),
+        -1px 1px 0 rgba(0, 0, 0, 0.400),
+        1px 1px 0 rgba(0, 0, 0, 0.400);
 }
 
 .messageTwo {
@@ -49,4 +49,17 @@
     font-weight: lighter;
 }
 
+
+
+body.layout-2 {
+    background: linear-gradient(0deg, #faf2e2b0, #f5f0ea, #faf2e2b7);
+}
+
+.bitrash3 {
+    color: darkred;
+}
+
+.bipencil{
+    color: rgb(5, 80, 5);
+}
 
