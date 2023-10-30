@@ -146,9 +146,9 @@ class Forms extends Controller
                 $socio->nome = $this->Enc->desencriptar($socio->nome);
                 $socio->apelido = $this->Enc->desencriptar($socio->apelido);
                 $socio->telefone = $this->Enc->desencriptar($socio->telefone);
-
                 return $socio;
             });
+
             return view('consultClient', ['socios' => $socios]);
         } else {
             $socios = Socios::where('nome', 'like', "%$search%")
@@ -214,6 +214,7 @@ class Forms extends Controller
                 $colaborador->telefone = $this->Enc->desencriptar($colaborador->telefone);
                 return $colaborador;
             });
+
             return view('consultCola', ['colaboradores' => $colaboradores]);
         } else {
             $colaboradores = Colaboradores::where('nome', 'like', "%$search%")
@@ -278,9 +279,17 @@ class Forms extends Controller
 
         if ($profile === 'Socio') {
             $dados = Socios::find($id);
+            $dados->nome = $this->Enc->desencriptar($dados->nome);
+            $dados->apelido = $this->Enc->desencriptar($dados->apelido);
+            $dados->telefone = $this->Enc->desencriptar($dados->telefone);
+
             return view('editSocio', compact('profile', 'dados'));
         } elseif (in_array($profile, ['Nutricionista', 'Personal Trainer', 'Administrador'])) {
             $dados = Colaboradores::find($id);
+            $dados->nome = $this->Enc->desencriptar($dados->nome);
+            $dados->apelido = $this->Enc->desencriptar($dados->apelido);
+            $dados->telefone = $this->Enc->desencriptar($dados->telefone);
+
             return view('editColabor', compact('profile', 'dados'));
         } else {
             abort(404);
@@ -326,12 +335,22 @@ class Forms extends Controller
 
         if ($profile === 'Socio') {
             $socio = Socios::find($id);
-            $socio->update($dadosAtualizados);
-            return view('Nutricao.dadosNutri', ['profile' => $profile, 'nomeSocios' => $socio]);
+            $dadosAtualizadosEncriptados = [
+                'nome' => $this->Enc->encriptar($dadosAtualizados['nome']),
+                'apelido' => $this->Enc->encriptar($dadosAtualizados['apelido']),
+                'telefone' => $this->Enc->encriptar($dadosAtualizados['telefone']),
+            ];
+            $socio->update($dadosAtualizadosEncriptados);
+            return view('Nutricao.dadosNutri2', ['profile' => $profile, 'nomeSocios' => $socio]);
         } elseif (in_array($profile, ['Nutricionista', 'Personal Trainer', 'Administrador'])) {
             $colaborador = Colaboradores::find($id);
-            $colaborador->update($dadosAtualizados);
-            return view('dadosCola', ['profile' => $profile, 'colaboradores' => $colaborador]);
+            $dadosAtualizadosEncriptados = [
+                'nome' => $this->Enc->encriptar($dadosAtualizados['nome']),
+                'apelido' => $this->Enc->encriptar($dadosAtualizados['apelido']),
+                'telefone' => $this->Enc->encriptar($dadosAtualizados['telefone']),
+            ];
+            $colaborador->update($dadosAtualizadosEncriptados);
+            return view('dadosCola2', ['profile' => $profile, 'colaboradores' => $colaborador]);
         }
     }
     //========================================================================================================================

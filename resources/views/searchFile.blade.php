@@ -5,7 +5,7 @@
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
-                <div class="card p-4">
+                <div class="socpesq card p-4">
                     <div>
                         <h4><strong>Pesquisar Sócio</strong></h4>
                     </div>

@@ -15,7 +15,8 @@
 
                     <hr>
 
-                    <form action="{{ route('app.update', ['profile' => encrypt($profile), 'id' => encrypt($dados->id)]) }}" method="post">
+                    <form action="{{ route('app.update', ['profile' => encrypt($profile), 'id' => encrypt($dados->id)]) }}"
+                        method="post">
                         @csrf
                         @method('PUT')
 
@@ -65,16 +66,15 @@
                         <div class="mb-3 my-4">
                             <button type="submit" class="btn btn-light">Atualizar Perfil</button>
                         </div>
-                </div>
-                </form>
-                <div style="text-align: right; margin-top: 10px;">
-                    <a onclick="retrocederPagina()" class="link-body-emphasis"
-                        style="cursor: pointer; text-decoration: none;">
-                        <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    </form>
+                    <div style="text-align: right; margin-top: 10px;">
+                        <a onclick="retrocederPagina()" class="link-body-emphasis"
+                            style="cursor: pointer; text-decoration: none;">
+                            <i class="bi bi-reply-all-fill"></i> Voltar</a>
+                    </div>
                 </div>
 
             </div>
         </div>
-    </div>
     </div>
 @endsection

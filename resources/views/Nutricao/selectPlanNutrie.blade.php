@@ -17,7 +17,7 @@
         }
     </style>
 
-    <div class="container-fluid mt-10 mb-8">
+    <div class="nutiSelect container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
             <div class="col-lg-16 col-md-50">
 

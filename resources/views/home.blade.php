@@ -8,7 +8,7 @@
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
-                <div class="card p-4">
+                <div class="SocioHome card p-4">
 
                     @if ($profile === 'Administrador')
                         <div class="row">

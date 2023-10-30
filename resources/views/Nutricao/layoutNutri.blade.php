@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="layout-3">
     <div class="col p-3 text-end">
         <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i
                 class="bi bi-house-fill"></i></a>

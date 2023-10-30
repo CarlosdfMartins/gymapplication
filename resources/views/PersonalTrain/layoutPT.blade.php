@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="layout-4">
     <div class="col p-3 text-end">
         <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i
                 class="bi bi-house-fill"></i></a>
@@ -27,7 +27,7 @@
             <div class="col-lg-10 col-md-6">
                 <div class="card p-5">
 
-                
+
                         @yield('styles')
                         @yield('content')
 

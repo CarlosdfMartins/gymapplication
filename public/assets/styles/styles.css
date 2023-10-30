@@ -49,9 +49,15 @@
     font-weight: lighter;
 }
 
-
-
 body.layout-2 {
+    background: linear-gradient(0deg, #faf2e2b0, #f5f0ea, #faf2e2b7);
+}
+
+body.layout-3 {
+    background: linear-gradient(0deg, #faf2e2b0, #f5f0ea, #faf2e2b7);
+}
+
+body.layout-4 {
     background: linear-gradient(0deg, #faf2e2b0, #f5f0ea, #faf2e2b7);
 }
 
@@ -59,7 +65,47 @@ body.layout-2 {
     color: darkred;
 }
 
-.bipencil{
+.bipencil {
     color: rgb(5, 80, 5);
 }
 
+.card_Socio {
+    background: linear-gradient(0deg, #ffffff3b, #a9f3ae45, #ffffff45);
+
+}
+
+.trainSelect {
+    background: radial-gradient(circle, #a9f3ae56, #ffffff65);
+}
+
+.nutiSelect {
+    background: radial-gradient(circle, #a9f3ae56, #ffffff65);
+}
+
+.card1 {
+    background: linear-gradient(0deg, #ffffff8f, #a9f3ae22, #ffffff77);
+}
+
+.SocioHome {
+    background: radial-gradient(circle, #a9f3ae56, #ffffff65);
+}
+
+.nutpesq {
+    background: radial-gradient(circle, #def2df56, #ffffff65);
+}
+
+.pTpesq {
+    background: radial-gradient(circle, #def2df56, #ffffff65);
+}
+
+.colpesq {
+    background: radial-gradient(circle, #def2df56, #ffffff65);
+}
+
+.socpesq {
+    background: radial-gradient(circle, #def2df56, #ffffff65);
+}
+
+.bCheck {
+    color: rgb(13, 159, 13);
+}

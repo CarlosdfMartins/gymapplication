@@ -17,7 +17,7 @@
         }
     </style>
 
-    <div class="container-fluid mt-10 mb-8">
+    <div class="trainSelect container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
             <div class="col-lg-16 col-md-50">
 
@@ -34,8 +34,8 @@
                     <form method="post" action="{{ route('app.dadosPlanTrain', ['id' => encrypt($socioID)]) }}">
                         @csrf
                         <div class="text-center">
-                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example" name="exercicio"
-                                id="plano" size="3">
+                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example"
+                                name="exercicio" id="plano" size="3">
                                 @php
                                     $uniquePlans = [];
                                 @endphp
