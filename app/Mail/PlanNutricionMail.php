@@ -10,28 +10,30 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Colaboradores;
 use App\Models\Socios;
+use App\ServiceEnc\Enc;
 
 class PlanNutricionMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     public $planNutri;
+    protected $Enc;
 
     public function __construct($planNutri)
     {
+        $this->Enc = new Enc();
         $this->planNutri = $planNutri;
     }
 
     public function build()
 
     {
-
         $socio = Socios::find($this->planNutri->socio_id);
-        $name = $socio->nome .' '.$socio->apelido;
+        $name =  $this->Enc->desencriptar($socio->nome) .' '. $this->Enc->desencriptar($socio->apelido);
         $nutri = $socio->NUT_id;
 
         $nutricionista = Colaboradores::find($nutri);
-        $nomeNutricionista = $nutricionista->nome.' '.$nutricionista->apelido;
+        $nomeNutricionista =  $this->Enc->desencriptar($nutricionista->nome).' '. $this->Enc->desencriptar($nutricionista->apelido);
 
         return $this->view('emails.planNutricion')
             ->with(['planNutri' => $this->planNutri, 'socioName' => $name, 'nutricionista' => $nomeNutricionista])
@@ -40,7 +42,7 @@ class PlanNutricionMail extends Mailable implements ShouldQueue
 
     public function envelope(): Envelope
     {
-       
+
         $socio = Socios::find($this->planNutri->socio_id);
 
         $to = $socio ? $socio->email : null;

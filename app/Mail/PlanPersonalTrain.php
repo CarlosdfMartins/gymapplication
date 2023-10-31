@@ -3,14 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Colaboradores;
 use App\Models\Socios;
-
+use App\ServiceEnc\Enc;
 
 class PlanPersonalTrain extends Mailable
 {
@@ -18,10 +17,12 @@ class PlanPersonalTrain extends Mailable
 
 
     public  $planoTreino;
+    protected $Enc;
 
     public function __construct($planoTreino)
     {
         $this->planoTreino =  $planoTreino;
+        $this->Enc = new Enc();
     }
 
 
@@ -29,11 +30,11 @@ class PlanPersonalTrain extends Mailable
 
     {
         $socio = Socios::find($this->planoTreino->socio_id);
-        $name = $socio->nome .' '.$socio->apelido;
+        $name =  $this->Enc->desencriptar($socio->nome) .' '. $this->Enc->desencriptar($socio->apelido);
         $PTrain = $socio->PT_id;
 
         $personalTrainer = Colaboradores::find($PTrain);
-        $nomepersonalTrainer = $personalTrainer->nome.' '.$personalTrainer->apelido;
+        $nomepersonalTrainer = $this->Enc->desencriptar($personalTrainer->nome).' '.$this->Enc->desencriptar($personalTrainer->apelido);
 
         return $this->view('emails.planPersonalTrain')
             ->with(['planNutri' => $this->planoTreino, 'socioName' => $name, 'personal_trainer' => $nomepersonalTrainer])

@@ -25,7 +25,7 @@
 
 
 
-                    <h4 class="mb-5"><strong>Treino: {{ $exercicios->first() }} </strong></h4>
+                    <h4 class="mb-5"><strong>Treino:</strong></h4>
 
 
                     <hr>

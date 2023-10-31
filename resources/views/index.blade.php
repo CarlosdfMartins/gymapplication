@@ -1,19 +1,35 @@
 @extends('layouts.page1')
 
 @section('styles')
-    <style>
-        body {
-            background-image: url('assets/images/GYM.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
+<style>
+    body {
+        /* Define a altura do corpo para ocupar a tela inteira */
+        height: 100vh;
+        /* Adiciona um gradiente sobre as imagens do carrossel para torná-las menos pronunciadas */
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                    url('{{ asset("assets/images/img_Slide4_1.jpg") }}') center center/cover fixed no-repeat;
+        /* Outros estilos do corpo, se necessário */
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff; /* Cor do texto */
+        cursor: pointer;
+    }
 
-    <h1 class="messageOne text-center my-5">Seja bem-vindo á sua aplicação desportiva</h1>
+    /* Estilize o botão para ser centralizado */
+    .center-page {
+        text-align: center;
+    }
+</style>
 
-    <div class="text-center my-3 form-group">
-        <button type="button" class="btn btn-danger">
-            <a href="{{ route('login') }}" class="messageTwo text-center my-5">Clique aqui para iniciar</a>
-        </button>
-    </div>
+<script>
+    // Adicione um evento de clique ao corpo da página
+    document.body.addEventListener('click', function() {
+        // Redirecione para a rota de login
+        window.location.href = '{{ route('login') }}';
+    });
+</script>
 @endsection
+
+

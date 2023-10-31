@@ -47,7 +47,7 @@
                             @endif
                         </div>
 
-                        <hr>
+
 
                         <div class="dados-planos">
                             @if ($plano->hora_1LM)
@@ -65,7 +65,7 @@
                             @endif
                         </div>
 
-                        <hr>
+
 
                         <div class="dados-planos">
                             @if ($plano->hora_2LM)
@@ -83,7 +83,7 @@
                             @endif
                         </div>
 
-                        <hr>
+
 
                         <div class="dados-planos">
                             @if ($plano->hora_A)
@@ -100,7 +100,6 @@
                             @endif
                         </div>
 
-                        <hr>
 
                         <div class="dados-planos">
                             @if ($plano->hora_L1)
@@ -118,7 +117,7 @@
                             @endif
                         </div>
 
-                        <hr>
+
 
                         <div class="dados-planos">
                             @if ($plano->hora_L2)
@@ -136,7 +135,7 @@
                             @endif
                         </div>
 
-                        <hr>
+
 
                         <div class="dados-planos">
                             @if ($plano->hora_L3)
@@ -154,7 +153,6 @@
                             @endif
                         </div>
 
-                        <hr>
 
                         <div class="dados-planos">
                             @if ($plano->hora_JA)
@@ -171,7 +169,8 @@
                                 </div>
                             @endif
                         </div>
-                        <hr>
+
+                        
                         <div class="dados-planos">
                             @if ($plano->hora_C)
                                 <div>

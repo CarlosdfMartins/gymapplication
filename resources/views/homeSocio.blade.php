@@ -30,7 +30,7 @@
                         <div class="mx-2"></div>
 
                         <div class="card" style="width: 18rem;">
-                            <img src="{{asset('assets/images/img_evol.jpg')}}" class="card-img-top" alt="Treino">
+                            <img src="{{asset('assets/images/nutri_img2.jpg')}}" class="card-img-top" alt="Treino">
                             <div class="card-body text-center">
                                 <h3 class="card-title">EVOLUÇÃO</h3>
                                 <p class="card-text">Clica aqui para acederes à tua área e veres a tua evolução.</p>

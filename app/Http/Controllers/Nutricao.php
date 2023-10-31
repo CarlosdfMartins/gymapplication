@@ -56,8 +56,6 @@ class Nutricao extends Controller
 
     public function storePlanNutrie(Request $request, $id)
     {
-
-
         $planNutri = new formPlanNutricion();
         $planNutri->hora_PA = $request->input('planTime1');
         $planNutri->pequeno_almoco = $request->input('pequeno_almoco');

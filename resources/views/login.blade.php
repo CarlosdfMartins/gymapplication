@@ -41,7 +41,7 @@
                     </div>
                 </form>
                 <div class="center-page">
-                    <div class="footername text-center my-3 form-group"> <a href="{{ route('showForgotPasswordForm')}}"
+                    <div class="footername text-center form-group"> <a href="{{ route('showForgotPasswordForm')}}"
                             class="link-light  link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover"><small>Esqueci-me
                                 da password</small> </a></div>
                 </div>

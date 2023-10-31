@@ -36,7 +36,7 @@
 
                             switch ($profile) {
                                 case 'Nutricionista':
-                                    $imagePath = asset('assets/images/nutri_img.jpg');
+                                    $imagePath = asset('assets/images/img_agua.jpg');
                                     break;
                                 case 'Personal Trainer':
                                     $imagePath = asset('assets/images/treino_3.jpg');

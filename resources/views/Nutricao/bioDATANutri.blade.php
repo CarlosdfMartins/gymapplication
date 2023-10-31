@@ -1,14 +1,12 @@
 @extends('Nutricao.layoutNutri')
 
 @section('content')
-    <div class="container-fluid mt-10 mb-8">
+    <div class="container-fluid mt-2 mb-2">
         <div class="row justify-content-center pb-1">
             <div class="col-lg-16 col-md-50">
-
                 <div class="row">
-
-                    <div>
-                        <table Class="table table-hover">
+                    <div class="table-responsive mx-auto">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center align-baseline">Peso (kg)</th>
@@ -51,14 +49,14 @@
                     </div>
                 </div>
 
-                    <a href="{{ route('app.evolnutri', ['id' => encrypt($socioID)]) }}" class="btn btn-outline-success ms-3"
-                        style="text-decoration: none;"><i class="bi bi-graph-up-arrow"></i> Evolução</a>                        </div>
+                <a href="{{ route('app.evolnutri', ['id' => encrypt($socioID)]) }}" class="btn btn-outline-success ms-3"
+                    style="text-decoration: none;"><i class="bi bi-graph-up-arrow"></i> Evolução</a>
+            </div>
 
-            </div>
-            <div style="text-align: right; margin-top: 10px;">
-                <a onclick="retrocederPagina()" class="link-body-emphasis"
-                style="cursor: pointer; text-decoration: none;">
-                    <i class="bi bi-reply-all-fill"></i> Voltar</a>
-            </div>
+        </div>
+        <div style="text-align: right; margin-top: 10px;">
+            <a onclick="retrocederPagina()" class="link-body-emphasis" style="cursor: pointer; text-decoration: none;">
+                <i class="bi bi-reply-all-fill"></i> Voltar</a>
+        </div>
     </div>
 @endsection
