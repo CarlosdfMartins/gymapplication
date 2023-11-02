@@ -42,6 +42,16 @@ class Forms extends Controller
             ->where('profile', 'Personal Trainer')
             ->get();
 
+        foreach ($nutricionistas as $nutricionista) {
+            $nutricionista->nome = $this->Enc->desencriptar($nutricionista->nome);
+            $nutricionista->apelido = $this->Enc->desencriptar($nutricionista->apelido);
+        }
+
+        foreach ($personalTrainer as $trainer) {
+            $trainer->nome = $this->Enc->desencriptar($trainer->nome);
+            $trainer->apelido = $this->Enc->desencriptar($trainer->apelido);
+        }
+
         return view('form', [
             'nutricionistas' => $nutricionistas,
             'personalTrainers' => $personalTrainer,

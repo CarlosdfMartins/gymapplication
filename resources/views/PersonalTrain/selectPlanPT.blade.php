@@ -13,7 +13,20 @@
             display: flex;
             margin-left: 20px;
             margin-bottom: 10px;
+        }
 
+        .form-select {
+            color: black;
+        }
+
+        .form-select :hover {
+            background-color: rgb(52, 112, 33);
+            color: white;
+        }
+
+        .form-select option:checked {
+            background-color: rgb(52, 112, 33);
+            color: white;
         }
     </style>
 
@@ -33,9 +46,10 @@
 
                     <form method="post" action="{{ route('app.dadosPlanTrain', ['id' => encrypt($socioID)]) }}">
                         @csrf
-                        <div class="text-center">
-                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example"
-                                name="exercicio" id="plano" size="3">
+                        <div class="text-center ">
+                            <select id="plano"
+                                class="form-select d-inline-flex focus-ring focus-ring-success py-1 px-2 text-decoration-none border rounded-2mt-3 w-50 mx-auto"
+                                aria-label="Default select example" name="exercicio" id="plano" size="3">
                                 @php
                                     $uniquePlans = [];
                                 @endphp

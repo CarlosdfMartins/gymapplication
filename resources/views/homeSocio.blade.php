@@ -2,7 +2,8 @@
 
 @section('content')
     @php
-        $profile = decrypt($nomeSocios);
+        $profiles = decrypt($nomeSocios);
+        
     @endphp
 
     <div class="container-fluid mt-5 mb-5">
@@ -18,7 +19,7 @@
                     <hr>
                     <div class="d-flex justify-content-between">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{asset('assets/images/img_treino.jpg')}}" class="card-img-top" alt="Treino">
+                            <img src="{{ asset('assets/images/img_treino.jpg') }}" class="card-img-top" alt="Treino">
                             <div class="card-body text-center">
                                 <h3 class="card-title">TREINO</h3>
                                 <p class="card-text">Clica e entrar para
@@ -30,7 +31,7 @@
                         <div class="mx-2"></div>
 
                         <div class="card" style="width: 18rem;">
-                            <img src="{{asset('assets/images/nutri_img2.jpg')}}" class="card-img-top" alt="Treino">
+                            <img src="{{ asset('assets/images/nutri_img2.jpg') }}" class="card-img-top" alt="Treino">
                             <div class="card-body text-center">
                                 <h3 class="card-title">EVOLUÇÃO</h3>
                                 <p class="card-text">Clica aqui para acederes à tua área e veres a tua evolução.</p>
@@ -41,7 +42,7 @@
                         <div class="mx-2"></div>
 
                         <div class="card" style="width: 18rem;">
-                            <img src="{{asset('assets/images/img_nut.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{ asset('assets/images/img_nut.jpg') }}" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h3 class="card-title">NUTRIÇÃO</h3>
                                 <p class="card-text">Clica e entrar para

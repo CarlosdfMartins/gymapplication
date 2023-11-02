@@ -73,7 +73,8 @@ class Main extends Controller
         if ($socio && password_verify($password, $socio->password)) {
             Session::put('nome', $this->Enc->desencriptar($socio->nome));
             Session::put('email', $socio->email);
-            return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id)]);
+            Session::put('profile', $socio->profile);
+            return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id),'profile' => encrypt($socio->profile)]);
         } elseif ($colaborador && password_verify($password, $colaborador->password)) {
             Session::put('nome', $this->Enc->desencriptar($colaborador->nome));
             Session::put('email', $colaborador->email);

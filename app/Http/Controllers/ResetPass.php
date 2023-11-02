@@ -10,10 +10,16 @@ use App\Mail\email_define_password;
 use Illuminate\Support\Str;
 use App\Models\Socios;
 use App\Models\Colaboradores;
+use App\ServiceEnc\Enc;
 
 
 class ResetPass extends Controller
 {
+    protected $Enc;
+    public function __construct()
+    {
+        $this->Enc = new Enc();
+    }
 
     public function showForgotPasswordForm()
     {
@@ -56,7 +62,7 @@ class ResetPass extends Controller
         $definePass->save();
 
 
-        Mail::to($email)->send(new email_define_password(encrypt($token), $name, $apelido));
+        Mail::to($email)->send(new email_define_password(encrypt($token),  $this->Enc->desencriptar($name),  $this->Enc->desencriptar($apelido)));
 
         return redirect()->route('login');
     }

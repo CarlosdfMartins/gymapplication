@@ -97,10 +97,10 @@ class Nutricao extends Controller
         $cliente = $this->getClienteDetails($id);
 
         $nutriPlanos = formPlanNutricion::where('socio_id', $id)->get();
-
+        $profile = Session::get('profile');
         $socioID = $id;
 
-        return view('nutricao.selectPlanNutrie', ['socioID' => $socioID, 'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
+        return view('nutricao.selectPlanNutrie', ['socioID' => $socioID, 'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente, 'profile' => $profile]);
     }
     //========================================================================================================================
 

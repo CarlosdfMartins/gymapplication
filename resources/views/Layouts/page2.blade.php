@@ -16,12 +16,23 @@
 <body class="layout-2">
 
     <div class="col p-3 text-end">
-        <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i
-                class="bi bi-house-fill"></i></a>
+      
+        @if (strtolower(session('profile')) == 'socio')
+            <a href="{{ route('app.homeSocio', ['id' => $nomeSocios]) }}" class="link-body-emphasis"
+                style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @else
+            <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @endif
+
         <span class="opacity-50"><i class="bi bi-three-dots-vertical"></i></span>
-        <span class="mx-2 link-dark"><i class="bi bi-person link-success "></i> {{ session('nome') }} </span>
+        <span class="mx-2 link-dark"><i class="bi bi-person link-success"></i> {{ session('nome') }} </span>
         <a href="{{ route('app.exit') }}" class="link-danger"><i class="bi bi-box-arrow-right me-2"></i></a>
     </div>
+
 
     <div class="container">
         <div class="row">

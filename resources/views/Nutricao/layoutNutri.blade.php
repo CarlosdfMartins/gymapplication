@@ -15,8 +15,17 @@
 
 <body class="layout-3">
     <div class="col p-3 text-end">
-        <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;"><i
-                class="bi bi-house-fill"></i></a>
+
+        @if (strtolower(session('profile')) == 'socio')
+            <a href="{{ route('app.homeSocio', ['id' => encrypt($socioID)]) }}" class="link-body-emphasis"
+                style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @else
+            <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @endif
         <span class="opacity-50"><i class="bi bi-three-dots-vertical"></i></span>
         <span class="mx-2 link-dark"><i class="bi bi-person link-success "></i> {{ session('nome') }} </span>
         <a href="{{ route('app.exit') }}" class="link-danger"><i class="bi bi-box-arrow-right me-2"></i></a>
@@ -27,9 +36,7 @@
             <div class="col-lg-8 col-md-10">
                 <div class="card p-4">
 
-                    {{-- <div class="row">
-                        <h3>{{ $cliente[0]->nome }} {{ $cliente[0]->apelido }}</h3>
-                        <hr> --}}
+
 
                     @yield('styles')
                     @yield('content')

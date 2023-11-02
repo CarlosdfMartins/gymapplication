@@ -13,9 +13,22 @@
             display: flex;
             margin-left: 20px;
             margin-bottom: 10px;
+        }
+        .form-select {
+            color: black;
+        }
 
+        .form-select :hover {
+            background-color: rgb(52, 112, 33);
+            color: white;
+        }
+
+        .form-select option:checked {
+            background-color: rgb(52, 112, 33);
+            color: white;
         }
     </style>
+
 
     <div class="nutiSelect container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
@@ -34,8 +47,9 @@
                     <form method="post" action="{{ route('app.dadosPlanNutrie', ['id' => encrypt($socioID)]) }}">
                         @csrf
                         <div class="text-center">
-                            <select class="form-select mt-3 w-50 mx-auto" aria-label="Default select example" name="plano"
-                                id="plano" size="3">
+                            <select
+                                class="form-select d-inline-flex focus-ring focus-ring-success py-1 px-2 text-decoration-none border rounded-2mt-3 w-50 mx-auto"
+                                aria-label="Default select example" name="plano" id="plano" size="3">
                                 @foreach ($nutriPlanos as $plano)
                                     <option class="text-center" value="{{ $plano->id }}">{{ $plano->created_at }}
                                     </option>

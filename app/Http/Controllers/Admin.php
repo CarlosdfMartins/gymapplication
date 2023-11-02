@@ -27,9 +27,10 @@ class Admin extends Controller
     public function homeSocio($id)
     {
         $id = decrypt($id);
+        $profile = Session::get('profile');
         $nomeSocios = $id;
 
-        return view('homeSocio', ['nomeSocios' => encrypt($nomeSocios)]);
+        return view('homeSocio', ['nomeSocios' => encrypt($nomeSocios),'profile'=>encrypt($profile)]);
     }
     //========================================================================================================================
 
