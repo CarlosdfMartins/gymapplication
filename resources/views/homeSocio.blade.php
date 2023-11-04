@@ -3,8 +3,11 @@
 @section('content')
     @php
         $profiles = decrypt($nomeSocios);
-        
+
     @endphp
+
+
+    {{-- main page for the Client profile --}}
 
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">

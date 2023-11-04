@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+
 use App\Models\Colaboradores;
 use App\Models\Socios;
 use App\ServiceEnc\Enc;
@@ -16,13 +17,15 @@ class Main extends Controller
     {
         $this->Enc = new Enc();
     }
-//==============================================================================
+    //========================================================================================================================
 
     public function index()
     {
         return view('index');
     }
-    //==============================================================================
+    //========================================================================================================================
+    //======================================||  Login and Confirmations System  ||============================================
+    //========================================================================================================================
 
     public function login(Request $request)
     {
@@ -41,7 +44,7 @@ class Main extends Controller
 
         return view('login', ['erro' => $erro]);
     }
-    //==============================================================================
+    //========================================================================================================================
 
     public function confirmation(Request $request)
     {
@@ -74,7 +77,7 @@ class Main extends Controller
             Session::put('nome', $this->Enc->desencriptar($socio->nome));
             Session::put('email', $socio->email);
             Session::put('profile', $socio->profile);
-            return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id),'profile' => encrypt($socio->profile)]);
+            return redirect()->route('app.homeSocio', ['id' => encrypt($socio->id), 'profile' => encrypt($socio->profile)]);
         } elseif ($colaborador && password_verify($password, $colaborador->password)) {
             Session::put('nome', $this->Enc->desencriptar($colaborador->nome));
             Session::put('email', $colaborador->email);
@@ -84,24 +87,20 @@ class Main extends Controller
             return redirect()->route('login', ['erro' => 1]);
         }
     }
-    //==============================================================================
+   //========================================================================================================================
+   //========================================================================================================================
 
     public function nutri()
     {
         return view('nutri');
     }
-    //==============================================================================
+   //========================================================================================================================
 
     public function train()
     {
         return view('train');
     }
-    //==============================================================================
+   //========================================================================================================================
 
-    public function evol()
-    {
-        return view('evol');
-    }
-    //==============================================================================
 
 }

@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 
-use App\Mail\PlanPersonalTrain;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Socios;
-use App\Models\Exercise;
-use App\Models\TrainPlan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
+
+use App\Models\Exercise;
+use App\Models\TrainPlan;
+use App\Mail\PlanPersonalTrain;
+use App\Models\Socios;
+
 
 class PersonalTrainerContr extends Controller
 {
+    //========================================================================================================================
+    //======================================|| Training Plan ||===============================================================
+    //========================================================================================================================
     public function planTrain($id)
     {
         $id = decrypt($id);
@@ -31,9 +35,9 @@ class PersonalTrainerContr extends Controller
             Mail::to($socio->email)->send(new PlanPersonalTrain($planoTreino));
         }
 
-        return redirect()->route('app.morePlanTrain', ['id' => encrypt($socioID), 'plan_ID' =>$planoTreino->id]);
+        return redirect()->route('app.morePlanTrain', ['id' => encrypt($socioID), 'plan_ID' => $planoTreino->id]);
     }
-
+    //========================================================================================================================
 
     public function morePlanTrain($id, $plan_ID)
     {
@@ -51,7 +55,7 @@ class PersonalTrainerContr extends Controller
 
         return view('PersonalTrain.formPlanPT', ['id' => encrypt($socioID), 'nomeSocios' => $nomeSocios, 'cliente' => $cliente, 'plan_ID' => $planoTreino]);
     }
-
+    //========================================================================================================================
 
     public function storePlanTrain(Request $request, $id, $plan_ID)
     {
@@ -90,7 +94,7 @@ class PersonalTrainerContr extends Controller
 
         return redirect()->route('app.morePlanTrain', ['id' => encrypt($id), 'plan_ID' => $plan_ID]);
     }
-
+    //========================================================================================================================
 
     public function dadosPlanTrain($id)
     {
@@ -102,7 +106,7 @@ class PersonalTrainerContr extends Controller
 
         return view('PersonalTrain.dataPlanTrain', ['exercicios' => $exercicios, 'socioID' => $socioID]);
     }
-
+    //========================================================================================================================
 
     public function selectPlantrainer($id)
     {
@@ -124,7 +128,7 @@ class PersonalTrainerContr extends Controller
             'exercicios' => $exercicios,
         ]);
     }
-
+    //========================================================================================================================
 
     public function getClienteDetails($id)
     {

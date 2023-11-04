@@ -1,6 +1,9 @@
 @extends('layouts.page2')
 
 @section('content')
+
+    {{-- search for employee --}}
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
@@ -25,7 +28,7 @@
                         </div>
                         <div style="text-align: right; margin-top: 10px;">
                             <a onclick="retrocederPagina()" class="link-body-emphasis"
-                            style="cursor: pointer; text-decoration: none;">
+                                style="cursor: pointer; text-decoration: none;">
                                 <i class="bi bi-reply-all-fill"></i> Voltar</a>
                         </div>
                     </div>

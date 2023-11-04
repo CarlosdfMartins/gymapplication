@@ -5,6 +5,9 @@
         $profile = decrypt($profile);
     @endphp
 
+
+    {{-- main page for the Administrator, Nutritionist, Personal Trainer profile --}}
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">

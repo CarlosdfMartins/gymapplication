@@ -23,6 +23,18 @@ class Nutricao extends Controller
     {
         $this->Enc = new Enc();
     }
+    //========================================================================================================================
+
+    private function desencriptarSocio($socio)
+    {
+        $socio->nome = $this->Enc->desencriptar($socio->nome);
+        $socio->apelido = $this->Enc->desencriptar($socio->apelido);
+        $socio->telefone = $this->Enc->desencriptar($socio->telefone);
+
+
+        return $socio;
+    }
+    //========================================================================================================================
 
     public function evolnutri($id)
     {
@@ -38,6 +50,8 @@ class Nutricao extends Controller
 
         return view('Nutricao.evolNutrie', ['socioID' => $socioID, 'dados' => $dados, 'cliente' =>  $cliente]);
     }
+    //========================================================================================================================
+    //======================================||  Nutrition Plan   ||===========================================================
     //========================================================================================================================
 
     public function planNutrie($id)
@@ -117,6 +131,8 @@ class Nutricao extends Controller
         return view('nutricao.dataPlanNutri', ['socioID' => $socioID, 'nutriPlanos' => $nutriPlanos, 'cliente' =>  $cliente]);
     }
     //========================================================================================================================
+    //======================================|| Biometric Data ||==============================================================
+    //========================================================================================================================
 
     public function formNutrie($id)
     {
@@ -157,6 +173,22 @@ class Nutricao extends Controller
     }
     //========================================================================================================================
 
+    public function dadosBIO($id)
+    {
+        $id = decrypt($id);
+
+        $cliente = $this->getClienteDetails($id);
+
+        $biodados = NutricaoModel::where('socio_id', $id)->get();
+
+        $socioID = $id;
+
+        return view('nutricao.bioDATANutri', ['socioID' => $socioID, 'biodados' => $biodados, 'cliente' =>  $cliente]);
+    }
+    //========================================================================================================================
+    //======================================|| Presents the Form with the Member's data ||====================================
+    //========================================================================================================================
+
     public function formNutriSearch($id)
     {
         $id = decrypt($id);
@@ -179,16 +211,8 @@ class Nutricao extends Controller
             'profile' => $profile,
         ]);
     }
-
-    private function desencriptarSocio($socio)
-    {
-        $socio->nome = $this->Enc->desencriptar($socio->nome);
-        $socio->apelido = $this->Enc->desencriptar($socio->apelido);
-        $socio->telefone = $this->Enc->desencriptar($socio->telefone);
-
-
-        return $socio;
-    }
+    //========================================================================================================================
+    //===================|| Presents table of Members surveyed by PT and Nutritionist ||======================================
     //========================================================================================================================
 
     public function formNutriConsult(Request $request)
@@ -236,32 +260,6 @@ class Nutricao extends Controller
     }
     //========================================================================================================================
 
-    public function getClienteDetails($id)
-    {
-        $cliente = Cache::remember('cliente_' . $id, now()->addMinutes(120), function () use ($id) {
-            return DB::table('Socios')
-                ->select('id', 'nome', 'apelido')
-                ->where('id', '=', $id)
-                ->get();
-        });
-
-        return $cliente;
-    }
-    //========================================================================================================================
-
-    public function dadosBIO($id)
-    {
-        $id = decrypt($id);
-
-        $cliente = $this->getClienteDetails($id);
-
-        $biodados = NutricaoModel::where('socio_id', $id)->get();
-
-        $socioID = $id;
-
-        return view('nutricao.bioDATANutri', ['socioID' => $socioID, 'biodados' => $biodados, 'cliente' =>  $cliente]);
-    }
-    //========================================================================================================================
     public function nutriSocio($id)
     {
         $nomeSocios = $id;
@@ -277,18 +275,25 @@ class Nutricao extends Controller
     }
     //========================================================================================================================
 
-    public function evolBioSocio($id)
-    {
-        $nomeSocios = $id;
-
-        return view('evolBioSocio', ['nomeSocios' => $nomeSocios]);
-    }
-    //========================================================================================================================
-
     public function evolBio($id)
     {
         $nomeSocios = $id;
 
         return view('evolBio', ['nomeSocios' => $nomeSocios]);
     }
+    //========================================================================================================================
+
+    public function getClienteDetails($id)
+    {
+        $cliente = Cache::remember('cliente_' . $id, now()->addMinutes(120), function () use ($id) {
+            return DB::table('Socios')
+                ->select('id', 'nome', 'apelido')
+                ->where('id', '=', $id)
+                ->get();
+        });
+
+        return $cliente;
+    }
+    //========================================================================================================================
+
 }

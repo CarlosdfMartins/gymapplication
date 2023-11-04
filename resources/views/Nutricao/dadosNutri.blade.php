@@ -11,6 +11,7 @@
         }
     </style>
 
+    {{-- Member data sheet --}}
 
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
@@ -119,7 +120,7 @@
                                         </li>
                                         <li class="text-center">
                                             @if ($profile === 'Nutricionista')
-                                                <a href="{{ route('app.editNutricao', ['profile' => encrypt($profile), 'id' =>encrypt($nomeSocios->id)]) }}"
+                                                <a href="{{ route('app.editNutricao', ['profile' => encrypt($profile), 'id' => encrypt($nomeSocios->id)]) }}"
                                                     class="btn btn-light">Editar Plano de Nutrição</a>
                                             @endif
                                         </li>

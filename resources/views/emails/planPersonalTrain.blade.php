@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+    {{-- email informing you that the training plan is now available --}}
+
     <h4>Plano de Nutrição</h4>
 
     <p>Olá <strong>{{ $socioName }}</strong>,</p>

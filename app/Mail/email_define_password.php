@@ -13,7 +13,6 @@ class email_define_password extends Mailable
 {
     use Queueable, SerializesModels;
 
-    
     public $token;
     public $name;
     public $apelido;

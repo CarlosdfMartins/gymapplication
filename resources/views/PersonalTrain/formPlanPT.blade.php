@@ -2,6 +2,8 @@
 
 
 @section('content')
+    {{-- training form --}}
+
     <h4 class="mb-3">Plano Treino:</h4>
 
     <div class="container">

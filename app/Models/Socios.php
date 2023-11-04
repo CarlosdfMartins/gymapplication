@@ -15,27 +15,27 @@ class Socios extends Model
     {
         return $this->hasOne(Colaboradores::class, 'colaborador_id');
     }
-
+    //========================================================================================================================
     public function nutri()
     {
         return $this->belongsTo(Colaboradores::class, 'NUT_id');
     }
-
+    //========================================================================================================================
     public function pTrain()
     {
         return $this->belongsTo(Colaboradores::class, 'PT_id');
     }
-
+    //========================================================================================================================
     public function passwordReset()
     {
         return $this->hasOne(PasswordReset::class, 'socio_id');
     }
-
+    //========================================================================================================================
     public function NutricaoModel()
     {
         return $this->belongsTo(NutricaoModel::class, 'id');
     }
-
+    //========================================================================================================================
     public function formPlanNutricion()
     {
         return $this->belongsTo(formPlanNutricion::class, 'socio_id');

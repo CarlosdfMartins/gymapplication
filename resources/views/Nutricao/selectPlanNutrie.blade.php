@@ -14,6 +14,7 @@
             margin-left: 20px;
             margin-bottom: 10px;
         }
+
         .form-select {
             color: black;
         }
@@ -29,6 +30,7 @@
         }
     </style>
 
+    {{-- Select nutrition plan for a specific client --}}
 
     <div class="nutiSelect container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">

@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+    {{-- view for password recovery --}}
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
@@ -14,7 +17,7 @@
                         <div class="row">
                             <div class="col">
                                 <p>Por favor introduza o seu email.
-                                Só assim será enviado um email que possibilitará recuperação da sua password.</p>
+                                    Só assim será enviado um email que possibilitará recuperação da sua password.</p>
                                 <form action="{{ route('generateNewToken') }}" method="post">
                                     @csrf
 

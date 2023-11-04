@@ -30,6 +30,8 @@
         }
     </style>
 
+    {{-- choose the training plan --}}
+
     <div class="trainSelect container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
             <div class="col-lg-16 col-md-50">

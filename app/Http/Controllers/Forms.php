@@ -29,37 +29,8 @@ class Forms extends Controller
         $this->Enc = new Enc();
     }
     //========================================================================================================================
-
-    public function frm()
-    {
-        $nutricionistas = DB::table('colaboradores')
-            ->select('id', 'nome', 'apelido')
-            ->where('profile', 'Nutricionista')
-            ->get();
-
-        $personalTrainer = DB::table('colaboradores')
-            ->select('id', 'nome', 'apelido')
-            ->where('profile', 'Personal Trainer')
-            ->get();
-
-        foreach ($nutricionistas as $nutricionista) {
-            $nutricionista->nome = $this->Enc->desencriptar($nutricionista->nome);
-            $nutricionista->apelido = $this->Enc->desencriptar($nutricionista->apelido);
-        }
-
-        foreach ($personalTrainer as $trainer) {
-            $trainer->nome = $this->Enc->desencriptar($trainer->nome);
-            $trainer->apelido = $this->Enc->desencriptar($trainer->apelido);
-        }
-
-        return view('form', [
-            'nutricionistas' => $nutricionistas,
-            'personalTrainers' => $personalTrainer,
-
-        ]);
-    }
+    //====================||  Enter the partner/Employee form and send email to set password  ||==============================
     //========================================================================================================================
-
     public function sendForm(Request $request)
     {
         $request->validate([
@@ -136,6 +107,36 @@ class Forms extends Controller
 
         return view('home', ['profile' =>  encrypt($profile)]);
     }
+    public function frm()
+    {
+        $nutricionistas = DB::table('colaboradores')
+            ->select('id', 'nome', 'apelido')
+            ->where('profile', 'Nutricionista')
+            ->get();
+
+        $personalTrainer = DB::table('colaboradores')
+            ->select('id', 'nome', 'apelido')
+            ->where('profile', 'Personal Trainer')
+            ->get();
+
+        foreach ($nutricionistas as $nutricionista) {
+            $nutricionista->nome = $this->Enc->desencriptar($nutricionista->nome);
+            $nutricionista->apelido = $this->Enc->desencriptar($nutricionista->apelido);
+        }
+
+        foreach ($personalTrainer as $trainer) {
+            $trainer->nome = $this->Enc->desencriptar($trainer->nome);
+            $trainer->apelido = $this->Enc->desencriptar($trainer->apelido);
+        }
+
+        return view('form', [
+            'nutricionistas' => $nutricionistas,
+            'personalTrainers' => $personalTrainer,
+
+        ]);
+    }
+    //========================================================================================================================
+    //======================================||  Membership Search   ||========================================================
     //========================================================================================================================
 
     public function search()
@@ -184,28 +185,12 @@ class Forms extends Controller
         return view('consultClient', ['socios' => $socios]);
     }
     //========================================================================================================================
+    //==========================================||  Employee Search   ||======================================================
+    //========================================================================================================================
 
     public function pesquiCola()
     {
         return view('pesquiCola');
-    }
-    //========================================================================================================================
-
-    public function searchCola($id)
-    {
-
-        $id = decrypt($id);
-
-        $colaboradores = Colaboradores::findOrFail($id);
-
-        $colaboradores->nome = $this->Enc->desencriptar($colaboradores->nome);
-        $colaboradores->apelido = $this->Enc->desencriptar($colaboradores->apelido);
-        $colaboradores->telefone = $this->Enc->desencriptar($colaboradores->telefone);
-
-        return view('dadosCola', [
-            'colaboradores' => encrypt($colaboradores),
-
-        ]);
     }
     //========================================================================================================================
 
@@ -251,13 +236,24 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
-    public function menuEdit($profile, $id)
+    public function searchCola($id)
     {
-        $profile = $profile;
-        $id = $id;
 
-        return view('menuEdit', ['profile' => $profile, 'id' => $id]);
+        $id = decrypt($id);
+
+        $colaboradores = Colaboradores::findOrFail($id);
+
+        $colaboradores->nome = $this->Enc->desencriptar($colaboradores->nome);
+        $colaboradores->apelido = $this->Enc->desencriptar($colaboradores->apelido);
+        $colaboradores->telefone = $this->Enc->desencriptar($colaboradores->telefone);
+
+        return view('dadosCola', [
+            'colaboradores' => encrypt($colaboradores),
+
+        ]);
     }
+    //========================================================================================================================
+    //======================================||   Edit Nutrition Plan   ||=====================================================
     //========================================================================================================================
 
     public function editNutricao(Request $request, $profile, $id)
@@ -282,6 +278,25 @@ class Forms extends Controller
     }
     //========================================================================================================================
 
+    public function updatePNutricao(Request $request, $profile, $id)
+    {
+
+        $dadosPNutricional = $request->only([
+            'hora_PA', 'pequeno_almoco', 'hora_1LM', 'laMati1', 'hora_2LM', 'laMati2',
+            'hora_A', 'almoco', 'hora_L1', 'lanche1', 'hora_L2', 'lanche2', 'hora_L3', 'lanche3',
+            'hora_JA', 'jantar', 'hora_C', 'ceia'
+        ]);
+
+        $planoNutricional = formPlanNutricion::find($id);
+        $planoNutricional->update($dadosPNutricional);
+
+
+
+        return redirect()->route('app.nutriSearch', ['profile' => encrypt($profile), 'id' => encrypt($id)]);
+    }
+    //========================================================================================================================
+    //======================================||  Edit Partner/Collaborator form   ||===========================================
+    //========================================================================================================================
     public function edit($profile, $id)
     {
         $profile = decrypt($profile);
@@ -304,24 +319,6 @@ class Forms extends Controller
         } else {
             abort(404);
         }
-    }
-    //========================================================================================================================
-
-    public function updatePNutricao(Request $request, $profile, $id)
-    {
-
-        $dadosPNutricional = $request->only([
-            'hora_PA', 'pequeno_almoco', 'hora_1LM', 'laMati1', 'hora_2LM', 'laMati2',
-            'hora_A', 'almoco', 'hora_L1', 'lanche1', 'hora_L2', 'lanche2', 'hora_L3', 'lanche3',
-            'hora_JA', 'jantar', 'hora_C', 'ceia'
-        ]);
-
-        $planoNutricional = formPlanNutricion::find($id);
-        $planoNutricional->update($dadosPNutricional);
-
-
-
-        return redirect()->route('app.nutriSearch', ['profile' => encrypt($profile), 'id' => encrypt($id)]);
     }
     //========================================================================================================================
 
@@ -364,7 +361,8 @@ class Forms extends Controller
         }
     }
     //========================================================================================================================
-
+    //======================================||  Delete Partner/Collaborator record   ||=======================================
+    //========================================================================================================================
     public function delete($id)
     {
         $colaborador = Colaboradores::find($id);

@@ -16,15 +16,15 @@
 <body class="layout-4">
     <div class="col p-3 text-end">
         @if (strtolower(session('profile')) == 'socio')
-        <a href="{{ route('app.homeSocio', ['id' => encrypt($socioID)]) }}" class="link-body-emphasis"
-            style="text-decoration: none;">
-            <i class="bi bi-house-fill"></i>
-        </a>
-    @else
-        <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;">
-            <i class="bi bi-house-fill"></i>
-        </a>
-    @endif
+            <a href="{{ route('app.homeSocio', ['id' => encrypt($socioID)]) }}" class="link-body-emphasis"
+                style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @else
+            <a href="{{ route('app.home') }}" class="link-body-emphasis" style="text-decoration: none;">
+                <i class="bi bi-house-fill"></i>
+            </a>
+        @endif
         <span class="opacity-50"><i class="bi bi-three-dots-vertical"></i></span>
         <span class="mx-2 link-dark"><i class="bi bi-person link-success "></i> {{ session('nome') }} </span>
         <a href="{{ route('app.exit') }}" class="link-danger"><i class="bi bi-box-arrow-right me-2"></i></a>
@@ -36,22 +36,22 @@
                 <div class="card p-5">
 
 
-                        @yield('styles')
-                        @yield('content')
+                    @yield('styles')
+                    @yield('content')
 
 
 
 
-                    </div>
                 </div>
             </div>
-            <script>
-                function retrocederPagina() {
-                    window.history.back();
-                }
-            </script>
-            <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+        <script>
+            function retrocederPagina() {
+                window.history.back();
+            }
+        </script>
+        <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

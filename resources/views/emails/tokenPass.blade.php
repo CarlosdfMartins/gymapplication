@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+{{-- email for when you receive the token and define your password --}}
+
     <p>Olá, <strong>{{ $name }} {{ $apelido }}</strong></p>
 
     <p>clique no link abaixo para defenir a sua password.</p>

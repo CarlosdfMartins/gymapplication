@@ -11,5 +11,3 @@ class LogAdminModel extends Model
 
     protected $fillable = ['log'];
 }
-
-

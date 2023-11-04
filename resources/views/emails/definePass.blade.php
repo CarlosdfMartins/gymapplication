@@ -2,6 +2,9 @@
 
 
 @section('content')
+
+    {{-- password view definition --}}
+
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">
@@ -26,8 +29,8 @@
 
                                         <div class="col-md-8 col-sm-6">
                                             <label for="password" class="form-label" required>Confirme password</label>
-                                            <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}"
-                                                class="form-control" required>
+                                            <input type="password" name="password_confirmation"
+                                                value="{{ old('password_confirmation') }}" class="form-control" required>
                                             </label>
                                         </div>
                                     </div>

@@ -1,12 +1,14 @@
 @extends('Nutricao.layoutNutri')
 
 @section('content')
+    {{-- Gráfico para apresentação da evolução com base nos dados Biométricos --}}
+
     <div class="container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
             <div class="col-lg-16 col-md-50">
                 <div class="row">
                     <div>
-                        <h4 class="text-center align-baseline"><strong>Evolução 
+                        <h4 class="text-center align-baseline"><strong>Evolução
                             </strong></h4>
                     </div>
                     <hr>
@@ -16,14 +18,14 @@
             </div>
         </div>
         <div style="text-align: right; margin-top: 10px;">
-            <a onclick="retrocederPagina()" class="link-body-emphasis"
-            style="cursor: pointer; text-decoration: none;">
+            <a onclick="retrocederPagina()" class="link-body-emphasis" style="cursor: pointer; text-decoration: none;">
                 <i class="bi bi-reply-all-fill"></i> Voltar</a>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    {{-- JavaScript that presents the graphs, taken from the Chart.js Library --}}
 
     <script>
         const dados = @json($dados);
@@ -39,8 +41,7 @@
 
         const data = {
             labels: labels,
-            datasets: [
-                {
+            datasets: [{
                     label: 'Peso kg',
                     data: pesos,
                     borderColor: 'LightSeaGreen',
@@ -95,5 +96,4 @@
         const ctx = document.getElementById('graficoEvolucaoNutricional').getContext('2d');
         const myChart = new Chart(ctx, config);
     </script>
-
 @endsection

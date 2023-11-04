@@ -15,7 +15,8 @@ class Admin extends Controller
         return view('home');
     }
     //========================================================================================================================
-
+    //============================||  Directs to the main page of Employees using their profile  ||===========================
+    //========================================================================================================================
     public function home()
     {
         $profile = Session::get('profile');
@@ -23,14 +24,15 @@ class Admin extends Controller
         return view('home', ['profile' => encrypt($profile)]);
     }
     //========================================================================================================================
-
+    //=======================================||  Forwards to the Members main page  ||========================================
+    //========================================================================================================================
     public function homeSocio($id)
     {
         $id = decrypt($id);
         $profile = Session::get('profile');
         $nomeSocios = $id;
 
-        return view('homeSocio', ['nomeSocios' => encrypt($nomeSocios),'profile'=>encrypt($profile)]);
+        return view('homeSocio', ['nomeSocios' => encrypt($nomeSocios), 'profile' => encrypt($profile)]);
     }
     //========================================================================================================================
 

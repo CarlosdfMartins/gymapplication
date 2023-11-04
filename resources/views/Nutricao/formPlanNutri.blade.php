@@ -2,13 +2,12 @@
 
 
 @section('content')
-
-@php
-    $socioID = decrypt($socioID);
-@endphp
+    @php
+        $socioID = decrypt($socioID);
+    @endphp
     <h5><u>Plano de Nutrição:</u></h5>
 
-
+    {{-- Nutrition plan form --}}
 
     <div class="container">
         <div class="row-3">

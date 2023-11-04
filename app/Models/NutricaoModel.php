@@ -10,8 +10,8 @@ class NutricaoModel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'peso_kg', 'altura_cm', 'IMC','m_Gorda_kg', 'm_Gorda_Percen', 'm_Magra_kg', 'm_Magra_Percen',
-        'ffm','TBW', 'Vis_Fat_R', 'Peito', 'Abdomen', 'Anca'
+        'peso_kg', 'altura_cm', 'IMC', 'm_Gorda_kg', 'm_Gorda_Percen', 'm_Magra_kg', 'm_Magra_Percen',
+        'ffm', 'TBW', 'Vis_Fat_R', 'Peito', 'Abdomen', 'Anca'
     ];
 
 
@@ -19,5 +19,4 @@ class NutricaoModel extends Model
     {
         return $this->hasMany(Socios::class, 'id');
     }
-
 }

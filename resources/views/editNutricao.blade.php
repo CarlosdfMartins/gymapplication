@@ -4,6 +4,7 @@
 @section('content')
     <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
 
+    {{-- edit nutrition plan --}}
 
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
@@ -38,9 +39,10 @@
                     @endif
 
                     @if ($dados)
-                    <form action="{{ route('app.updatePNutricao', ['profile' => $profile, 'id' => $dados->id]) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                        <form action="{{ route('app.updatePNutricao', ['profile' => $profile, 'id' => $dados->id]) }}"
+                            method="POST">
+                            @csrf
+                            @method('PUT')
 
 
                             <div class="row mt-2">
@@ -57,8 +59,9 @@
 
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
-                                    <label for="time" class="form-label" >Hora</label>
-                                    <input type="time" class="form-control" name = "planTime2" id="planTime"  value="{{ $dados->hora_1LM }}">
+                                    <label for="time" class="form-label">Hora</label>
+                                    <input type="time" class="form-control" name = "planTime2" id="planTime"
+                                        value="{{ $dados->hora_1LM }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">Lanche Matinal</label>
@@ -68,7 +71,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime3" id="planTime" value="{{ $dados->hora_2LM }}">
+                                    <input type="time" class="form-control" name = "planTime3" id="planTime"
+                                        value="{{ $dados->hora_2LM }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">2º Lanche
@@ -79,7 +83,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime4" id="planTime" value="{{ $dados->hora_A }}">
+                                    <input type="time" class="form-control" name = "planTime4" id="planTime"
+                                        value="{{ $dados->hora_A }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">Almoço</label>
@@ -89,7 +94,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime5" id="planTime" value="{{ $dados->hora_L1 }}">
+                                    <input type="time" class="form-control" name = "planTime5" id="planTime"
+                                        value="{{ $dados->hora_L1 }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">1º
@@ -100,7 +106,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime6" id="planTime" value="{{ $dados->hora_L2}}">
+                                    <input type="time" class="form-control" name = "planTime6" id="planTime"
+                                        value="{{ $dados->hora_L2 }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">2º
@@ -111,7 +118,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime7" id="planTime" value="{{ $dados->hora_L3 }}">
+                                    <input type="time" class="form-control" name = "planTime7" id="planTime"
+                                        value="{{ $dados->hora_L3 }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">3º
@@ -122,7 +130,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime8" id="planTime" value="{{ $dados->hora_JA }}">
+                                    <input type="time" class="form-control" name = "planTime8" id="planTime"
+                                        value="{{ $dados->hora_JA }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">Jantar</label>
@@ -132,7 +141,8 @@
                             <div class="row mt-3">
                                 <div class="col-lg-2 col-md-4">
                                     <label for="time" class="form-label">Hora</label>
-                                    <input type="time" class="form-control" name = "planTime9" id="planTime" value="{{ $dados->hora_C }}">
+                                    <input type="time" class="form-control" name = "planTime9" id="planTime"
+                                        value="{{ $dados->hora_C }}">
                                 </div>
                                 <div class="col-lg-10 col-md-8">
                                     <label for="exampleFormControlTextarea1" class="form-label">Ceia</label>

@@ -1,6 +1,9 @@
 @extends('Nutricao.layoutNutri')
 
 @section('content')
+
+    {{-- Presentation of Biometric data --}}
+
     <div class="container-fluid mt-2 mb-2">
         <div class="row justify-content-center pb-1">
             <div class="col-lg-16 col-md-50">

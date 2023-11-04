@@ -4,7 +4,8 @@
 @section('content')
 
     <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    
+
+    {{-- form to create a new client or collaborator --}}
 
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">

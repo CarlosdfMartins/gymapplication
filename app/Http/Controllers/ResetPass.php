@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Models\PasswordReset;
 use App\Mail\email_define_password;
-use Illuminate\Support\Str;
 use App\Models\Socios;
 use App\Models\Colaboradores;
 use App\ServiceEnc\Enc;
@@ -20,12 +21,13 @@ class ResetPass extends Controller
     {
         $this->Enc = new Enc();
     }
+    //========================================================================================================================
 
     public function showForgotPasswordForm()
     {
         return view('emails.showForgotPasswordForm');
     }
-
+    //========================================================================================================================
 
     public function generateNewToken(Request $request)
     {
@@ -66,7 +68,7 @@ class ResetPass extends Controller
 
         return redirect()->route('login');
     }
-
+    //========================================================================================================================
 
     public function reset($token)
     {

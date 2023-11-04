@@ -2,6 +2,7 @@
 
 @section('content')
 
+    {{-- client table for the administrator --}}
 
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
@@ -56,7 +57,7 @@
                                         </td>
                                     </tr>
 
-                                    {{-- Modal --}}
+                                    {{-- Modal  confirmation box to delete --}}
                                     <div class="modal fade" id="confirmDeleteModal{{ $socio->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">

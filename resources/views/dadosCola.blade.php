@@ -1,11 +1,12 @@
 @extends('layouts.page2')
 
 @section('content')
+    @php
+        $colaboradores = decrypt($colaboradores);
+    @endphp
 
-@php
-    $colaboradores = decrypt($colaboradores);
-@endphp
-
+    {{-- presents employee data --}}
+    
     <div class="container-fluid mt-5 mb-5">
         <div class="row justify-content-center pb-5">
             <div class="col-lg-8 col-md-10">

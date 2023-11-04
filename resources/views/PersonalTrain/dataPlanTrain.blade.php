@@ -17,14 +17,13 @@
         }
     </style>
 
+    {{-- presents a table with training plan --}}
+
     <div class="container-fluid mt-10 mb-8">
         <div class="row justify-content-center pb-4">
             <div class="col-lg-16 col-md-50">
 
                 <div class="row">
-
-
-
                     <h4 class="mb-5"><strong>Treino:</strong></h4>
 
 

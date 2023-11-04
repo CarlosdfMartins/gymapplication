@@ -10,6 +10,8 @@
     </style>
 @endsection
 
+{{-- login page --}}
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -41,7 +43,7 @@
                     </div>
                 </form>
                 <div class="center-page">
-                    <div class="footername text-center form-group"> <a href="{{ route('showForgotPasswordForm')}}"
+                    <div class="footername text-center form-group"> <a href="{{ route('showForgotPasswordForm') }}"
                             class="link-light  link-offset-2 link-underline-opacity-0 link-underline-opacity-0-hover"><small>Esqueci-me
                                 da password</small> </a></div>
                 </div>
@@ -54,10 +56,10 @@
 
 
                 @if (session('error'))
-                <div class="alert alert-danger p-2 text-center">
-                    {{ session('error') }}
-                </div>
-            @endif
+                    <div class="alert alert-danger p-2 text-center">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
 
 
